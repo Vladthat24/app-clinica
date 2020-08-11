@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="17"/>
+	<parameter name="num_doc" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select idcertificado_salud, idcerasistenciales,
+(select nombre from asistenciales where idasistenciales=idcerasistenciales)as nombre_asisten,
+(select apellidos from asistenciales where idasistenciales=idcerasistenciales)as apellidos_asisten,
+(select colegiatura from asistenciales where idasistenciales=idcerasistenciales)as colegiatura,
+(select num_colegiatura from asistenciales where idasistenciales=idcerasistenciales) as num_colegiatura,
+nombre,apellidos,edad,tipo_doc,num_doc,direccion,serelogia,examen_rx,fecha_registro from certificado_salud where num_doc=$P{num_doc};]]>
+	</queryString>
+	<field name="idcertificado_salud" class="java.lang.Integer"/>
+	<field name="idcerasistenciales" class="java.lang.Integer"/>
+	<field name="nombre_asisten" class="java.lang.String"/>
+	<field name="apellidos_asisten" class="java.lang.String"/>
+	<field name="colegiatura" class="java.lang.String"/>
+	<field name="num_colegiatura" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="apellidos" class="java.lang.String"/>
+	<field name="edad" class="java.lang.String"/>
+	<field name="tipo_doc" class="java.lang.String"/>
+	<field name="num_doc" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="serelogia" class="java.lang.String"/>
+	<field name="examen_rx" class="java.lang.String"/>
+	<field name="fecha_registro" class="java.lang.String"/>
+	<group name="idcertificado_salud">
+		<groupExpression><![CDATA[$F{idcertificado_salud}]]></groupExpression>
+	</group>
+	<group name="idcerasistenciales">
+		<groupExpression><![CDATA[$F{idcerasistenciales}]]></groupExpression>
+	</group>
+	<group name="nombre_asisten">
+		<groupExpression><![CDATA[$F{nombre_asisten}]]></groupExpression>
+	</group>
+	<group name="num_doc">
+		<groupExpression><![CDATA[$F{num_doc}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="28" width="120" height="11"/>
+				<textElement textAlignment="Center">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[CMI Daniel Alcides Carrion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="50" width="388" height="49"/>
+				<textElement>
+					<font size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CERTIFICADO DE SALUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="3" width="120" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[MINISTERIO DE SALUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="17" width="120" height="11"/>
+				<textElement textAlignment="Center">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[DIRIS LIMA SUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="4" width="256" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[“Decenio de la Igualdad de oportunidades
+Para mujeres y hombres”
+]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="390" splitType="Stretch">
+			<textField>
+				<reportElement x="218" y="30" width="248" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{num_doc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="177" y="209" width="334" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{examen_rx}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="150" width="501" height="20"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[se concluye que actualmente presente uin buen estado fisico.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="264" width="176" height="20"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[la Fecha).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="244" width="501" height="20"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Expediéndose para el efecto la presente constancia (válido por 6 meses a partir de]]></text>
+			</staticText>
+			<line>
+				<reportElement x="196" y="49" width="248" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="27" y="189" width="150" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-    SEROLOGIA        :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="64" width="149" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[DOMICILIADO (A) EN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="295" width="274" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[NOMBRE DEL MÉDICO QUE CERTIFICA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="370" width="149" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Villa María del Triunfo,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="89" y="316" width="79" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre_asisten}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="316" width="178" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{apellidos_asisten}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="363" y="10" width="173" height="20"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="10" y="104" width="526" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="30" width="31" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[De:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="219" y="28" width="317" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="10" width="239" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[El Medico que suscribe certifica que :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="199" y="30" width="19" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="154" y="370" width="216" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha_registro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="169" y="30" width="39" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipo_doc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="41" y="30" width="48" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[AÑOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="130" width="501" height="20"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ha sido atendido (a) al examen físico-clínico correspondiente, por que ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="31" width="39" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Edad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="209" width="150" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-    EXAMEN RX        :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="177" y="189" width="334" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{serelogia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="249" y="10" width="144" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Arial" size="14" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="84" width="526" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="29" width="39" height="20"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="14" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{edad}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="130" y="50" width="30" height="1"/>
+			</line>
+			<line>
+				<reportElement x="41" y="51" width="34" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="86" y="337" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{colegiatura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="337" width="178" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{num_colegiatura}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

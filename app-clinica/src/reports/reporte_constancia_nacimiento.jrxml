@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="19"/>
+	<parameter name="fecha_inicial" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_final" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select idconstancia_nacimiento,idcasistenciales,(select nombre from asistenciales where idasistenciales=idcasistenciales)as nombre_asisten,(select apellidos from asistenciales where idasistenciales=idcasistenciales)as apellidos_asisten,(select colegiatura from asistenciales where idasistenciales=idcasistenciales)as colegiatura_asisten,(select num_colegiatura from asistenciales where idasistenciales=idcasistenciales)as num_colegiatura_asisten,correlativo_constancia,nombre,apellidos,tipo_doc,num_doc,direccion,historia_clinica,sexo,peso,talla,fecha_nacimiento,hora_nacimiento,num_doc_nacido,fecha_nacimiento_letra,fecha_registro,iniciales from constancia_nacimiento where fecha_registro between $P{fecha_inicial} and $P{fecha_final};]]>
+	</queryString>
+	<field name="idconstancia_nacimiento" class="java.lang.Integer"/>
+	<field name="idcasistenciales" class="java.lang.Integer"/>
+	<field name="nombre_asisten" class="java.lang.String"/>
+	<field name="apellidos_asisten" class="java.lang.String"/>
+	<field name="colegiatura_asisten" class="java.lang.String"/>
+	<field name="num_colegiatura_asisten" class="java.lang.String"/>
+	<field name="correlativo_constancia" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="apellidos" class="java.lang.String"/>
+	<field name="tipo_doc" class="java.lang.String"/>
+	<field name="num_doc" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="historia_clinica" class="java.lang.String"/>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="peso" class="java.lang.String"/>
+	<field name="talla" class="java.lang.String"/>
+	<field name="fecha_nacimiento" class="java.sql.Date"/>
+	<field name="hora_nacimiento" class="java.lang.String"/>
+	<field name="num_doc_nacido" class="java.lang.String"/>
+	<field name="fecha_nacimiento_letra" class="java.lang.String"/>
+	<field name="fecha_registro" class="java.lang.String"/>
+	<field name="iniciales" class="java.lang.String"/>
+	<group name="Nombres y Apellidos">
+		<groupExpression><![CDATA[$F{nombre}]]></groupExpression>
+		<groupHeader>
+			<band height="75">
+				<textField>
+					<reportElement x="160" y="31" width="139" height="44" forecolor="#006599"/>
+					<textElement verticalAlignment="Middle">
+						<font size="15"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="294" y="31" width="261" height="44" forecolor="#006599"/>
+					<textElement verticalAlignment="Middle">
+						<font size="15"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{apellidos}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="0" width="555" height="31" forecolor="#006599"/>
+					<textElement textAlignment="Center">
+						<font size="15"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{correlativo_constancia}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="31" width="150" height="44"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nombres y Apellidos]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="num_doc">
+		<groupExpression><![CDATA[$F{idconstancia_nacimiento}]]></groupExpression>
+		<groupHeader>
+			<band height="38">
+				<textField>
+					<reportElement x="0" y="0" width="150" height="38"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{tipo_doc}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="160" y="0" width="395" height="38" forecolor="#006599"/>
+					<textElement verticalAlignment="Middle">
+						<font size="15"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{num_doc}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="historia clinica">
+		<groupExpression><![CDATA[$F{historia_clinica}]]></groupExpression>
+		<groupHeader>
+			<band height="38">
+				<textField>
+					<reportElement x="160" y="0" width="395" height="36" forecolor="#006599"/>
+					<textElement verticalAlignment="Middle">
+						<font size="15"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{historia_clinica}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="150" height="36"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Historia Clinica]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="num doc nacido">
+		<groupExpression><![CDATA[$F{num_doc_nacido}]]></groupExpression>
+		<groupHeader>
+			<band height="35">
+				<textField>
+					<reportElement x="160" y="0" width="395" height="33" forecolor="#006599"/>
+					<textElement verticalAlignment="Middle">
+						<font size="15"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{num_doc_nacido}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="150" height="33"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[N° Doc del Nacido]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="fecha registro">
+		<groupExpression><![CDATA[$F{fecha_registro}]]></groupExpression>
+		<groupHeader>
+			<band height="41">
+				<textField>
+					<reportElement x="160" y="0" width="395" height="36" forecolor="#006599"/>
+					<textElement verticalAlignment="Middle">
+						<font size="15"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha_registro}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="150" height="35"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fehca de Registro]]></text>
+				</staticText>
+				<line>
+					<reportElement x="-20" y="35" width="595" height="1"/>
+				</line>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#9EB3C1"/>
+				<staticText>
+					<reportElement x="296" y="26" width="256" height="35" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="13" isBold="false"/>
+					</textElement>
+					<text><![CDATA[“Decenio de la Igualdad de oportunidades
+Para mujeres y hombres”
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="10" y="10" width="120" height="14" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[MINISTERIO DE SALUD]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="10" y="24" width="120" height="11" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="6"/>
+					</textElement>
+					<text><![CDATA[DIRIS LIMA SUR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="10" y="35" width="120" height="11" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="6"/>
+					</textElement>
+					<text><![CDATA[CMI Daniel Alcides Carrion]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666"/>
+			</line>
+		</band>
+	</columnHeader>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

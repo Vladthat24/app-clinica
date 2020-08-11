@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha_inicial" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_final" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select idrecepcion,idtrabajador,(select nombre from persona_trabajador where idptrabajador=idtrabajador)as nombre_trab,(select apaterno from persona_trabajador where idptrabajador=idtrabajador)as apaterno_trab,(select amaterno from persona_trabajador where idptrabajador=idtrabajador)as amaterno_trab,correlativo,referencia,asunto,fecha,emisor,recepcionado,observaciones from recepcion where fecha between $P{fecha_inicial} and $P{fecha_final};]]>
+	</queryString>
+	<field name="idrecepcion" class="java.lang.Integer"/>
+	<field name="idtrabajador" class="java.lang.Integer"/>
+	<field name="nombre_trab" class="java.lang.String"/>
+	<field name="apaterno_trab" class="java.lang.String"/>
+	<field name="amaterno_trab" class="java.lang.String"/>
+	<field name="correlativo" class="java.lang.String"/>
+	<field name="referencia" class="java.lang.String"/>
+	<field name="asunto" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="emisor" class="java.lang.String"/>
+	<field name="recepcionado" class="java.lang.String"/>
+	<field name="observaciones" class="java.lang.String"/>
+	<group name="num_correlativo">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="1" width="100" height="32" forecolor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true" isItalic="false"/>
+					</textElement>
+					<text><![CDATA[N° Correlativo:]]></text>
+				</staticText>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666"/>
+				</line>
+				<textField>
+					<reportElement x="100" y="0" width="455" height="33" forecolor="#006599"/>
+					<textElement>
+						<font size="15"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{correlativo}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="receptor">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="32" forecolor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true" isItalic="false"/>
+					</textElement>
+					<text><![CDATA[Enviado por:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006599"/>
+					<textElement>
+						<font size="15"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{emisor}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="cargo_receptor">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="32" forecolor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true" isItalic="false"/>
+					</textElement>
+					<text><![CDATA[Recepcionado por:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="0" width="188" height="32" forecolor="#006599"/>
+					<textElement>
+						<font size="15"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre_trab}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="248" y="0" width="267" height="32" forecolor="#006599"/>
+					<textElement>
+						<font size="15"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{apaterno_trab}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="fecha">
+		<groupExpression><![CDATA[$F{fecha}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="32" forecolor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true" isItalic="false"/>
+					</textElement>
+					<text><![CDATA[fecha]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006599"/>
+					<textElement>
+						<font size="15"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="atencion">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="28">
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="28" forecolor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true" isItalic="false"/>
+					</textElement>
+					<text><![CDATA[Referencia:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="0" width="455" height="28" forecolor="#006599"/>
+					<textElement>
+						<font size="15"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{referencia}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="asunto">
+		<groupExpression><![CDATA[$F{asunto}]]></groupExpression>
+		<groupHeader>
+			<band height="34">
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="32" forecolor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true" isItalic="false"/>
+					</textElement>
+					<text><![CDATA[Asunto:]]></text>
+				</staticText>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1"/>
+				</line>
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006599"/>
+					<textElement>
+						<font size="15"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{asunto}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#9EB3C1"/>
+				<staticText>
+					<reportElement x="296" y="26" width="256" height="35" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="13" isBold="false"/>
+					</textElement>
+					<text><![CDATA[“Decenio de la Igualdad de oportunidades
+Para mujeres y hombres”
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="10" y="10" width="120" height="14" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[MINISTERIO DE SALUD]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="10" y="24" width="120" height="11" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="6"/>
+					</textElement>
+					<text><![CDATA[DIRIS LIMA SUR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="10" y="35" width="120" height="11" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="6"/>
+					</textElement>
+					<text><![CDATA[CMI Daniel Alcides Carrion]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
