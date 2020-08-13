@@ -14,58 +14,56 @@ import java.sql.Date;
 public class vpaciente {
     
   private int idpaciente;
-  private String usuario_acceso;
   private String hitoria_clinica;
-  private String nombre;
-  private String apellidos;
+  private String tipo_documento;
+  private String numero_documento;
+  private String nombres;
+  private String apellido_paterno;
+  private String apellido_materno;
   private String tipo_seguro;
   private String direccion;
   private String celular;
   private String email;
-  private String fecha_nac;
+  private String fecha_nacimiento;
   private String lugar_nac;
   private String lugar_proc;
   private String sexo;
   private String edad;
-  private String fecha_reg;
   private String estado_civil;
-  private String tipo_doc;
-  private String num_doc;
-  private String ocupacion;
-  private String religion;
   private String fa_nombres;
   private String fa_apellidos;
   private String fa_edad;
   private String fa_direccion;
+  private String digitador;
+  private String fecha_registro;
 
     public vpaciente() {
     }
 
-    public vpaciente(int idpaciente, String usuario_acceso, String hitoria_clinica, String nombre, String apellidos, String tipo_seguro, String direccion, String celular, String email, String fecha_nac, String lugar_nac, String lugar_proc, String sexo, String edad, String fecha_reg, String estado_civil, String tipo_doc, String num_doc, String ocupacion, String religion, String fa_nombres, String fa_apellidos, String fa_edad, String fa_direccion) {
+    public vpaciente(int idpaciente, String hitoria_clinica, String tipo_documento, String numero_documento, String nombres, String apellido_paterno, String apellido_materno, String tipo_seguro, String direccion, String celular, String email, String fecha_nacimiento, String lugar_nac, String lugar_proc, String sexo, String edad, String estado_civil, String fa_nombres, String fa_apellidos, String fa_edad, String fa_direccion, String digitador, String fecha_registro) {
         this.idpaciente = idpaciente;
-        this.usuario_acceso = usuario_acceso;
         this.hitoria_clinica = hitoria_clinica;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
+        this.tipo_documento = tipo_documento;
+        this.numero_documento = numero_documento;
+        this.nombres = nombres;
+        this.apellido_paterno = apellido_paterno;
+        this.apellido_materno = apellido_materno;
         this.tipo_seguro = tipo_seguro;
         this.direccion = direccion;
         this.celular = celular;
         this.email = email;
-        this.fecha_nac = fecha_nac;
+        this.fecha_nacimiento = fecha_nacimiento;
         this.lugar_nac = lugar_nac;
         this.lugar_proc = lugar_proc;
         this.sexo = sexo;
         this.edad = edad;
-        this.fecha_reg = fecha_reg;
         this.estado_civil = estado_civil;
-        this.tipo_doc = tipo_doc;
-        this.num_doc = num_doc;
-        this.ocupacion = ocupacion;
-        this.religion = religion;
         this.fa_nombres = fa_nombres;
         this.fa_apellidos = fa_apellidos;
         this.fa_edad = fa_edad;
         this.fa_direccion = fa_direccion;
+        this.digitador = digitador;
+        this.fecha_registro = fecha_registro;
     }
 
     public int getIdpaciente() {
@@ -76,14 +74,6 @@ public class vpaciente {
         this.idpaciente = idpaciente;
     }
 
-    public String getUsuario_acceso() {
-        return usuario_acceso;
-    }
-
-    public void setUsuario_acceso(String usuario_acceso) {
-        this.usuario_acceso = usuario_acceso;
-    }
-
     public String getHitoria_clinica() {
         return hitoria_clinica;
     }
@@ -92,20 +82,44 @@ public class vpaciente {
         this.hitoria_clinica = hitoria_clinica;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getTipo_documento() {
+        return tipo_documento;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTipo_documento(String tipo_documento) {
+        this.tipo_documento = tipo_documento;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getNumero_documento() {
+        return numero_documento;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setNumero_documento(String numero_documento) {
+        this.numero_documento = numero_documento;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getApellido_paterno() {
+        return apellido_paterno;
+    }
+
+    public void setApellido_paterno(String apellido_paterno) {
+        this.apellido_paterno = apellido_paterno;
+    }
+
+    public String getApellido_materno() {
+        return apellido_materno;
+    }
+
+    public void setApellido_materno(String apellido_materno) {
+        this.apellido_materno = apellido_materno;
     }
 
     public String getTipo_seguro() {
@@ -140,12 +154,12 @@ public class vpaciente {
         this.email = email;
     }
 
-    public String getFecha_nac() {
-        return fecha_nac;
+    public String getFecha_nacimiento() {
+        return fecha_nacimiento;
     }
 
-    public void setFecha_nac(String fecha_nac) {
-        this.fecha_nac = fecha_nac;
+    public void setFecha_nacimiento(String fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
     }
 
     public String getLugar_nac() {
@@ -180,52 +194,12 @@ public class vpaciente {
         this.edad = edad;
     }
 
-    public String getFecha_reg() {
-        return fecha_reg;
-    }
-
-    public void setFecha_reg(String fecha_reg) {
-        this.fecha_reg = fecha_reg;
-    }
-
     public String getEstado_civil() {
         return estado_civil;
     }
 
     public void setEstado_civil(String estado_civil) {
         this.estado_civil = estado_civil;
-    }
-
-    public String getTipo_doc() {
-        return tipo_doc;
-    }
-
-    public void setTipo_doc(String tipo_doc) {
-        this.tipo_doc = tipo_doc;
-    }
-
-    public String getNum_doc() {
-        return num_doc;
-    }
-
-    public void setNum_doc(String num_doc) {
-        this.num_doc = num_doc;
-    }
-
-    public String getOcupacion() {
-        return ocupacion;
-    }
-
-    public void setOcupacion(String ocupacion) {
-        this.ocupacion = ocupacion;
-    }
-
-    public String getReligion() {
-        return religion;
-    }
-
-    public void setReligion(String religion) {
-        this.religion = religion;
     }
 
     public String getFa_nombres() {
@@ -259,6 +233,24 @@ public class vpaciente {
     public void setFa_direccion(String fa_direccion) {
         this.fa_direccion = fa_direccion;
     }
+
+    public String getDigitador() {
+        return digitador;
+    }
+
+    public void setDigitador(String digitador) {
+        this.digitador = digitador;
+    }
+
+    public String getFecha_registro() {
+        return fecha_registro;
+    }
+
+    public void setFecha_registro(String fecha_registro) {
+        this.fecha_registro = fecha_registro;
+    }
+
+
 
  
 }

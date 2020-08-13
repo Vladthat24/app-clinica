@@ -29,14 +29,17 @@ public class frmacceso extends javax.swing.JInternalFrame {
     public static int idusuario;
 
     void ocultar_columnas() {
+        //OCULAR IDACCESO
         tablalistado.getColumnModel().getColumn(0).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(0).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(0).setPreferredWidth(0);
 
+        //OCULAR IDTRABAJADOR
         tablalistado.getColumnModel().getColumn(1).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(1).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(1).setPreferredWidth(0);
 
+        //OCULTAR PASSWORD
         tablalistado.getColumnModel().getColumn(5).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(5).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(5).setPreferredWidth(0);
@@ -150,7 +153,7 @@ public class frmacceso extends javax.swing.JInternalFrame {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconifiable(true);
-        setTitle("C.M.I. Daniel Alcides Carrion - Sistema Automatico de Documentación");
+        setTitle("SISTEMA DE GESTION DE PROCESOS");
 
         jPanel1.setBackground(new java.awt.Color(158, 178, 193));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro de Acceso"));
@@ -260,14 +263,15 @@ public class frmacceso extends javax.swing.JInternalFrame {
                         .addComponent(cboestado, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(10, 10, 10)
                         .addComponent(btnnuevo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(28, 28, 28)
                         .addComponent(txtidacceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtidtrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnguardar)))
+                        .addComponent(btnguardar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -441,12 +445,12 @@ public class frmacceso extends javax.swing.JInternalFrame {
             return;
         }
         if (txtlogin.getText().length() == 0) {
-            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar un Login");
+            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar un nombre de usuario");
             txtlogin.requestFocus();
             return;
         }
         if (txtpassword.getText().length() == 0) {
-            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar un Login");
+            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar un contraseña");
             txtpassword.requestFocus();
             return;
         }

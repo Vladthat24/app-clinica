@@ -30,7 +30,7 @@ public class facceso {
     public DefaultTableModel mostrar(String buscar) {
         DefaultTableModel modelo;
 
-        String[] titulos = {"ID", "idTrabajador", "trabajador","Acceso", "login", "Password", "Estado"};
+        String[] titulos = {"ID", "IdTrabajador", "Trabajador","Acceso", "Usuario", "Contraseña", "Estado"};
 
         String[] registro = new String[7];
 
@@ -39,9 +39,9 @@ public class facceso {
 //        sSQL = "select idacceso,acceso,idtrabajador,login,password,estado from acceso where idtrabajador IN (select nombre from persona_trabajador where idtrabajador=idtrabajador)";
 
         sSQL = "select idacceso,idtrabajador,"
-                + "(select nombre from persona_trabajador where idptrabajador=idtrabajador) as trabajadornombre,"
-                + "(select apaterno from persona_trabajador where idptrabajador=idtrabajador) as trabajadorapellidop,"
-                + "acceso,login,password,estado from acceso where login like '%" + buscar + "%' order by idacceso desc";
+                + "(select nombre from tap_trabajador where idptrabajador=idtrabajador) as trabajador_nombre,"
+                + "(select concat(apaterno,' ',amaterno) from tap_trabajador where idptrabajador=idtrabajador) as trabajador_apellidos,"
+                + "acceso,login,password,estado from tap_acceso where login like '%" + buscar + "%' order by idacceso desc";
 
 //SELECT nombrepla FROM plataformas WHERE idpla IN (SELECT idpla FROM notpla WHERE id_not='6')
         try {
@@ -51,7 +51,7 @@ public class facceso {
             while (rs.next()) {
                 registro[0] = rs.getString("idacceso");
                 registro[1] = rs.getString("idtrabajador");
-                registro[2] = rs.getString("trabajadornombre") + "  " + rs.getString("trabajadorapellidop");
+                registro[2] = rs.getString("trabajador_nombre") + "  " + rs.getString("trabajador_apellidos");
                 registro[3] = rs.getString("acceso");
                 registro[4] = rs.getString("login");
                 registro[5] = rs.getString("password");
@@ -64,7 +64,7 @@ public class facceso {
             return modelo;
 
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e + "error 01 facceso");
+            JOptionPane.showConfirmDialog(null, e + "ERROR SELECT");
             return null;
         }
 
@@ -95,7 +95,7 @@ public class facceso {
             }
 
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e + "error 02 facceso");
+            JOptionPane.showConfirmDialog(null, e + "ERROR INSERT");
             return false;
         }
     }
@@ -127,7 +127,7 @@ public class facceso {
             }
 
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e + "error 03 facceso");
+            JOptionPane.showConfirmDialog(null, e + "ERROR UPDATE");
             return false;
         }
     }
@@ -152,7 +152,7 @@ public class facceso {
             }
 
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e + "error 04 facceso");
+            JOptionPane.showConfirmDialog(null, e + "ERROR DELETE");
             return false;
         }
     }
@@ -185,7 +185,7 @@ public class facceso {
             }
             return modelo;
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e + "error login facceso");
+            JOptionPane.showConfirmDialog(null, e + "ERROR LOGIN");
             return null;
         }
     }

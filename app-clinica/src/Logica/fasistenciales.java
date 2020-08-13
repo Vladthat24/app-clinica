@@ -6,7 +6,6 @@
 package Logica;
 
 import Datos.vasistenciales;
-import Datos.vrecepcion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,16 +28,21 @@ public class fasistenciales {
     public DefaultTableModel mostart(String buscar) {
         DefaultTableModel modelo;
 
-        String[] titulos = {"ID", "Nombre", "Apellidos", "Cargo", "M. Contrato", "Colegiatura", "Num. Colegiatura", "Prefesion", "Tip. Doc", "Num Doc", "Celular", "Fecha Registro", "Email"};
-        String[] registro = new String[13];
+        String[] titulos = {"ID", "Nombre", "Apellidos",
+            "Cargo","Profesion",
+            "Tip. Doc", "Num Doc", "Celular",
+            "Fecha Registro"};
+        String[] registro = new String[9];
 
         totalregistros = 0;
         modelo = new DefaultTableModel(null, titulos);
-        sql = "select idasistenciales,nombre,apellidos,cargo_institucion,modalidad_contrato,"
-                + "colegiatura,num_colegiatura,profesion,tipo_documento,num_documento,celular,"
-                + "fecha_registro,email from asistenciales where nombre like '%" + buscar + "%'"
-                + "or apellidos like '%" + buscar + "%' or cargo_institucion like '%" + buscar + "%'"
-                + "or num_documento like '%" + buscar + "%' order by idasistenciales desc";
+        sql = "select idasistenciales,nombre,apellidos,"
+                + "cargo_institucion,"
+                + "profesion,tipo_documento,"
+                + "num_documento,celular,"
+                + "fecha_registro "
+                + "from tap_asistenciales where nombre like '%" + buscar + "%'"
+                + "order by idasistenciales desc";
 
         try {
             Statement st = cn.createStatement();
@@ -49,15 +53,12 @@ public class fasistenciales {
                 registro[1] = rs.getString("nombre");
                 registro[2] = rs.getString("apellidos");
                 registro[3] = rs.getString("cargo_institucion");
-                registro[4] = rs.getString("modalidad_contrato");
-                registro[5] = rs.getString("colegiatura");
-                registro[6] = rs.getString("num_colegiatura");
-                registro[7] = rs.getString("profesion");
-                registro[8] = rs.getString("tipo_documento");
-                registro[9] = rs.getString("num_documento");
-                registro[10] = rs.getString("celular");
-                registro[11] = rs.getString("fecha_registro");
-                registro[12] = rs.getString("email");
+                registro[4] = rs.getString("profesion");
+                registro[5] = rs.getString("tipo_documento");
+                registro[6] = rs.getString("num_documento");
+                registro[7] = rs.getString("celular");
+                registro[8] = rs.getString("fecha_registro");
+
 
                 totalregistros = totalregistros + 1;
                 modelo.addRow(registro);
@@ -65,7 +66,7 @@ public class fasistenciales {
             return modelo;
 
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e + "error fasistencial 01");
+            JOptionPane.showConfirmDialog(null, e + "ERROR SELECT");
             return null;
         }
 

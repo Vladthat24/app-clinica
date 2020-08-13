@@ -41,9 +41,13 @@ public class frminicio extends javax.swing.JFrame {
         mnusisreserva = new javax.swing.JMenu();
         mnurecepcion = new javax.swing.JMenu();
         cutMenuItem = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         mnuremiciondedoc = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         mnuregistros = new javax.swing.JMenu();
@@ -74,12 +78,12 @@ public class frminicio extends javax.swing.JFrame {
 
         mnurecepcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/folder_add.png"))); // NOI18N
         mnurecepcion.setMnemonic('e');
-        mnurecepcion.setText("Recepcion Doc.");
+        mnurecepcion.setText("Procesos");
 
-        cutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
-        cutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/factura(1).png"))); // NOI18N
+        cutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        cutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/caja-registradora.png"))); // NOI18N
         cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Recepcion");
+        cutMenuItem.setText("CAJA");
         cutMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cutMenuItemActionPerformed(evt);
@@ -87,32 +91,46 @@ public class frminicio extends javax.swing.JFrame {
         });
         mnurecepcion.add(cutMenuItem);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/consumo.png"))); // NOI18N
+        jMenuItem2.setText("COSUMO");
+        mnurecepcion.add(jMenuItem2);
+
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/pagar.png"))); // NOI18N
+        jMenuItem3.setText("PAGO");
+        mnurecepcion.add(jMenuItem3);
+
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/consultorio.png"))); // NOI18N
+        jMenuItem5.setText("CONSULTORIO");
+        mnurecepcion.add(jMenuItem5);
+
         menuBar.add(mnurecepcion);
+
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/farmaco.png"))); // NOI18N
+        jMenu1.setText("Farmacia");
+
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/farmaco_modulo.png"))); // NOI18N
+        jMenuItem4.setText("MODULO FARMACIA");
+        jMenu1.add(jMenuItem4);
+
+        menuBar.add(jMenu1);
 
         mnuremiciondedoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/emisiondedoc.png"))); // NOI18N
         mnuremiciondedoc.setMnemonic('h');
-        mnuremiciondedoc.setText("Emision de Doc.");
+        mnuremiciondedoc.setText("Documentos");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/memo.png"))); // NOI18N
-        jMenuItem1.setText("CONS. NAC.");
+        jMenuItem1.setText("HITORIA CLINICA");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
         mnuremiciondedoc.add(jMenuItem1);
-
-        aboutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
-        aboutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/oficios.png"))); // NOI18N
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("OFICIO");
-        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aboutMenuItemActionPerformed(evt);
-            }
-        });
-        mnuremiciondedoc.add(aboutMenuItem);
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/memecircular.png"))); // NOI18N
@@ -245,14 +263,6 @@ public class frminicio extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
-        // TODO add your handling code here:
-        frmoficios form = new frmoficios();
-        escritorio.add(form);
-        form.toFront();
-        form.setVisible(true);
-    }//GEN-LAST:event_aboutMenuItemActionPerformed
-
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         frmcertificado_salud form= new frmcertificado_salud();
         escritorio.add(form);
@@ -307,11 +317,15 @@ public class frminicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem cutMenuItem;
     public static javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;

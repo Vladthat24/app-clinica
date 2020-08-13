@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author CARLOS
  */
 public class conexion {
-    public String db="dbregistrodocumento";
+    public String db="dbclinica";
     public String url="jdbc:mysql://127.0.0.1/" +db;
     public String user="root";
     public String pass="";

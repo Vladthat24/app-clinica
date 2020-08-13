@@ -22,13 +22,13 @@ public class vasistenciales {
     private String tipo_documento;
     private String num_documento;
     private String celular;
-    private String fecha_registro;
     private String email;
+    private String fecha_registro;
 
     public vasistenciales() {
     }
 
-    public vasistenciales(int idasistenciales, String nombre, String apellidos, String cargo_institucion, String modalidad_contrato, String colegiatura, String num_colegiatura, String profesion, String tipo_documento, String num_documento, String celular, String fecha_registro, String email) {
+    public vasistenciales(int idasistenciales, String nombre, String apellidos, String cargo_institucion, String modalidad_contrato, String colegiatura, String num_colegiatura, String profesion, String tipo_documento, String num_documento, String celular, String email, String fecha_registro) {
         this.idasistenciales = idasistenciales;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -40,8 +40,8 @@ public class vasistenciales {
         this.tipo_documento = tipo_documento;
         this.num_documento = num_documento;
         this.celular = celular;
-        this.fecha_registro = fecha_registro;
         this.email = email;
+        this.fecha_registro = fecha_registro;
     }
 
     public int getIdasistenciales() {
@@ -132,6 +132,14 @@ public class vasistenciales {
         this.celular = celular;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getFecha_registro() {
         return fecha_registro;
     }
@@ -140,13 +148,6 @@ public class vasistenciales {
         this.fecha_registro = fecha_registro;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     
     
