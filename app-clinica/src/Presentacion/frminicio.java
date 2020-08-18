@@ -257,7 +257,7 @@ public class frminicio extends javax.swing.JFrame {
     }//GEN-LAST:event_menuaccesoActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        frmconstancia_nacimiento form = new frmconstancia_nacimiento();
+        frmpaciente form = new frmpaciente();
         escritorio.add(form);
         form.toFront();
         form.setVisible(true);

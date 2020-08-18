@@ -5,7 +5,6 @@
  */
 package Logica;
 
-import Datos.vacceso;
 import Datos.vtrabajador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,23 +22,20 @@ public class ftrabajador {
     private conexion mysql = new conexion();
     private Connection cn = mysql.conectar();
     private String sSQL = "";
-    private String sSQL2 = "";
     public Integer totalregistros;
 
     public DefaultTableModel mostrar(String buscar) {
         DefaultTableModel modelo;
 
-        String[] titulos = {"ID", "Nombre", "Apaterno", "Amaterno", "Profesion","Cargo Intitucion","Modalidad Contrato", "Doc", "Número Documento", "Celular", "Email", "FechaCreacion"};
+        String[] titulos = {"ID", "Nombres", "Apellido Paterno", "Apellido Materno", "Profesion", "Cargo Intitucion", "Modalidad Contrato", "Tipo Doc", "Número Documento", "Celular", "Email", "Fecha Registro"};
 
         String[] registro = new String[12];
 
         totalregistros = 0;
         modelo = new DefaultTableModel(null, titulos);
 
-        sSQL = "select p.idptrabajador,p.nombre,p.apaterno,p.amaterno,p.profesion,p.cargo_institucion,p.modalidad_contrato,p.tipo_documento,"
-                + "t.num_documento,t.celular,t.email,t.fecha_registro from persona_trabajador p inner join trabajador t "
-                + "on p.idptrabajador=t.idptrabajador where num_documento like '%"
-                + buscar + "%' order by idptrabajador desc";
+        sSQL = "select idptrabajador,nombre,apaterno,amaterno,profesion,cargo_institucion,modalidad_contrato,tipo_documento,"
+                + "num_documento,celular,email,fecha_registro from tap_trabajador where num_documento like '%" + buscar + "%' order by idptrabajador desc";
 
         try {
             Statement st = cn.createStatement();
@@ -66,22 +62,20 @@ public class ftrabajador {
             return modelo;
 
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e + "error 01");
+            JOptionPane.showConfirmDialog(null, e + "ERROR SELECT");
             return null;
         }
 
     }
 
     public boolean insertar(vtrabajador dts) {
-        sSQL = "insert into persona_trabajador (nombre,apaterno,amaterno,profesion,cargo_institucion,modalidad_contrato,tipo_documento)"
-                + "values (?,?,?,?,?,?,?)";
-        sSQL2 = "insert into trabajador(idptrabajador,num_documento,celular,email,fecha_registro)"
-                + "values ((select idptrabajador from persona_trabajador order by idptrabajador desc limit 1),?,?,?,?)";
+        sSQL = "insert into tap_trabajador (nombre,apaterno,amaterno,profesion,cargo_institucion,modalidad_contrato,tipo_documento,num_documento,celular,email,fecha_registro)"
+                + "values (?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
 
             PreparedStatement pst = cn.prepareStatement(sSQL);
-            PreparedStatement pst2 = cn.prepareCall(sSQL2);
+
 //insertando primeros datos a la tabla trabajador
             pst.setString(1, dts.getNombre());
             pst.setString(2, dts.getApaterno());
@@ -90,40 +84,34 @@ public class ftrabajador {
             pst.setString(5, dts.getCargo_institucion());
             pst.setString(6, dts.getModalidad_contrato());
             pst.setString(7, dts.getTipo_documento());
-//insertando segundo datos en la tabla persona_trabajador;
-            pst2.setString(1, dts.getNum_documento());
-            pst2.setString(2, dts.getCelular());
-            pst2.setString(3, dts.getEmail());
-            pst2.setString(4, dts.getFecha_registro());
+            pst.setString(8, dts.getNum_documento());
+            pst.setString(9, dts.getCelular());
+            pst.setString(10, dts.getEmail());
+            pst.setString(11, dts.getFecha_registro());
 
             int n = pst.executeUpdate();
 
             if (n != 0) {
-                int n2 = pst2.executeUpdate();
-                if (n2 != 0) {
-                    return true;
-                } else {
-                    return false;
-                }
+
+                return true;
 
             } else {
                 return false;
             }
 
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e + "error 02");
+            JOptionPane.showConfirmDialog(null, e + "ERROR INSERT");
             return false;
         }
     }
 
     public boolean editar(vtrabajador dts) {
-        sSQL = "update persona_trabajador set nombre=?,apaterno=?,amaterno=?,profesion=?,cargo_institucion=?,modalidad_contrato=?,tipo_documento=? where idptrabajador=?";
-        sSQL2 = "update trabajador set num_documento=?,celular=?,email=?,fecha_registro=? where idptrabajador=?";
+        sSQL = "update tap_trabajador set nombre=?,apaterno=?,amaterno=?,profesion=?,cargo_institucion=?,modalidad_contrato=?,"
+                + "tipo_documento=?,num_documento=?,celular=?,email=?,fecha_registro=? where idptrabajador=?";
 
         try {
 
             PreparedStatement pst = cn.prepareStatement(sSQL);
-            PreparedStatement pst2 = cn.prepareCall(sSQL2);
 
             pst.setString(1, dts.getNombre());
             pst.setString(2, dts.getApaterno());
@@ -132,61 +120,49 @@ public class ftrabajador {
             pst.setString(5, dts.getCargo_institucion());
             pst.setString(6, dts.getModalidad_contrato());
             pst.setString(7, dts.getTipo_documento());
-            pst.setInt(8, dts.getIdptrabajador());
-
-            pst2.setString(1, dts.getNum_documento());
-            pst2.setString(2, dts.getCelular());
-            pst2.setString(3, dts.getEmail());
-            pst2.setString(4, dts.getFecha_registro());
-            pst2.setInt(5, dts.getIdptrabajador());
+            pst.setString(8, dts.getNum_documento());
+            pst.setString(9, dts.getCelular());
+            pst.setString(10, dts.getEmail());
+            pst.setString(11, dts.getFecha_registro());
+            pst.setInt(12, dts.getIdtrabajador());
 
             int n = pst.executeUpdate();
 
             if (n != 0) {
-                int n2 = pst2.executeUpdate();
-                if (n2 != 0) {
-                    return true;
-                } else {
-                    return false;
-                }
+
+                return true;
 
             } else {
                 return false;
             }
 
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e + "error 03");
+            JOptionPane.showConfirmDialog(null, e + "ERROR EDIT");
             return false;
         }
     }
 
     public boolean eliminar(vtrabajador dts) {
-        sSQL = "delete from trabajador where idptrabajador=?";
-        sSQL2 = "delete from persona_trabajador where idptrabajador=?";
+        sSQL = "delete from tap_trabajador where idptrabajador=?";
 
         try {
 
             PreparedStatement pst = cn.prepareStatement(sSQL);
-            PreparedStatement pst2 = cn.prepareCall(sSQL2);
 
-            pst.setInt(1, dts.getIdptrabajador());
-            pst2.setInt(1, dts.getIdptrabajador());
+            pst.setInt(1, dts.getIdtrabajador());
 
             int n = pst.executeUpdate();
 
             if (n != 0) {
-                int n2 = pst2.executeUpdate();
-                if (n2 != 0) {
-                    return true;
-                } else {
-                    return false;
-                }
+
+                return true;
+
             } else {
                 return false;
             }
 
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e + "error 04");
+            JOptionPane.showConfirmDialog(null, e + "ERROR DELETE");
             return false;
         }
     }

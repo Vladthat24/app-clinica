@@ -22,7 +22,7 @@ public class validarBDD {
 
     public boolean validarDni(String num_dni) {
         try {
-            sql = "select num_doc from paciente where num_doc ='" + num_dni + "'";
+            sql = "select numero_documento from tap_paciente where numero_documento ='" + num_dni + "'";
             PreparedStatement pst = cn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             if (rs.next()) {
@@ -40,7 +40,7 @@ public class validarBDD {
     }
     public boolean validarHistoriaClinica(String historiaClinica){
         try {
-            sql="select historia_clinica from paciente where historia_clinica='"+ historiaClinica +"'";
+            sql="select historia_clinica from tap_paciente where historia_clinica='"+ historiaClinica +"'";
             PreparedStatement pst= cn.prepareCall(sql);
             ResultSet rs= pst.executeQuery();
             if(rs.next()){

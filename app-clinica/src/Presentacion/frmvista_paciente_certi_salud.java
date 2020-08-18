@@ -5,43 +5,105 @@
  */
 package Presentacion;
 
+import Datos.vpaciente;
 import Datos.vtrabajador;
+import Logica.fpaciente;
 import Logica.ftrabajador;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author INFORMATICA
+ * @author Desarrollo
  */
-public class frmvistatrabajador_oficios extends javax.swing.JFrame {
+public class frmvista_paciente_certi_salud extends javax.swing.JFrame {
 
     /**
-     * Creates new form frmvistatrabajador
+     * Creates new form frmvista_paciente_certi_salud
      */
-    public frmvistatrabajador_oficios() {
+    public frmvista_paciente_certi_salud() {
         initComponents();
         mostrar("");
         this.setLocationRelativeTo(null);
     }
-    void ocultar_columna(){
-        tablelistado.getColumnModel().getColumn(0).setMaxWidth(0);
-        tablelistado.getColumnModel().getColumn(0).setMinWidth(0);
-        tablelistado.getColumnModel().getColumn(0).setPreferredWidth(0);
+
+    void ocultar_columna() {
         
-                
+        tablalistado.getColumnModel().getColumn(0).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(0).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(0).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(7).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(7).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(7).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(8).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(8).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(8).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(9).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(9).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(9).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(10).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(10).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(10).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(11).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(11).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(11).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(12).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(12).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(12).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(13).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(13).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(13).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(14).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(14).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(14).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(15).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(15).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(15).setPreferredWidth(0);
+
+        //ocupacion
+        tablalistado.getColumnModel().getColumn(16).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(16).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(16).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(17).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(17).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(17).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(18).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(18).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(18).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(19).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(19).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(19).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(20).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(20).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(20).setPreferredWidth(0);
+
     }
-    void mostrar(String buscar){
+
+    void mostrar(String buscar) {
         try {
             DefaultTableModel modelo;
-            ftrabajador func = new ftrabajador();
-            vtrabajador dts = new vtrabajador();
-            modelo= func.mostrar(buscar);
-            
-            tablelistado.setModel(modelo);
+            fpaciente func = new fpaciente();
+            vpaciente dts = new vpaciente();
+            modelo = func.mostrar(buscar);
+
+            tablalistado.setModel(modelo);
             ocultar_columna();
-            lblTotalregistros.setText("Total Registros "+ Integer.toString(func.totalregistros));
+            lblTotalregistros.setText("Total Registros " + Integer.toString(func.totalregistros));
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(rootPane, e + "error 01");
+            JOptionPane.showConfirmDialog(rootPane, e + "ERROR SELECT");
         }
     }
 
@@ -56,20 +118,19 @@ public class frmvistatrabajador_oficios extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablelistado = new javax.swing.JTable();
+        tablalistado = new javax.swing.JTable();
         btnbuscar = new javax.swing.JButton();
         lblTotalregistros = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("C.M.I. Daniel Alcides Carrion - Sistema de Gestion de Documento");
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(90, 173, 167));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listrado Trabajador"));
 
-        tablelistado.setBackground(new java.awt.Color(158, 179, 193));
-        tablelistado.setModel(new javax.swing.table.DefaultTableModel(
+        tablalistado.setBackground(new java.awt.Color(158, 179, 193));
+        tablalistado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -80,12 +141,12 @@ public class frmvistatrabajador_oficios extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablelistado.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablalistado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tablelistadoMousePressed(evt);
+                tablalistadoMousePressed(evt);
             }
         });
-        jScrollPane1.setViewportView(tablelistado);
+        jScrollPane1.setViewportView(tablalistado);
 
         btnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/search.png"))); // NOI18N
         btnbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -143,39 +204,60 @@ public class frmvistatrabajador_oficios extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tablalistadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablalistadoMousePressed
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+            int fila = tablalistado.getSelectedRow();
+            String id, historiaclinica,tipo_documento,num_documento,nombre,apellidos,direccion,edad;
+
+            id = tablalistado.getValueAt(fila, 0).toString();
+            historiaclinica = tablalistado.getValueAt(fila, 1).toString();
+            tipo_documento=tablalistado.getValueAt(fila, 2).toString();
+            num_documento=tablalistado.getValueAt(fila, 3).toString();
+            nombre=tablalistado.getValueAt(fila,4).toString();
+            apellidos=tablalistado.getValueAt(fila, 5).toString()+" "+tablalistado.getValueAt(fila,6).toString();
+            edad=tablalistado.getValueAt(fila,15).toString();
+            direccion=tablalistado.getValueAt(fila,8).toString();
+                    
+            
+
+            frmcertificado_salud.txtidpaciente.setText(id);
+            frmcertificado_salud.lblhistoriaclinica.setText(historiaclinica);
+            frmcertificado_salud.lbltipodoc.setText(tipo_documento);
+            frmcertificado_salud.lblnum_documento.setText(num_documento);
+            frmcertificado_salud.lblnombre.setText(nombre);
+            frmcertificado_salud.lblapellidos.setText(apellidos);
+            frmcertificado_salud.lbledad.setText(edad);
+            frmcertificado_salud.lbldireccion.setText(direccion);
+            
+
+            this.dispose();
+        }
+    }//GEN-LAST:event_tablalistadoMousePressed
+
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
         // TODO add your handling code here:
         String dni;
-        dni=JOptionPane.showInputDialog("Ingrese el DNI");
+        dni = JOptionPane.showInputDialog("Ingrese el DNI");
         mostrar(dni);
-        
-    }//GEN-LAST:event_btnbuscarActionPerformed
 
-    private void tablelistadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablelistadoMousePressed
-        // TODO add your handling code here:
-        if(evt.getClickCount()==2){
-            int fila=tablelistado.getSelectedRow();
-            String cod, valor;
-            
-            cod = tablelistado.getValueAt(fila, 0).toString();
-            valor= tablelistado.getValueAt(fila, 1).toString()+ " " + tablelistado.getValueAt(fila, 2).toString()+" "+tablelistado.getValueAt(fila, 3);
-            
-           frmoficios.txtidtrabajador.setText(cod);
-           frmoficios.lblnombre_apellido_trab.setText(valor);
-           
-           this.dispose();
-        }
-    }//GEN-LAST:event_tablelistadoMousePressed
+    }//GEN-LAST:event_btnbuscarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -199,23 +281,20 @@ public class frmvistatrabajador_oficios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmvistatrabajador_oficios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_paciente_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmvistatrabajador_oficios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_paciente_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmvistatrabajador_oficios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_paciente_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmvistatrabajador_oficios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_paciente_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmvistatrabajador_oficios().setVisible(true);
+                new frmvista_paciente_certi_salud().setVisible(true);
             }
         });
     }
@@ -226,6 +305,6 @@ public class frmvistatrabajador_oficios extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTotalregistros;
-    private javax.swing.JTable tablelistado;
+    private javax.swing.JTable tablalistado;
     // End of variables declaration//GEN-END:variables
 }

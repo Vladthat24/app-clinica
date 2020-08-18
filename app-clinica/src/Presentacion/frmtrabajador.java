@@ -48,10 +48,6 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         tablalistado.getColumnModel().getColumn(0).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(0).setPreferredWidth(0);
 
-        tablalistado.getColumnModel().getColumn(3).setMaxWidth(0);
-        tablalistado.getColumnModel().getColumn(3).setMinWidth(0);
-        tablalistado.getColumnModel().getColumn(3).setPreferredWidth(0);
-
         tablalistado.getColumnModel().getColumn(4).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(4).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(4).setPreferredWidth(0);
@@ -387,7 +383,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
                 .addComponent(txtidtrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtcargo_intitucion, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                    .addComponent(txtcargo_intitucion)
                     .addComponent(txtmodalidad_contrato))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -404,7 +400,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
                     .addComponent(txtcelular))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblfecha_registro, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                    .addComponent(lblfecha_registro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtprofesion))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -476,9 +472,9 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -489,7 +485,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnreportes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lbltotalregistros, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -623,7 +619,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
             }
 
         } else if (accion.equals("editar")) {
-            dts.setIdptrabajador(Integer.parseInt(txtidtrabajador.getText()));
+            dts.setIdtrabajador(Integer.parseInt(txtidtrabajador.getText()));
 
             if (func.editar(dts)) {
                 JOptionPane.showMessageDialog(rootPane, "El trabajador fue editado satisfactoriamente");
@@ -680,7 +676,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
                 ftrabajador func = new ftrabajador();
                 vtrabajador dts = new vtrabajador();
 
-                dts.setIdptrabajador(Integer.parseInt(txtidtrabajador.getText()));
+                dts.setIdtrabajador(Integer.parseInt(txtidtrabajador.getText()));
                 func.eliminar(dts);
                 mostrar("");
                 inhabilitar();
@@ -782,11 +778,11 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
 
     private void txtemailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtemailKeyTyped
         // TODO add your handling code here:
-        char c = evt.getKeyChar();
+//        char c = evt.getKeyChar();
         int limite = 30;
-        if (Character.isDigit(c)) {
-            evt.consume();
-        }
+//        if (Character.isDigit(c)) {
+//            evt.consume();
+//        }
         if (txtemail.getText().length() == limite) {
             evt.consume();
         }

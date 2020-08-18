@@ -24,43 +24,44 @@ public class frmvista_asisten_certi_salud extends javax.swing.JFrame {
         mostrar("");
         this.setLocationRelativeTo(null);
     }
-
+    
     void ocultar_columna() {
         tablalistado.getColumnModel().getColumn(0).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(0).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(0).setPreferredWidth(0);
-
+        
+        tablalistado.getColumnModel().getColumn(3).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(3).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(3).setPreferredWidth(0);
+        
+        tablalistado.getColumnModel().getColumn(4).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(4).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(4).setPreferredWidth(0);
+        
         tablalistado.getColumnModel().getColumn(5).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(5).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(5).setPreferredWidth(0);
-
+        
         tablalistado.getColumnModel().getColumn(6).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(6).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(6).setPreferredWidth(0);
-
-        tablalistado.getColumnModel().getColumn(7).setMaxWidth(0);
-        tablalistado.getColumnModel().getColumn(7).setMinWidth(0);
-        tablalistado.getColumnModel().getColumn(7).setPreferredWidth(0);
-
-        tablalistado.getColumnModel().getColumn(10).setMaxWidth(0);
-        tablalistado.getColumnModel().getColumn(10).setMinWidth(0);
-        tablalistado.getColumnModel().getColumn(10).setPreferredWidth(0);
-
+        
         tablalistado.getColumnModel().getColumn(11).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(11).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(11).setPreferredWidth(0);
+        
     }
-
+    
     void mostrar(String buscar) {
         try {
             DefaultTableModel modelo;
             fasistenciales func = new fasistenciales();
             vasistenciales dts = new vasistenciales();
-            modelo=func.mostart(buscar);
+            modelo = func.mostart(buscar);
             
             tablalistado.setModel(modelo);
             ocultar_columna();
-            lblTotalregistros.setText("Total Registros "+ Integer.toString(func.totalregistros));
+            lblTotalregistros.setText("Total Registros " + Integer.toString(func.totalregistros));
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(rootPane, e + "erro frmvista_asistencias 01");
         }
@@ -83,11 +84,10 @@ public class frmvista_asisten_certi_salud extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("C.M.I. Daniel Alcides Carrion - Sistema de Gestion de Documento");
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(90, 173, 167));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listrado Trabajador"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listrado de Asistenciales"));
 
         tablalistado.setBackground(new java.awt.Color(158, 179, 193));
         tablalistado.setModel(new javax.swing.table.DefaultTableModel(
@@ -170,8 +170,8 @@ public class frmvista_asisten_certi_salud extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 30, Short.MAX_VALUE))
         );
 
         pack();
@@ -181,15 +181,18 @@ public class frmvista_asisten_certi_salud extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
             int fila = tablalistado.getSelectedRow();
-            String cod, valor,valor2;
-
-            cod = tablalistado.getValueAt(fila, 0).toString();
-            valor = tablalistado.getValueAt(fila, 1).toString() + " " + tablalistado.getValueAt(fila, 2).toString();
-           
+            String id, nombreyapellido, colegiatura, num_colegiatura;
             
-            frmcertificado_salud.txtidasistenciales.setText(cod);
-            frmcertificado_salud.lblnombre_apellidos_asisten.setText(valor);
-           
+            id = tablalistado.getValueAt(fila, 0).toString();
+            nombreyapellido = tablalistado.getValueAt(fila, 1).toString() + " " + tablalistado.getValueAt(fila, 2).toString();
+            colegiatura = tablalistado.getValueAt(fila, 5).toString();
+            num_colegiatura = tablalistado.getValueAt(fila, 6).toString();
+            
+            frmcertificado_salud.txtidasistenciales.setText(id);
+            frmcertificado_salud.lblnombre_apellidos_asisten.setText(nombreyapellido);
+            frmcertificado_salud.lblcolegiatura.setText(colegiatura);
+            frmcertificado_salud.lblnum_colegiatura.setText(num_colegiatura);
+            
             this.dispose();
         }
     }//GEN-LAST:event_tablalistadoMousePressed

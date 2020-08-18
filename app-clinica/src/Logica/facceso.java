@@ -71,7 +71,7 @@ public class facceso {
     }
 
     public boolean insertar(vacceso dts) {
-        sSQL = "insert into acceso (idtrabajador,acceso,login,password,estado)"
+        sSQL = "insert into tap_acceso (idtrabajador,acceso,login,password,estado)"
                 + "values (?,?,?,?,?)";
 
         try {
@@ -101,7 +101,7 @@ public class facceso {
     }
 
     public boolean editar(vacceso dts) {
-        sSQL = "update acceso set idtrabajador=?,acceso=?,login=?,password=?,estado=?"
+        sSQL = "update tap_acceso set idtrabajador=?,acceso=?,login=?,password=?,estado=?"
                 + "where idacceso=?";
 
         try {
@@ -133,7 +133,7 @@ public class facceso {
     }
 
     public boolean eliminar(vacceso dts) {
-        sSQL = "delete from acceso where idacceso=?";
+        sSQL = "delete from tap_acceso where idacceso=?";
 
         try {
 
@@ -166,7 +166,7 @@ public class facceso {
 
         modelo = new DefaultTableModel(null, titulos);
 
-        sSQL = "select idacceso,idtrabajador,acceso,login,password,estado from acceso where login='"
+        sSQL = "select idacceso,idtrabajador,acceso,login,password,estado from tap_acceso where login='"
                 + login + "'and password='" + password + "' and estado='A'";
         try {
             Statement st = cn.createStatement();

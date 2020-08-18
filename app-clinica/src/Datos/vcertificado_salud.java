@@ -11,7 +11,7 @@ package Datos;
  */
 public class vcertificado_salud {
     private int idcertificado_salud;
-    private int idcerasistenciales;
+    private int idasistenciales;
     private int idpaciente;
     private String serelogia;
     private String examen_rx;
@@ -20,9 +20,9 @@ public class vcertificado_salud {
     public vcertificado_salud() {
     }
 
-    public vcertificado_salud(int idcertificado_salud, int idcerasistenciales, int idpaciente, String serelogia, String examen_rx, String fecha_registro) {
+    public vcertificado_salud(int idcertificado_salud, int idasistenciales, int idpaciente, String serelogia, String examen_rx, String fecha_registro) {
         this.idcertificado_salud = idcertificado_salud;
-        this.idcerasistenciales = idcerasistenciales;
+        this.idasistenciales = idasistenciales;
         this.idpaciente = idpaciente;
         this.serelogia = serelogia;
         this.examen_rx = examen_rx;
@@ -37,12 +37,12 @@ public class vcertificado_salud {
         this.idcertificado_salud = idcertificado_salud;
     }
 
-    public int getIdcerasistenciales() {
-        return idcerasistenciales;
+    public int getIdasistenciales() {
+        return idasistenciales;
     }
 
-    public void setIdcerasistenciales(int idcerasistenciales) {
-        this.idcerasistenciales = idcerasistenciales;
+    public void setIdasistenciales(int idasistenciales) {
+        this.idasistenciales = idasistenciales;
     }
 
     public int getIdpaciente() {
@@ -77,7 +77,7 @@ public class vcertificado_salud {
         this.fecha_registro = fecha_registro;
     }
 
-
+    
 
    
     

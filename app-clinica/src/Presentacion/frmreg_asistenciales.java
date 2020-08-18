@@ -32,8 +32,9 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
     public String accion = "guardar";
 
     void fecha_actual() {
-        int agosto=8;
-        int septiembre=9;
+
+        int agosto = 8;
+        int septiembre = 9;
         Calendar today = Calendar.getInstance();
         int fhoy_dia = today.get(Calendar.DAY_OF_MONTH);
         int fhoy_mes = today.get(Calendar.MONTH) + 1;
@@ -52,12 +53,11 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
             mes = "Junio";
         } else if (fhoy_mes == 07) {
             mes = "Julio";
-        }else if(fhoy_mes==agosto){
-            mes="Agosto";
-        }else if(fhoy_mes==septiembre){
-            mes="Septiembre";
-        }
-        else if (fhoy_mes == 10) {
+        } else if (fhoy_mes == agosto) {
+            mes = "Agosto";
+        } else if (fhoy_mes == septiembre) {
+            mes = "Septiembre";
+        } else if (fhoy_mes == 10) {
             mes = "Octubre";
         } else if (fhoy_mes == 11) {
             mes = "Noviembre";
@@ -139,6 +139,14 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
         tablalistado.getColumnModel().getColumn(0).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(0).setPreferredWidth(0);
 
+        tablalistado.getColumnModel().getColumn(3).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(3).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(3).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(4).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(4).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(4).setPreferredWidth(0);
+
         tablalistado.getColumnModel().getColumn(5).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(5).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(5).setPreferredWidth(0);
@@ -147,17 +155,10 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
         tablalistado.getColumnModel().getColumn(6).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(6).setPreferredWidth(0);
 
-        tablalistado.getColumnModel().getColumn(7).setMaxWidth(0);
-        tablalistado.getColumnModel().getColumn(7).setMinWidth(0);
-        tablalistado.getColumnModel().getColumn(7).setPreferredWidth(0);
-
-        tablalistado.getColumnModel().getColumn(10).setMaxWidth(0);
-        tablalistado.getColumnModel().getColumn(10).setMinWidth(0);
-        tablalistado.getColumnModel().getColumn(10).setPreferredWidth(0);
-
         tablalistado.getColumnModel().getColumn(11).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(11).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(11).setPreferredWidth(0);
+
     }
 
     void inhabilitar() {
@@ -276,13 +277,13 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
         btnnuevo = new javax.swing.JButton();
         btnguardar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        cbocolegiatura = new javax.swing.JComboBox<String>();
+        cbocolegiatura = new javax.swing.JComboBox<>();
         chekcolegiatura = new javax.swing.JCheckBox();
         txtnum_colegiatura = new javax.swing.JTextField();
-        cbotipo_doc = new javax.swing.JComboBox<String>();
+        cbotipo_doc = new javax.swing.JComboBox<>();
         txtnum_doc = new javax.swing.JTextField();
         txtcelular = new javax.swing.JTextField();
-        cboprofesion = new javax.swing.JComboBox<String>();
+        cboprofesion = new javax.swing.JComboBox<>();
         txtemail = new javax.swing.JTextField();
         lbltitulo = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -296,7 +297,7 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconifiable(true);
-        setTitle("C.M.I. Daniel Alcides Carrion - Sistema Automatico de Documentación");
+        setTitle("SISTEMA DE GESTION DE PROCESOS");
 
         jPanel1.setBackground(new java.awt.Color(158, 179, 193));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro Asistenciales:"));
@@ -357,7 +358,7 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
 
         cbocolegiatura.setBackground(new java.awt.Color(158, 179, 193));
         cbocolegiatura.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        cbocolegiatura.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CMP", "COP", "CEP", "CPP", "CNP" }));
+        cbocolegiatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CMP", "COP", "CEP", "CPP", "CNP" }));
         cbocolegiatura.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Colegiatura:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
 
         chekcolegiatura.setText("Colegiatura");
@@ -404,7 +405,7 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
         );
 
         cbotipo_doc.setBackground(new java.awt.Color(158, 179, 193));
-        cbotipo_doc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "D.N.I.", "PASAPORTE", " " }));
+        cbotipo_doc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "D.N.I.", "PASAPORTE", " " }));
         cbotipo_doc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
 
         txtnum_doc.setBackground(new java.awt.Color(158, 179, 193));
@@ -430,7 +431,7 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
 
         cboprofesion.setBackground(new java.awt.Color(158, 179, 193));
         cboprofesion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        cboprofesion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Medico ", "Tec. Enfermeria", "Obtetricia", "Psicologos", "Lic. en Enfermeria", "Nutricionista", " " }));
+        cboprofesion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medico ", "Tec. Enfermeria", "Obtetricia", "Psicologos", "Lic. en Enfermeria", "Nutricionista", " " }));
         cboprofesion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Profesión:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
 
         txtemail.setBackground(new java.awt.Color(158, 179, 193));
@@ -491,7 +492,7 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblfecha_registro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE))
+                    .addComponent(txtnombre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtapellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -576,16 +577,16 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnbuscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btneliminar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnreportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lbltotalregistros, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -612,10 +613,13 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(lbltitulo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbltitulo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -676,7 +680,7 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
         // TODO add your handling code here:
         String dni;
-        dni = JOptionPane.showInputDialog("Ingrese el nombre, apellido,cargo,dni");
+        dni = JOptionPane.showInputDialog("Ingrese el nombre");
         mostrar(dni);
     }//GEN-LAST:event_btnbuscarActionPerformed
 

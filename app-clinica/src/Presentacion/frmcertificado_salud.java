@@ -6,9 +6,7 @@
 package Presentacion;
 
 import Datos.vcertificado_salud;
-import Datos.vconstancia_nacimiento;
 import Logica.fcertificado_salud;
-import Logica.fconstancia_nacimiento;
 import java.sql.Date;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -77,24 +75,7 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
 
     void guardar() {
 
-        if (txtnombre.getText().length() == 0) {
-            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar el nombre");
-            txtnombre.requestFocus();
-        }
-        if (txtapellidos.getText().length() == 0) {
-            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar los apellidos");
-            txtapellidos.requestFocus();
-            return;
-        }
-        if (txtedad.getText().length() == 0) {
-            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar la edad");
-            txtedad.requestFocus();
-        }
-        if (txtnum_doc.getText().length() == 0) {
-            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar el numero de documento");
-            txtnum_doc.requestFocus();
-            return;
-        }
+
         if (txtserologia.getText().length() == 0) {
             JOptionPane.showConfirmDialog(rootPane, "Debes ingresar la serologia");
             txtserologia.requestFocus();
@@ -104,22 +85,13 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
             JOptionPane.showConfirmDialog(rootPane, "Debes ingresar el examen rx");
             txtexamenrx.requestFocus();
         }
-        if (txtdireccion.getText().length() == 0) {
-            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar la direccion");
-            txtdireccion.requestFocus();
-        }
+
 
         vcertificado_salud dts = new vcertificado_salud();
         fcertificado_salud func = new fcertificado_salud();
 
-        dts.setIdcerasistenciales(Integer.parseInt(txtidasistenciales.getText()));
-        dts.setNombre(txtnombre.getText());
-        dts.setApellidos(txtapellidos.getText());
-        dts.setEdad(txtedad.getText());
-        int seleccionado = cbotipo_doc.getSelectedIndex();
-        dts.setTipo_doc((String) cbotipo_doc.getItemAt(seleccionado));
-        dts.setNum_doc(txtnum_doc.getText());
-        dts.setDireccion(txtdireccion.getText());
+        dts.setIdasistenciales(Integer.parseInt(txtidasistenciales.getText()));
+        dts.setIdpaciente(Integer.parseInt(txtidpaciente.getText()));
         dts.setSerelogia(txtserologia.getText());
         dts.setExamen_rx(txtexamenrx.getText());
         dts.setFecha_registro(lblfecha_registro.getText());
@@ -144,6 +116,7 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
     }
 
     void ocultar_columnas() {
+        
         tablalistado.getColumnModel().getColumn(0).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(0).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(0).setPreferredWidth(0);
@@ -152,47 +125,43 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         tablalistado.getColumnModel().getColumn(1).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(1).setPreferredWidth(0);
 //
-//        tablalistado.getColumnModel().getColumn(2).setMaxWidth(0);
-//        tablalistado.getColumnModel().getColumn(2).setMinWidth(0);
-//        tablalistado.getColumnModel().getColumn(2).setPreferredWidth(0);
-//
-//        tablalistado.getColumnModel().getColumn(8).setMaxWidth(0);
-//        tablalistado.getColumnModel().getColumn(8).setMinWidth(0);
-//        tablalistado.getColumnModel().getColumn(8).setPreferredWidth(0);
+        tablalistado.getColumnModel().getColumn(2).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(2).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(2).setPreferredWidth(0);
+        
+        tablalistado.getColumnModel().getColumn(3).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(3).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(3).setPreferredWidth(0);
 
-//        tablalistado.getColumnModel().getColumn(9).setMaxWidth(0);
-//        tablalistado.getColumnModel().getColumn(9).setMinWidth(0);
-//        tablalistado.getColumnModel().getColumn(9).setPreferredWidth(0);
-//
-//        tablalistado.getColumnModel().getColumn(10).setMaxWidth(0);
-//        tablalistado.getColumnModel().getColumn(10).setMinWidth(0);
-//        tablalistado.getColumnModel().getColumn(10).setPreferredWidth(0);
-//
-//        tablalistado.getColumnModel().getColumn(11).setMaxWidth(0);
-//        tablalistado.getColumnModel().getColumn(11).setMinWidth(0);
-//        tablalistado.getColumnModel().getColumn(11).setPreferredWidth(0);
-//
-//        tablalistado.getColumnModel().getColumn(12).setMaxWidth(0);
-//        tablalistado.getColumnModel().getColumn(12).setMinWidth(0);
-//        tablalistado.getColumnModel().getColumn(12).setPreferredWidth(0);
+        tablalistado.getColumnModel().getColumn(4).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(4).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(4).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(5).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(5).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(5).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(11).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(11).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(11).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(12).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(12).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(12).setPreferredWidth(0);
 
     }
 
     void inhabilitar() {
         txtidcertificado_salud.setVisible(false);
         txtidasistenciales.setVisible(false);
+        txtidpaciente.setVisible(false);
 
-        lblnombre_apellidos_asisten.setEnabled(false);
-        txtnombre.setEnabled(false);
-        txtapellidos.setEnabled(false);
-        txtedad.setEnabled(false);
-        cbotipo_doc.setEnabled(false);
-        txtnum_doc.setEnabled(false);
+       
         txtserologia.setEnabled(false);
         txtexamenrx.setEnabled(false);
-        txtdireccion.setEnabled(false);
-        lblfecha_registro.setEnabled(false);
 
+        
+        btnpaciente.setEnabled(false);
         btnguardar.setEnabled(false);
         btnbuscar.setEnabled(false);
         btneliminar.setEnabled(false);
@@ -201,14 +170,19 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         btnreporte.setEnabled(false);
         lbltotalregistros.setEnabled(false);
 
+        lblnombre.setText("");
+        lblhistoriaclinica.setText("");
+        lblapellidos.setText("");
+        lbledad.setText("");
+        lbltipodoc.setText("");
+        lblnum_documento.setText("");
+        lbldireccion.setText("");
+        
         lblnombre_apellidos_asisten.setText("");
-        txtnombre.setText("");
-        txtapellidos.setText("");
-        txtedad.setText("");
-        txtnum_doc.setText("");
+        lblcolegiatura.setText("");
+        lblnum_colegiatura.setText("");
         txtserologia.setText("");
         txtexamenrx.setText("");
-        txtdireccion.setText("");
         lblfecha_registro.setText("");
 
     }
@@ -216,36 +190,37 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
     void habilitar() {
         txtidcertificado_salud.setVisible(false);
         txtidasistenciales.setVisible(false);
+        txtidpaciente.setVisible(false);
 
-        lblnombre_apellidos_asisten.setEnabled(true);
-        txtnombre.setEnabled(true);
-        txtapellidos.setEnabled(true);
-        txtedad.setEnabled(true);
-        cbotipo_doc.setEnabled(true);
-        txtnum_doc.setEnabled(true);
+
         txtserologia.setEnabled(true);
         txtexamenrx.setEnabled(true);
-        txtdireccion.setEnabled(true);
-        lblfecha_registro.setEnabled(true);
 
+
+        btnpaciente.setEnabled(true);
         btnguardar.setEnabled(true);
         btnbuscar.setEnabled(true);
         btneliminar.setEnabled(true);
         btnasistencial.setEnabled(true);
-
         btnimpresora.setEnabled(true);
         btnreporte.setEnabled(true);
 
         lbltotalregistros.setEnabled(true);
 
+        
+        lblnombre.setText("");
+        lblhistoriaclinica.setText("");
+        lblapellidos.setText("");
+        lbledad.setText("");
+        lbltipodoc.setText("");
+        lblnum_documento.setText("");
+        lbldireccion.setText("");
+        
         lblnombre_apellidos_asisten.setText("");
-        txtnombre.setText("");
-        txtapellidos.setText("");
-        txtedad.setText("");
-        txtnum_doc.setText("");
+        lblcolegiatura.setText("");
+        lblnum_colegiatura.setText("");
         txtserologia.setText("");
         txtexamenrx.setText("");
-        txtdireccion.setText("");
         lblfecha_registro.setText("");
 
     }
@@ -261,7 +236,7 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
             lbltotalregistros.setText("Total Registros " + Integer.toString(func.totalregistros));
 
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e + "error frm_certificado_salud 01");
+            JOptionPane.showConfirmDialog(null, e + "ERROR MOSTRAR");
         }
     }
 
@@ -283,17 +258,22 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         txtserologia = new javax.swing.JTextField();
         txtexamenrx = new javax.swing.JTextField();
         lblfecha_registro = new javax.swing.JLabel();
-        lblnombre_apellidos_asisten = new javax.swing.JLabel();
         btnasistencial = new javax.swing.JButton();
+        lblnombre_apellidos_asisten = new javax.swing.JLabel();
+        lblnum_colegiatura = new javax.swing.JLabel();
+        lblcolegiatura = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        txtnombre = new javax.swing.JTextField();
-        txtedad = new javax.swing.JTextField();
-        txtapellidos = new javax.swing.JTextField();
-        txtnum_doc = new javax.swing.JTextField();
-        cbotipo_doc = new javax.swing.JComboBox<String>();
-        txtdireccion = new javax.swing.JTextField();
-        txtidasistenciales = new javax.swing.JTextField();
+        btnpaciente = new javax.swing.JButton();
+        lblnombre = new javax.swing.JLabel();
+        lblapellidos = new javax.swing.JLabel();
+        lbledad = new javax.swing.JLabel();
+        lblhistoriaclinica = new javax.swing.JLabel();
+        lbldireccion = new javax.swing.JLabel();
+        lbltipodoc = new javax.swing.JLabel();
+        lblnum_documento = new javax.swing.JLabel();
+        txtidpaciente = new javax.swing.JTextField();
         txtidcertificado_salud = new javax.swing.JTextField();
+        txtidasistenciales = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablalistado = new javax.swing.JTable();
@@ -306,7 +286,7 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconifiable(true);
-        setTitle("C.M.I. Daniel Alcides Carrion - Sistema Automatico de Documentación");
+        setTitle("SISTEMA DE GESTION DE PROCESOS");
 
         lbltitulo.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         lbltitulo.setText(".:: CERTIFICADO DE SALUD ::.");
@@ -334,7 +314,7 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Asistencial:"));
 
         txtserologia.setBackground(new java.awt.Color(158, 179, 193));
-        txtserologia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Serologia:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
+        txtserologia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Serologia:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         txtserologia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtserologiaKeyTyped(evt);
@@ -342,7 +322,7 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         });
 
         txtexamenrx.setBackground(new java.awt.Color(158, 179, 193));
-        txtexamenrx.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Examen RX:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
+        txtexamenrx.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Examen RX:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         txtexamenrx.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtexamenrxKeyTyped(evt);
@@ -350,10 +330,7 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         });
 
         lblfecha_registro.setBackground(new java.awt.Color(158, 179, 193));
-        lblfecha_registro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de Registro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
-
-        lblnombre_apellidos_asisten.setBackground(new java.awt.Color(158, 179, 193));
-        lblnombre_apellidos_asisten.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombres y Apelldios del Asistencial:"));
+        lblfecha_registro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de Registro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         btnasistencial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/asistencial.png"))); // NOI18N
         btnasistencial.addActionListener(new java.awt.event.ActionListener() {
@@ -362,94 +339,84 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
             }
         });
 
+        lblnombre_apellidos_asisten.setBackground(new java.awt.Color(158, 179, 193));
+        lblnombre_apellidos_asisten.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombres y Apelldios del Asistencial:"));
+
+        lblnum_colegiatura.setBackground(new java.awt.Color(158, 179, 193));
+        lblnum_colegiatura.setBorder(javax.swing.BorderFactory.createTitledBorder("N° Colegiatura"));
+
+        lblcolegiatura.setBackground(new java.awt.Color(158, 179, 193));
+        lblcolegiatura.setBorder(javax.swing.BorderFactory.createTitledBorder("Colegiatura"));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblnombre_apellidos_asisten, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblfecha_registro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblnombre_apellidos_asisten, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblcolegiatura, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblnum_colegiatura, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnasistencial))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblfecha_registro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(txtserologia, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtexamenrx, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(txtexamenrx, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtserologia, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblnombre_apellidos_asisten, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnasistencial, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblnombre_apellidos_asisten, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtserologia, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtexamenrx, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblnum_colegiatura, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnasistencial, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblcolegiatura, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblfecha_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtexamenrx, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtserologia, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblfecha_registro, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(158, 179, 193));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Pacientes:"));
 
-        txtnombre.setBackground(new java.awt.Color(158, 179, 193));
-        txtnombre.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombres:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
-        txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtnombreKeyTyped(evt);
-            }
-        });
-
-        txtedad.setBackground(new java.awt.Color(158, 179, 193));
-        txtedad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Edad:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
-        txtedad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtedadKeyTyped(evt);
-            }
-        });
-
-        txtapellidos.setBackground(new java.awt.Color(158, 179, 193));
-        txtapellidos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Apellidos:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
-        txtapellidos.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtapellidosKeyTyped(evt);
-            }
-        });
-
-        txtnum_doc.setBackground(new java.awt.Color(158, 179, 193));
-        txtnum_doc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "N° de Doc.:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
-        txtnum_doc.addActionListener(new java.awt.event.ActionListener() {
+        btnpaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/informe_medico.png"))); // NOI18N
+        btnpaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnum_docActionPerformed(evt);
-            }
-        });
-        txtnum_doc.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtnum_docKeyTyped(evt);
+                btnpacienteActionPerformed(evt);
             }
         });
 
-        cbotipo_doc.setBackground(new java.awt.Color(158, 179, 193));
-        cbotipo_doc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "DNI", "PASAPORTE", " " }));
-        cbotipo_doc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
+        lblnombre.setBackground(new java.awt.Color(158, 179, 193));
+        lblnombre.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombres"));
 
-        txtdireccion.setBackground(new java.awt.Color(158, 179, 193));
-        txtdireccion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Direccion:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
-        txtdireccion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtdireccionKeyTyped(evt);
-            }
-        });
+        lblapellidos.setBackground(new java.awt.Color(158, 179, 193));
+        lblapellidos.setBorder(javax.swing.BorderFactory.createTitledBorder("Apellidos"));
 
-        txtidcertificado_salud.setText("jTextField1");
+        lbledad.setBackground(new java.awt.Color(158, 179, 193));
+        lbledad.setBorder(javax.swing.BorderFactory.createTitledBorder("Edad"));
+
+        lblhistoriaclinica.setBackground(new java.awt.Color(158, 179, 193));
+        lblhistoriaclinica.setBorder(javax.swing.BorderFactory.createTitledBorder("Historia Clinica"));
+
+        lbldireccion.setBackground(new java.awt.Color(158, 179, 193));
+        lbldireccion.setBorder(javax.swing.BorderFactory.createTitledBorder("Direccion"));
+
+        lbltipodoc.setBackground(new java.awt.Color(158, 179, 193));
+        lbltipodoc.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo Documento"));
+
+        lblnum_documento.setBackground(new java.awt.Color(158, 179, 193));
+        lblnum_documento.setBorder(javax.swing.BorderFactory.createTitledBorder("N° Documento"));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -458,47 +425,49 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtapellidos)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbldireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(lblnombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtedad))
+                        .addComponent(lblhistoriaclinica, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblapellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(lbledad, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addComponent(btnpaciente))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(cbotipo_doc, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtnum_doc, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(89, 89, 89)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtidasistenciales)
-                                    .addComponent(txtidcertificado_salud, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 2, Short.MAX_VALUE)))
+                        .addComponent(lbltipodoc, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblnum_documento, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtapellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtnum_doc, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-                        .addComponent(cbotipo_doc))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(txtidasistenciales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
-                        .addComponent(txtidcertificado_salud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblhistoriaclinica, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(lblapellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnpaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbledad, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbltipodoc, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblnum_documento, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(lbldireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        txtidcertificado_salud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtidcertificado_saludActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -506,31 +475,48 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(btnnuevo)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnguardar)))
-                .addContainerGap())
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtidpaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtidcertificado_salud, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnnuevo)
+                                .addGap(108, 108, 108)
+                                .addComponent(btnguardar))
+                            .addComponent(txtidasistenciales, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(90, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnnuevo)
-                            .addComponent(btnguardar))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(txtidpaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtidcertificado_salud, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnnuevo)
+                                    .addComponent(btnguardar))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(txtidasistenciales, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         registro.addTab("Registro de Certificados", jPanel1);
@@ -592,36 +578,36 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(jScrollPane1)
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbltotalregistros, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 825, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnimpresora, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btneliminar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnbuscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnreporte, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 689, Short.MAX_VALUE)
-                .addComponent(lbltotalregistros, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnimpresora, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnreporte, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
                         .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btneliminar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnimpresora)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnreporte)
-                        .addGap(0, 38, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(lbltotalregistros, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -642,7 +628,8 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(lbltitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registro, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE))
+                .addComponent(registro, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -673,25 +660,29 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
 
         txtidcertificado_salud.setText(tablalistado.getValueAt(fila, 0).toString());
         txtidasistenciales.setText(tablalistado.getValueAt(fila, 1).toString());
-        lblnombre_apellidos_asisten.setText(tablalistado.getValueAt(fila, 2).toString());
-        txtnombre.setText(tablalistado.getValueAt(fila, 3).toString());
-        txtapellidos.setText(tablalistado.getValueAt(fila, 4).toString());
-        txtedad.setText(tablalistado.getValueAt(fila, 5).toString());
-        cbotipo_doc.setSelectedItem(tablalistado.getValueAt(fila, 6).toString());
-        txtnum_doc.setText(tablalistado.getValueAt(fila, 7).toString());
-        txtdireccion.setText(tablalistado.getValueAt(fila, 8).toString());
-        txtserologia.setText(tablalistado.getValueAt(fila, 9).toString());
-        txtexamenrx.setText(tablalistado.getValueAt(fila, 10).toString());
-        lblfecha_registro.setText(tablalistado.getValueAt(fila, 11).toString());
+        lblnombre_apellidos_asisten.setText(tablalistado.getValueAt(fila,2).toString());
+        lblcolegiatura.setText(tablalistado.getValueAt(fila, 3).toString());
+        lblnum_colegiatura.setText(tablalistado.getValueAt(fila, 4).toString());
+        txtidpaciente.setText(tablalistado.getValueAt(fila, 5).toString());
+        lblhistoriaclinica.setText(tablalistado.getValueAt(fila,6).toString());
+        lbltipodoc.setText(tablalistado.getValueAt(fila, 7).toString());
+        lblnum_documento.setText(tablalistado.getValueAt(fila, 8).toString());
+        lblnombre.setText(tablalistado.getValueAt(fila,9).toString());
+        lblapellidos.setText(tablalistado.getValueAt(fila, 10).toString());
+        lbledad.setText(tablalistado.getValueAt(fila, 11).toString());
+        lbldireccion.setText(tablalistado.getValueAt(fila, 12).toString());
+        txtserologia.setText(tablalistado.getValueAt(fila, 13).toString());
+        txtexamenrx.setText(tablalistado.getValueAt(fila, 14).toString());
+        lblfecha_registro.setText(tablalistado.getValueAt(fila, 15).toString());
         fecha_inicial = lblfecha_registro.getText();
         fecha_final = lblfecha_registro.getText();
-        num_doc = Integer.parseInt(txtnum_doc.getText());
+        num_doc = Integer.parseInt(lblnum_documento.getText());
     }//GEN-LAST:event_tablalistadoMouseClicked
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
         // TODO add your handling code here:
         String dni;
-        dni = JOptionPane.showInputDialog("Ingrese el nombre, apellido,cargo,dni");
+        dni = JOptionPane.showInputDialog("Ingrese el DNI");
         mostrar(dni);
     }//GEN-LAST:event_btnbuscarActionPerformed
 
@@ -710,10 +701,6 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_btneliminarActionPerformed
-
-    private void txtnum_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnum_docActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnum_docActionPerformed
 
     private void btnasistencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnasistencialActionPerformed
         // TODO add your handling code here:
@@ -737,42 +724,6 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         reporte_certificado_salud g = new reporte_certificado_salud();
         g.reportePacientes(fecha_inicial, fecha_final);
     }//GEN-LAST:event_btnreporteActionPerformed
-
-    private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        int limite = 30;
-        if (Character.isDigit(c)) {
-            evt.consume();
-        }
-        if (txtnombre.getText().length() == limite) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtnombreKeyTyped
-
-    private void txtapellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellidosKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        int limite = 50;
-        if (Character.isDigit(c)) {
-            evt.consume();
-        }
-        if (txtapellidos.getText().length() == limite) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtapellidosKeyTyped
-
-    private void txtnum_docKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnum_docKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        int limite = 8;
-        if (!Character.isDigit(c)) {
-            evt.consume();
-        }
-        if (txtnum_doc.getText().length() == limite) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtnum_docKeyTyped
 
     private void txtserologiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtserologiaKeyTyped
         // TODO add your handling code here:
@@ -798,21 +749,17 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtexamenrxKeyTyped
 
-    private void txtdireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdireccionKeyTyped
+    private void btnpacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpacienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtdireccionKeyTyped
+        
+        frmvista_paciente_certi_salud from = new frmvista_paciente_certi_salud();
+        from.toFront();
+        from.setVisible(true);
+    }//GEN-LAST:event_btnpacienteActionPerformed
 
-    private void txtedadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtedadKeyTyped
+    private void txtidcertificado_saludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidcertificado_saludActionPerformed
         // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        int limite = 3;
-        if (!Character.isDigit(c)) {
-            evt.consume();
-        }
-        if (txtedad.getText().length() == limite) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtedadKeyTyped
+    }//GEN-LAST:event_txtidcertificado_saludActionPerformed
 
     /**
      * @param args the command line arguments
@@ -863,27 +810,32 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnimpresora;
     private javax.swing.JButton btnnuevo;
+    private javax.swing.JButton btnpaciente;
     private javax.swing.JButton btnreporte;
-    private javax.swing.JComboBox<String> cbotipo_doc;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblfecha_registro;
+    public static javax.swing.JLabel lblapellidos;
+    public static javax.swing.JLabel lblcolegiatura;
+    public static javax.swing.JLabel lbldireccion;
+    public static javax.swing.JLabel lbledad;
+    public static javax.swing.JLabel lblfecha_registro;
+    public static javax.swing.JLabel lblhistoriaclinica;
+    public static javax.swing.JLabel lblnombre;
     public static javax.swing.JLabel lblnombre_apellidos_asisten;
+    public static javax.swing.JLabel lblnum_colegiatura;
+    public static javax.swing.JLabel lblnum_documento;
+    public static javax.swing.JLabel lbltipodoc;
     private javax.swing.JLabel lbltitulo;
     private javax.swing.JLabel lbltotalregistros;
     private javax.swing.JTabbedPane registro;
     private javax.swing.JTable tablalistado;
-    private javax.swing.JTextField txtapellidos;
-    private javax.swing.JTextField txtdireccion;
-    private javax.swing.JTextField txtedad;
-    private javax.swing.JTextField txtexamenrx;
+    public static javax.swing.JTextField txtexamenrx;
     public static javax.swing.JTextField txtidasistenciales;
     private javax.swing.JTextField txtidcertificado_salud;
-    private javax.swing.JTextField txtnombre;
-    private javax.swing.JTextField txtnum_doc;
-    private javax.swing.JTextField txtserologia;
+    public static javax.swing.JTextField txtidpaciente;
+    public static javax.swing.JTextField txtserologia;
     // End of variables declaration//GEN-END:variables
 }
