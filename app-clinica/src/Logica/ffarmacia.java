@@ -34,7 +34,7 @@ public class ffarmacia {
 
         totalregistros = 0;
         modelo = new DefaultTableModel(null, titulos);
-        sql = "SELECT * FROM tap_farmacia order by idfarmacia desc";
+        sql = "SELECT * FROM tap_farmacia where nombre like '%" + buscar + "%' order by idfarmacia desc";
 
         try {
             Statement st = cn.createStatement();
@@ -77,7 +77,7 @@ public class ffarmacia {
             pst.setString(5, dts.getLaboratorio());
             pst.setString(6, dts.getPresentacion());
             pst.setString(7, dts.getFecha_registro());
-            pst.setString(8, dts.getFecha_vencimiento());
+            pst.setDate(8, dts.getFecha_vencimiento());
 
             int n = pst.executeUpdate();
             if (n != 0) {
@@ -107,7 +107,7 @@ public class ffarmacia {
             pst.setString(5, dts.getLaboratorio());
             pst.setString(6, dts.getPresentacion());
             pst.setString(7, dts.getFecha_registro());
-            pst.setString(8, dts.getFecha_vencimiento());
+            pst.setDate(8, dts.getFecha_vencimiento());
 
             pst.setInt(9, dts.getIdfarmacia());
 
@@ -125,7 +125,7 @@ public class ffarmacia {
 
         } catch (Exception e) {
 
-            JOptionPane.showConfirmDialog(null, e + "error finforme_medico 03");
+            JOptionPane.showConfirmDialog(null, e + "ERROR UPDATE");
 
             return false;
         }
@@ -152,7 +152,7 @@ public class ffarmacia {
             }
         } catch (Exception e) {
 
-            JOptionPane.showConfirmDialog(null, e + "error finforme_medico 04");
+            JOptionPane.showConfirmDialog(null, e + "ERROR DELETE");
 
             return false;
         }
