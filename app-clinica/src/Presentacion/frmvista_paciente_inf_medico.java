@@ -5,8 +5,10 @@
  */
 package Presentacion;
 
-import Datos.vasistenciales;
-import Logica.fasistenciales;
+import Datos.vpaciente;
+import Datos.vtrabajador;
+import Logica.fpaciente;
+import Logica.ftrabajador;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,33 +16,34 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Desarrollo
  */
-public class frmvista_asisten_const_nac extends javax.swing.JFrame {
+public class frmvista_paciente_inf_medico extends javax.swing.JFrame {
 
     /**
-     * Creates new form frmvista_asistenciales
+     * Creates new form frmvista_paciente_certi_salud
      */
-    public frmvista_asisten_const_nac() {
+    public frmvista_paciente_inf_medico() {
         initComponents();
         mostrar("");
         this.setLocationRelativeTo(null);
     }
 
     void ocultar_columna() {
+
         tablalistado.getColumnModel().getColumn(0).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(0).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(0).setPreferredWidth(0);
 
-        tablalistado.getColumnModel().getColumn(5).setMaxWidth(0);
-        tablalistado.getColumnModel().getColumn(5).setMinWidth(0);
-        tablalistado.getColumnModel().getColumn(5).setPreferredWidth(0);
-
-        tablalistado.getColumnModel().getColumn(6).setMaxWidth(0);
-        tablalistado.getColumnModel().getColumn(6).setMinWidth(0);
-        tablalistado.getColumnModel().getColumn(6).setPreferredWidth(0);
-
         tablalistado.getColumnModel().getColumn(7).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(7).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(7).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(8).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(8).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(8).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(9).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(9).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(9).setPreferredWidth(0);
 
         tablalistado.getColumnModel().getColumn(10).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(10).setMinWidth(0);
@@ -49,20 +52,58 @@ public class frmvista_asisten_const_nac extends javax.swing.JFrame {
         tablalistado.getColumnModel().getColumn(11).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(11).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(11).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(12).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(12).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(12).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(13).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(13).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(13).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(14).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(14).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(14).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(15).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(15).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(15).setPreferredWidth(0);
+
+        //ocupacion
+        tablalistado.getColumnModel().getColumn(16).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(16).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(16).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(17).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(17).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(17).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(18).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(18).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(18).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(19).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(19).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(19).setPreferredWidth(0);
+
+        tablalistado.getColumnModel().getColumn(20).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(20).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(20).setPreferredWidth(0);
+
     }
 
     void mostrar(String buscar) {
         try {
             DefaultTableModel modelo;
-            fasistenciales func = new fasistenciales();
-            vasistenciales dts = new vasistenciales();
-            modelo=func.mostart(buscar);
-            
+            fpaciente func = new fpaciente();
+            vpaciente dts = new vpaciente();
+            modelo = func.mostrar(buscar);
+
             tablalistado.setModel(modelo);
             ocultar_columna();
-            lblTotalregistros.setText("Total Registros "+ Integer.toString(func.totalregistros));
+            lblTotalregistros.setText("Total Registros " + Integer.toString(func.totalregistros));
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(rootPane, e + "erro frmvista_asistencias 01");
+            JOptionPane.showConfirmDialog(rootPane, e + "ERROR SELECT");
         }
     }
 
@@ -83,7 +124,6 @@ public class frmvista_asisten_const_nac extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("C.M.I. Daniel Alcides Carrion - Sistema de Gestion de Documento");
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(90, 173, 167));
@@ -156,7 +196,8 @@ public class frmvista_asisten_const_nac extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblTotalregistros, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)))
+                    .addComponent(jButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -164,14 +205,16 @@ public class frmvista_asisten_const_nac extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 787, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(17, 17, 17)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -181,15 +224,28 @@ public class frmvista_asisten_const_nac extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
             int fila = tablalistado.getSelectedRow();
-            String cod, valor,valor2;
+            String id, historiaclinica, tipo_documento, num_documento, nombre, apellidos, direccion, edad, sexo;
 
-            cod = tablalistado.getValueAt(fila, 0).toString();
-            valor = tablalistado.getValueAt(fila, 1).toString() + " " + tablalistado.getValueAt(fila, 2).toString();
-            valor2= tablalistado.getValueAt(fila, 5).toString() + " " + tablalistado.getValueAt(fila, 6).toString();
-            
-            frmconstancia_nacimiento.txtidasistenciales.setText(cod);
-            frmconstancia_nacimiento.lblnombre_apellidos_asisten.setText(valor);
-            frmconstancia_nacimiento.lblcolegiatura_asisten.setText(valor2);
+            id = tablalistado.getValueAt(fila, 0).toString();
+            historiaclinica = tablalistado.getValueAt(fila, 1).toString();
+            tipo_documento = tablalistado.getValueAt(fila, 2).toString();
+            num_documento = tablalistado.getValueAt(fila, 3).toString();
+            nombre = tablalistado.getValueAt(fila, 4).toString();
+            apellidos = tablalistado.getValueAt(fila, 5).toString() + " " + tablalistado.getValueAt(fila, 6).toString();
+            sexo = tablalistado.getValueAt(fila, 14).toString();
+            edad = tablalistado.getValueAt(fila, 15).toString();
+            direccion = tablalistado.getValueAt(fila, 8).toString();
+
+            frminforme_medico.txtidpaciente.setText(id);
+            frminforme_medico.lblhistoriaclinica.setText(historiaclinica);
+            frminforme_medico.lbltipodoc.setText(tipo_documento);
+            frminforme_medico.lblnum_documento.setText(num_documento);
+            frminforme_medico.lblnombre.setText(nombre);
+            frminforme_medico.lblapellidos.setText(apellidos);
+            frminforme_medico.lbledad.setText(edad);
+            frminforme_medico.lblsexo.setText(sexo);
+            frminforme_medico.lbldireccion.setText(direccion);
+
             this.dispose();
         }
     }//GEN-LAST:event_tablalistadoMousePressed
@@ -199,6 +255,7 @@ public class frmvista_asisten_const_nac extends javax.swing.JFrame {
         String dni;
         dni = JOptionPane.showInputDialog("Ingrese el DNI");
         mostrar(dni);
+
     }//GEN-LAST:event_btnbuscarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -223,21 +280,20 @@ public class frmvista_asisten_const_nac extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmvista_asisten_const_nac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_paciente_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmvista_asisten_const_nac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_paciente_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmvista_asisten_const_nac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_paciente_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmvista_asisten_const_nac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_paciente_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmvista_asisten_const_nac().setVisible(true);
+                new frmvista_paciente_certi_salud().setVisible(true);
             }
         });
     }

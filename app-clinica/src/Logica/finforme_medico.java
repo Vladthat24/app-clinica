@@ -5,7 +5,6 @@
  */
 package Logica;
 
-
 import Datos.vinforme_medico;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,21 +28,22 @@ public class finforme_medico {
     public DefaultTableModel mostrar(String buscar) {
         DefaultTableModel modelo;
 
-        String[] titulos = {"ID", "IdAsistencial", "Nombre y Apellidos", "Colegiatura", "N° Colegiatura", "IdPaciente", "Historia Clinica", "Tipo Doc", "N° Doc", "Nombre", "Apellidos", "Edad", "Direccion", "Diagnostico", "Fecha Registro"};
+        String[] titulos = {"ID", "IdAsistencial", "Asistencial", "Colegiatura", "N° Colegiatura", "IdPaciente", "Historia Clinica", "Tipo Doc", "N° Doc", "Nombre", "Apellidos", "Edad", "Direccion", "Diagnostico", "Fecha Registro"};
         String[] registro = new String[15];
 
         totalregistros = 0;
         modelo = new DefaultTableModel(null, titulos);
         sql = "select c.idinforme_medico,c.idasistenciales,a.nombre,a.apellidos,a.colegiatura,a.num_colegiatura,c.idpaciente,p.historia_clinica,p.tipo_documento,"
                 + "p.numero_documento,p.nombres,p.apellido_paterno,p.apellido_materno,p.edad,p.direccion,c.diagnostico,c.fecha_registro "
-                + "from tap_certificadosalud c inner join tap_asistenciales a on c.idasistenciales=a.idasistenciales inner join tap_paciente p on c.idpaciente=p.idpaciente where p.numero_documento like '%" + buscar + "%' order by c.idinforme_medico desc";
+                + "from tap_informemedico c inner join tap_asistenciales a on c.idasistenciales=a.idasistenciales inner join tap_paciente p on c.idpaciente=p.idpaciente where p.numero_documento like '%" + buscar + "%' order by c.idinforme_medico desc";
 
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                registro[0] = rs.getString("c.idcertificado_salud");
+                
+                registro[0] = rs.getString("c.idinforme_medico");
                 registro[1] = rs.getString("c.idasistenciales");
                 registro[2] = rs.getString("a.nombre") + " " + rs.getString("a.apellidos");
                 registro[3] = rs.getString("a.colegiatura");
@@ -65,15 +65,15 @@ public class finforme_medico {
             return modelo;
 
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e + "error finforme_medico 01");
+            JOptionPane.showConfirmDialog(null, e + "ERROR SELECT");
             return null;
         }
 
     }
 
     public boolean insertar(vinforme_medico dts) {
-        sql = "insert into tap_informemedico (idinforme_medico,idasistenciales,idpaciente,diagnostico,fecha_registro)"
-                + "values (?,?,?,?,?)";
+        sql = "insert into tap_informemedico (idasistenciales,idpaciente,diagnostico,fecha_registro)"
+                + "values (?,?,?,?)";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
 
@@ -81,7 +81,6 @@ public class finforme_medico {
             pst.setInt(2, dts.getIdpaciente());
             pst.setString(3, dts.getDiagnostico());
             pst.setString(4, dts.getFecha_registro());
-            
 
             int n = pst.executeUpdate();
             if (n != 0) {
@@ -91,34 +90,42 @@ public class finforme_medico {
             }
 
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e + "error finforme_medico 02");
+            JOptionPane.showConfirmDialog(null, e + "ERROR INSERT");
             return false;
         }
     }
 
     public boolean editar(vinforme_medico dts) {
+
         sql = "update tap_informemedico set idasistenciales=?,idpaciente=?,diagnostico=?,fecha_registro=? where idinforme_medico=?";
 
         try {
+
             PreparedStatement pst = cn.prepareStatement(sql);
 
             pst.setInt(1, dts.getIdasistenciales());
             pst.setInt(2, dts.getIdpaciente());
             pst.setString(3, dts.getDiagnostico());
             pst.setString(4, dts.getFecha_registro());
-            
 
-            pst.setInt(13, dts.getIdinforme_medico());
+            pst.setInt(5, dts.getIdinforme_medico());
 
             int n = pst.executeUpdate();
+
             if (n != 0) {
+
                 return true;
+
             } else {
+
                 return false;
+
             }
 
         } catch (Exception e) {
+
             JOptionPane.showConfirmDialog(null, e + "error finforme_medico 03");
+
             return false;
         }
     }
@@ -126,17 +133,26 @@ public class finforme_medico {
     public boolean eliminar(vinforme_medico dts) {
         sql = "delete from tap_informemedico where idinforme_medico=?";
         try {
+
             PreparedStatement pst = cn.prepareStatement(sql);
+
             pst.setInt(1, dts.getIdinforme_medico());
+
             int n = pst.executeUpdate();
 
             if (n != 0) {
+
                 return true;
+
             } else {
+
                 return false;
+
             }
         } catch (Exception e) {
+
             JOptionPane.showConfirmDialog(null, e + "error finforme_medico 04");
+
             return false;
         }
     }

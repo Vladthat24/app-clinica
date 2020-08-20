@@ -22,6 +22,9 @@ public class vfarmacia {
     private String fecha_vencimiento;
 
     public vfarmacia() {
+        
+        
+        
     }
 
     public vfarmacia(int idfarmacia, String categoria, String nombre, double precio_venta, int stock, String laboratorio, String presentacion, String fecha_registro, String fecha_vencimiento) {
