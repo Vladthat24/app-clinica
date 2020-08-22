@@ -94,7 +94,7 @@ public class ffarmacia {
 
     public boolean editar(vfarmacia dts) {
 
-        sql = "update tap_informemedico set idasistenciales=?,idpaciente=?,diagnostico=?,fecha_registro=? where idinforme_medico=?";
+        sql = "update tap_farmacia set categoria=?,nombre=?,precio_venta=?,stock=?,laboratorio=?,presentacion=?,fecha_registro=?,fecha_vencimiento=? where idfarmacia=?";
 
         try {
 

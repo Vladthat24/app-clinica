@@ -91,18 +91,20 @@
               <Group type="102" attributes="0">
                   <Component id="txtidfarmacia" min="-2" pref="9" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtcategoria" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtnombre" alignment="1" min="-2" pref="62" max="-2" attributes="0"/>
-                      <Component id="txtprecioventa" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtcategoria" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtprecioventa" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="dcfechavencimiento" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="spStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtlaboratorio" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtpresentacion" alignment="1" max="32767" attributes="0"/>
+                          <Component id="spStock" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
