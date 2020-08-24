@@ -14,12 +14,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Desarrollo
  */
-public class frmvista_asisten_certi_salud extends javax.swing.JFrame {
+public class frmvista_asisten_consultorio extends javax.swing.JFrame {
 
     /**
      * Creates new form frmvista_asistenciales
      */
-    public frmvista_asisten_certi_salud() {
+    public frmvista_asisten_consultorio() {
         initComponents();
         mostrar("");
         this.setLocationRelativeTo(null);
@@ -186,10 +186,10 @@ public class frmvista_asisten_certi_salud extends javax.swing.JFrame {
             colegiatura = tablalistado.getValueAt(fila, 5).toString();
             num_colegiatura = tablalistado.getValueAt(fila, 6).toString();
             
-            frmcertificado_salud.txtidasistenciales.setText(id);
-            frmcertificado_salud.lblnombre_apellidos_asisten.setText(nombreyapellido);
-            frmcertificado_salud.lblcolegiatura.setText(colegiatura);
-            frmcertificado_salud.lblnum_colegiatura.setText(num_colegiatura);
+            frmconsultorio.txtidasistencial.setText(id);
+            frmconsultorio.lblnombre_apellidos_asisten.setText(nombreyapellido);
+            frmconsultorio.lblcolegiatura.setText(colegiatura);
+            frmconsultorio.lblnum_colegiatura.setText(num_colegiatura);
             
             this.dispose();
         }
@@ -224,14 +224,18 @@ public class frmvista_asisten_certi_salud extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmvista_asisten_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_asisten_consultorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmvista_asisten_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_asisten_consultorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmvista_asisten_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_asisten_consultorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmvista_asisten_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_asisten_consultorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -240,7 +244,7 @@ public class frmvista_asisten_certi_salud extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmvista_asisten_certi_salud().setVisible(true);
+                new frmvista_asisten_consultorio().setVisible(true);
             }
         });
     }

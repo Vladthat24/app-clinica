@@ -57,7 +57,7 @@ public class frminicio extends javax.swing.JFrame {
         mnusalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setIconImage(new ImageIcon(getClass().getResource("/Files/logogestion.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Files/logomariasantisimaII.PNG")).getImage());
 
         escritorio.setBackground(new java.awt.Color(102, 255, 255));
 
@@ -71,7 +71,8 @@ public class frminicio extends javax.swing.JFrame {
         escritorio.add(lblacceso);
         lblacceso.setBounds(20, 40, 130, 16);
 
-        mnusisreserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/iniciosistema.png"))); // NOI18N
+        mnusisreserva.setBackground(new java.awt.Color(255, 255, 255));
+        mnusisreserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/logomariasantisimaII.PNG"))); // NOI18N
         mnusisreserva.setMnemonic('f');
         menuBar.add(mnusisreserva);
 
@@ -103,6 +104,11 @@ public class frminicio extends javax.swing.JFrame {
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/consultorio.png"))); // NOI18N
         jMenuItem5.setText("CONSULTORIO");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         mnurecepcion.add(jMenuItem5);
 
         menuBar.add(mnurecepcion);
@@ -225,7 +231,7 @@ public class frminicio extends javax.swing.JFrame {
 
     private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed
         // TODO add your handling code here:
-        frmrecepciondoc form = new frmrecepciondoc();
+        frmcaja form = new frmcaja();
         escritorio.add(form);
         form.toFront();
         form.setVisible(true);
@@ -289,6 +295,15 @@ public class frminicio extends javax.swing.JFrame {
         form.toFront();
         form.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        frmconsultorio form = new frmconsultorio();
+        escritorio.add(form);
+        form.toFront();
+        form.setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments

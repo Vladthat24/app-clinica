@@ -21,7 +21,7 @@ public class vfarmacia {
     private String laboratorio;
     private String presentacion;
     private String fecha_registro;
-    private Date fecha_vencimiento;
+    private String fecha_vencimiento;
 
     public vfarmacia() {
         
@@ -29,7 +29,7 @@ public class vfarmacia {
         
     }
 
-    public vfarmacia(int idfarmacia, String categoria, String nombre, double precio_venta, int stock, String laboratorio, String presentacion, String fecha_registro, Date fecha_vencimiento) {
+    public vfarmacia(int idfarmacia, String categoria, String nombre, double precio_venta, int stock, String laboratorio, String presentacion, String fecha_registro, String fecha_vencimiento) {
         this.idfarmacia = idfarmacia;
         this.categoria = categoria;
         this.nombre = nombre;
@@ -105,18 +105,13 @@ public class vfarmacia {
         this.fecha_registro = fecha_registro;
     }
 
-    public Date getFecha_vencimiento() {
+    public String getFecha_vencimiento() {
         return fecha_vencimiento;
     }
 
-    public void setFecha_vencimiento(Date fecha_vencimiento) {
+    public void setFecha_vencimiento(String fecha_vencimiento) {
         this.fecha_vencimiento = fecha_vencimiento;
     }
-
-    public void setFecha_vencimiento(String fechavencimiento) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
+  
     
 }

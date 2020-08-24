@@ -6,7 +6,9 @@
 package Presentacion;
 
 import Datos.vasistenciales;
+import Datos.vconsultorio;
 import Logica.fasistenciales;
+import Logica.fconsultorio;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,51 +16,45 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Desarrollo
  */
-public class frmvista_asisten_certi_salud extends javax.swing.JFrame {
+public class frmvista_consultorio_caja extends javax.swing.JFrame {
 
     /**
      * Creates new form frmvista_asistenciales
      */
-    public frmvista_asisten_certi_salud() {
+    public frmvista_consultorio_caja() {
         initComponents();
         mostrar("");
         this.setLocationRelativeTo(null);
     }
-    
+
     void ocultar_columna() {
+
         tablalistado.getColumnModel().getColumn(0).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(0).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(0).setPreferredWidth(0);
-        
-        tablalistado.getColumnModel().getColumn(3).setMaxWidth(0);
-        tablalistado.getColumnModel().getColumn(3).setMinWidth(0);
-        tablalistado.getColumnModel().getColumn(3).setPreferredWidth(0);
-        
-        tablalistado.getColumnModel().getColumn(4).setMaxWidth(0);
-        tablalistado.getColumnModel().getColumn(4).setMinWidth(0);
-        tablalistado.getColumnModel().getColumn(4).setPreferredWidth(0);
-        
-        tablalistado.getColumnModel().getColumn(5).setMaxWidth(0);
-        tablalistado.getColumnModel().getColumn(5).setMinWidth(0);
-        tablalistado.getColumnModel().getColumn(5).setPreferredWidth(0);
-        
-        tablalistado.getColumnModel().getColumn(6).setMaxWidth(0);
-        tablalistado.getColumnModel().getColumn(6).setMinWidth(0);
-        tablalistado.getColumnModel().getColumn(6).setPreferredWidth(0);
-        
-        tablalistado.getColumnModel().getColumn(11).setMaxWidth(0);
-        tablalistado.getColumnModel().getColumn(11).setMinWidth(0);
-        tablalistado.getColumnModel().getColumn(11).setPreferredWidth(0);
-        
+
+        tablalistado.getColumnModel().getColumn(1).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(1).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(1).setPreferredWidth(0);
+//
+
+        tablalistado.getColumnModel().getColumn(2).setMaxWidth(150);
+        tablalistado.getColumnModel().getColumn(2).setMinWidth(150);
+
+        tablalistado.getColumnModel().getColumn(6).setMaxWidth(150);
+        tablalistado.getColumnModel().getColumn(6).setMinWidth(150);
+
+        tablalistado.getColumnModel().getColumn(7).setMaxWidth(60);
+        tablalistado.getColumnModel().getColumn(7).setMinWidth(60);
     }
-    
+
     void mostrar(String buscar) {
         try {
             DefaultTableModel modelo;
-            fasistenciales func = new fasistenciales();
-            vasistenciales dts = new vasistenciales();
-            modelo = func.mostart(buscar);
-            
+            fconsultorio func = new fconsultorio();
+            vconsultorio dts = new vconsultorio();
+            modelo = func.mostrar(buscar);
+
             tablalistado.setModel(modelo);
             ocultar_columna();
             lblTotalregistros.setText("Total Registros " + Integer.toString(func.totalregistros));
@@ -134,16 +130,14 @@ public class frmvista_asisten_certi_salud extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblTotalregistros, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 743, Short.MAX_VALUE)
+                        .addComponent(lblTotalregistros, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1)
                     .addComponent(btnbuscar))
-                .addContainerGap())
+                .addGap(12, 12, 12))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,7 +158,7 @@ public class frmvista_asisten_certi_salud extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 787, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -179,27 +173,38 @@ public class frmvista_asisten_certi_salud extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
             int fila = tablalistado.getSelectedRow();
-            String id, nombreyapellido, colegiatura, num_colegiatura;
-            
+            String id,
+                    nombreyapellido,
+                    colegiatura,
+                    num_colegiatura,
+                    nombre_consultorio,
+                    numero_consultorio,
+                    piso_consultorio;
+
             id = tablalistado.getValueAt(fila, 0).toString();
-            nombreyapellido = tablalistado.getValueAt(fila, 1).toString() + " " + tablalistado.getValueAt(fila, 2).toString();
-            colegiatura = tablalistado.getValueAt(fila, 5).toString();
-            num_colegiatura = tablalistado.getValueAt(fila, 6).toString();
-            
-            frmcertificado_salud.txtidasistenciales.setText(id);
-            frmcertificado_salud.lblnombre_apellidos_asisten.setText(nombreyapellido);
-            frmcertificado_salud.lblcolegiatura.setText(colegiatura);
-            frmcertificado_salud.lblnum_colegiatura.setText(num_colegiatura);
-            
+            nombreyapellido = tablalistado.getValueAt(fila, 2).toString();
+            colegiatura = tablalistado.getValueAt(fila, 3).toString();
+            num_colegiatura = tablalistado.getValueAt(fila, 4).toString();
+            nombre_consultorio = tablalistado.getValueAt(fila, 5).toString();
+            numero_consultorio = tablalistado.getValueAt(fila, 6).toString();
+            piso_consultorio = tablalistado.getValueAt(fila, 7).toString();
+
+            frmcaja.txtidconsultorio.setText(id);
+            frmcaja.lblnombre_apellidos_asisten.setText(nombreyapellido);
+            frmcaja.lblcolegiatura.setText(colegiatura);
+            frmcaja.lblnum_colegiatura.setText(num_colegiatura);
+            frmcaja.lblnombre_consultorio.setText(nombre_consultorio);
+            frmcaja.lblnumero_consultorio.setText(numero_consultorio);
+            frmcaja.lblpiso_consultorio.setText(piso_consultorio);
             this.dispose();
         }
     }//GEN-LAST:event_tablalistadoMousePressed
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
         // TODO add your handling code here:
-        String dni;
-        dni = JOptionPane.showInputDialog("Ingrese el DNI");
-        mostrar(dni);
+        String nombre_consultorio;
+        nombre_consultorio = JOptionPane.showInputDialog("Ingresar nombre del consultorio");
+        mostrar(nombre_consultorio);
     }//GEN-LAST:event_btnbuscarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -224,14 +229,18 @@ public class frmvista_asisten_certi_salud extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmvista_asisten_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_consultorio_caja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmvista_asisten_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_consultorio_caja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmvista_asisten_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_consultorio_caja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmvista_asisten_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_consultorio_caja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -240,7 +249,7 @@ public class frmvista_asisten_certi_salud extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmvista_asisten_certi_salud().setVisible(true);
+                new frmvista_consultorio_caja().setVisible(true);
             }
         });
     }

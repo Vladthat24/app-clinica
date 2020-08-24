@@ -91,7 +91,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         btnguardar.setEnabled(false);
         btneliminar.setEnabled(false);
         btnbuscar.setEnabled(false);
-        btnreportes.setEnabled(false);
+
 
         txtidtrabajador.setText("");
         txtnombre.setText("");
@@ -124,7 +124,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         btnguardar.setEnabled(true);
         btneliminar.setEnabled(true);
         btnbuscar.setEnabled(true);
-        btnreportes.setEnabled(true);
+
 
         txtidtrabajador.setText("");
         txtnombre.setText("");
@@ -181,7 +181,6 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         btnbuscar = new javax.swing.JButton();
         btneliminar = new javax.swing.JButton();
         lbltotalregistros = new javax.swing.JLabel();
-        btnreportes = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -459,14 +458,6 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         lbltotalregistros.setBackground(new java.awt.Color(93, 173, 170));
         lbltotalregistros.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registros:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
 
-        btnreportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/reporte_2.png"))); // NOI18N
-        btnreportes.setBorder(new javax.swing.border.MatteBorder(null));
-        btnreportes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnreportesActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -476,15 +467,10 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(btneliminar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                                    .addComponent(btnbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnreportes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btneliminar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                            .addComponent(btnbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lbltotalregistros, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -499,8 +485,6 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
                         .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btneliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnreportes)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -827,15 +811,6 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtmodalidad_contratoKeyTyped
 
-    private void btnreportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreportesActionPerformed
-        // TODO add your handling code here:
-        fecha_inicial = JOptionPane.showInputDialog("Ingresa la fecha inicial dia/mes/año");
-        fecha_final = JOptionPane.showInputDialog("Ingresa la fecha final dia/mes/año");
-        reporte_regadministrativo g = new reporte_regadministrativo();
-        g.reportePacientes(fecha_inicial, fecha_final);
-
-    }//GEN-LAST:event_btnreportesActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -855,7 +830,6 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnnuevo;
-    private javax.swing.JButton btnreportes;
     private javax.swing.JComboBox cbotipo_documento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

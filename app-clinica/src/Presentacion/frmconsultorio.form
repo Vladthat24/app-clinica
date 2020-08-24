@@ -25,37 +25,20 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Component id="lbltitulo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="584" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="registro" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="registro" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Component id="lbltitulo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="registro" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="registro" min="-2" pref="339" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lbltitulo">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="sansserif" size="18" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value=".:: INFORME MEDICO ::."/>
-      </Properties>
-    </Component>
     <Container class="javax.swing.JTabbedPane" name="registro">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
@@ -73,8 +56,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Registro de Certificados">
-                <Property name="tabTitle" type="java.lang.String" value="Registro de Certificados"/>
+              <JTabbedPaneConstraints tabName="Registro de Consultorio">
+                <Property name="tabTitle" type="java.lang.String" value="Registro de Consultorio"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -82,29 +65,27 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel5" min="-2" pref="656" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
-                              <Component id="btnnuevo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="txtidinforme_medico" min="-2" pref="41" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                              <Component id="btnguardar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtidpaciente" min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                      <Component id="txtidasistenciales" min="-2" pref="35" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                      <Component id="txtidconsultorio" min="-2" pref="41" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtidasistencial" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                              <Component id="btnnuevo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                              <Component id="btnguardar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="98" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jPanel3" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -113,25 +94,27 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btnnuevo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnguardar" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtidinforme_medico" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="btnnuevo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnguardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="txtidpaciente" min="-2" pref="16" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="txtidasistenciales" min="-2" pref="11" max="-2" attributes="0"/>
+                                      <Component id="txtidconsultorio" min="-2" pref="20" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="txtidasistencial" min="-2" pref="11" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
+                          <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="18" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -174,19 +157,17 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jScrollPane2" max="32767" attributes="0"/>
                               <Component id="lblnombre_apellidos_asisten" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="lblcolegiatura" min="-2" pref="178" max="-2" attributes="0"/>
-                                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                                  <EmptySpace pref="39" max="32767" attributes="0"/>
                                   <Component id="lblnum_colegiatura" min="-2" pref="153" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnasistencial" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="lblfecha_registro" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -198,37 +179,16 @@
                           <Component id="lblnombre_apellidos_asisten" min="-2" pref="68" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblnum_colegiatura" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
-                              <Component id="btnasistencial" alignment="1" min="-2" pref="52" max="-2" attributes="0"/>
-                              <Component id="lblcolegiatura" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
+                              <Component id="lblnum_colegiatura" min="-2" pref="65" max="-2" attributes="0"/>
+                              <Component id="btnasistencial" min="-2" pref="52" max="-2" attributes="0"/>
+                              <Component id="lblcolegiatura" min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" min="-2" pref="128" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblfecha_registro" min="-2" pref="67" max="-2" attributes="0"/>
-                          <EmptySpace pref="26" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblfecha_registro">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c1" green="b3" red="9e" type="rgb"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Fecha de Registro">
-                          <Font PropertyName="font" name="Arial" size="12" style="1"/>
-                        </TitledBorder>
-                      </Border>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-                  </AuxValues>
-                </Component>
                 <Component class="javax.swing.JButton" name="btnasistencial">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -284,29 +244,6 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                   </AuxValues>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="txtAreaDiagnostico">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="c1" green="b3" red="9e" type="rgb"/>
-                        </Property>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                            <TitledBorder title="Diagnostico "/>
-                          </Border>
-                        </Property>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel5">
@@ -324,90 +261,88 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbldireccion" alignment="1" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="lblfecha_registro" max="32767" attributes="0"/>
+                              <Component id="txtnombreconsultorio" alignment="1" pref="367" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblnombre" min="-2" pref="412" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="lblhistoriaclinica" min="-2" pref="143" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblapellidos" min="-2" pref="311" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                          <Component id="lbledad" min="-2" pref="178" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="btnpaciente" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="lbltipodoc" min="-2" pref="178" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblnum_documento" min="-2" pref="178" max="-2" attributes="0"/>
+                                  <Component id="txtnumeroconsultorio" max="32767" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="lblsexo" min="-2" pref="178" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="cbopiso" min="-2" pref="185" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+                          <Component id="txtnombreconsultorio" min="-2" pref="66" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="cbopiso" pref="69" max="32767" attributes="0"/>
+                              <Component id="txtnumeroconsultorio" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="17" max="32767" attributes="0"/>
+                          <Component id="lblfecha_registro" min="-2" pref="63" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblnombre" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
-                              <Component id="lblhistoriaclinica" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="lblapellidos" min="-2" pref="65" max="-2" attributes="0"/>
-                                  <Component id="lbledad" min="-2" pref="65" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btnpaciente" min="-2" pref="52" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lbltipodoc" min="-2" pref="65" max="-2" attributes="0"/>
-                              <Component id="lblnum_documento" min="-2" pref="65" max="-2" attributes="0"/>
-                              <Component id="lblsexo" min="-2" pref="65" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbldireccion" min="-2" pref="65" max="-2" attributes="0"/>
-                          <EmptySpace pref="12" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="btnpaciente">
+                <Component class="javax.swing.JTextField" name="txtnombreconsultorio">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Files/informe_medico.png"/>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="c1" green="b3" red="9e" type="rgb"/>
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Nombre del Consultorio">
+                          <Font PropertyName="font" name="Arial" size="12" style="1"/>
+                        </TitledBorder>
+                      </Border>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnpacienteActionPerformed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtnombreconsultorioKeyTyped"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                  </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblnombre">
+                <Component class="javax.swing.JTextField" name="txtnumeroconsultorio">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="c1" green="b3" red="9e" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Nombres"/>
+                        <TitledBorder title="N&#xb0; de Consultorio">
+                          <Font PropertyName="font" name="Arial" size="12" style="1"/>
+                        </TitledBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtnumeroconsultorioKeyTyped"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblfecha_registro">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="c1" green="b3" red="9e" type="rgb"/>
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Fecha de Registro">
+                          <Font PropertyName="font" name="Arial" size="12" style="1"/>
+                        </TitledBorder>
                       </Border>
                     </Property>
                   </Properties>
@@ -415,124 +350,39 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblapellidos">
+                <Component class="javax.swing.JComboBox" name="cbopiso">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c1" green="b3" red="9e" type="rgb"/>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="6">
+                        <StringItem index="0" value="1"/>
+                        <StringItem index="1" value="2"/>
+                        <StringItem index="2" value="3"/>
+                        <StringItem index="3" value="4"/>
+                        <StringItem index="4" value="5"/>
+                        <StringItem index="5" value="6"/>
+                      </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Apellidos"/>
+                        <TitledBorder title="Piso:"/>
                       </Border>
+                    </Property>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Cursor Por defecto"/>
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbledad">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c1" green="b3" red="9e" type="rgb"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Edad"/>
-                      </Border>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblhistoriaclinica">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c1" green="b3" red="9e" type="rgb"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Historia Clinica"/>
-                      </Border>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbldireccion">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c1" green="b3" red="9e" type="rgb"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Direccion"/>
-                      </Border>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblsexo">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c1" green="b3" red="9e" type="rgb"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Sexo"/>
-                      </Border>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblnum_documento">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c1" green="b3" red="9e" type="rgb"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="N&#xb0; Documento"/>
-                      </Border>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lbltipodoc">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c1" green="b3" red="9e" type="rgb"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Tipo Documento"/>
-                      </Border>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="txtidpaciente">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtidinforme_medico">
+            <Component class="javax.swing.JTextField" name="txtidconsultorio">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtidinforme_medicoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtidconsultorioActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtidasistenciales">
+            <Component class="javax.swing.JTextField" name="txtidasistencial">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
@@ -552,8 +402,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Listado de Certificados">
-                <Property name="tabTitle" type="java.lang.String" value="Listado de Certificados"/>
+              <JTabbedPaneConstraints tabName="Listado de Consultorios">
+                <Property name="tabTitle" type="java.lang.String" value="Listado de Consultorios"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -565,38 +415,38 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="lbltotalregistros" min="-2" pref="193" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="1068" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="825" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnimpresora" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="btnreporte" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btnimpresora" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btnreporte" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="btneliminar" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="btnbuscar" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btnbuscar" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="8" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="btnbuscar" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btneliminar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnimpresora" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnreporte" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="217" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="btnbuscar" min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btneliminar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnimpresora" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnreporte" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane1" min="-2" pref="221" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbltotalregistros" min="-2" pref="54" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

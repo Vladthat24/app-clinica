@@ -34,7 +34,11 @@ public class ffarmacia {
 
         totalregistros = 0;
         modelo = new DefaultTableModel(null, titulos);
-        sql = "SELECT * FROM tap_farmacia where nombre like '%" + buscar + "%' order by idfarmacia desc";
+        sql = "SELECT idfarmacia,categoria,"
+                + "nombre,precio_venta,stock,"
+                + "laboratorio,presentacion,"
+                + "DATE_FORMAT(STR_TO_DATE(REPLACE(fecha_registro,'-','.'),GET_FORMAT(date,'EUR')),\"%d-%m-%Y\") as fecha_registro,"
+                + "DATE_FORMAT(fecha_vencimiento, \"%d-%m-%Y\") as fecha_vencimiento FROM tap_farmacia where nombre like '%" + buscar + "%' order by idfarmacia desc";
 
         try {
             Statement st = cn.createStatement();
@@ -77,7 +81,7 @@ public class ffarmacia {
             pst.setString(5, dts.getLaboratorio());
             pst.setString(6, dts.getPresentacion());
             pst.setString(7, dts.getFecha_registro());
-            pst.setDate(8, dts.getFecha_vencimiento());
+            pst.setString(8, dts.getFecha_vencimiento());
 
             int n = pst.executeUpdate();
             if (n != 0) {
@@ -107,7 +111,7 @@ public class ffarmacia {
             pst.setString(5, dts.getLaboratorio());
             pst.setString(6, dts.getPresentacion());
             pst.setString(7, dts.getFecha_registro());
-            pst.setDate(8, dts.getFecha_vencimiento());
+            pst.setString(8, dts.getFecha_vencimiento());
 
             pst.setInt(9, dts.getIdfarmacia());
 

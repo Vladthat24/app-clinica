@@ -13,17 +13,17 @@ public class vcaja {
     
     private int idcaja;
     private int idconsultorio;
-    private int idtrabajador;
+    private String trabajador;
     private double costo_consulta;
     private String fecha_registro;
 
     public vcaja() {
     }
 
-    public vcaja(int idcaja, int idconsultorio, int idtrabajador, double costo_consulta, String fecha_registro) {
+    public vcaja(int idcaja, int idconsultorio, String trabajador, double costo_consulta, String fecha_registro) {
         this.idcaja = idcaja;
         this.idconsultorio = idconsultorio;
-        this.idtrabajador = idtrabajador;
+        this.trabajador = trabajador;
         this.costo_consulta = costo_consulta;
         this.fecha_registro = fecha_registro;
     }
@@ -44,12 +44,12 @@ public class vcaja {
         this.idconsultorio = idconsultorio;
     }
 
-    public int getIdtrabajador() {
-        return idtrabajador;
+    public String getTrabajador() {
+        return trabajador;
     }
 
-    public void setIdtrabajador(int idtrabajador) {
-        this.idtrabajador = idtrabajador;
+    public void setTrabajador(String trabajador) {
+        this.trabajador = trabajador;
     }
 
     public double getCosto_consulta() {
@@ -67,7 +67,7 @@ public class vcaja {
     public void setFecha_registro(String fecha_registro) {
         this.fecha_registro = fecha_registro;
     }
-    
-    
+
+
     
 }
