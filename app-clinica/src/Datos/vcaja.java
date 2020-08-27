@@ -12,6 +12,7 @@ package Datos;
 public class vcaja {
     
     private int idcaja;
+    private int idpaciente;
     private int idconsultorio;
     private String trabajador;
     private double costo_consulta;
@@ -20,8 +21,9 @@ public class vcaja {
     public vcaja() {
     }
 
-    public vcaja(int idcaja, int idconsultorio, String trabajador, double costo_consulta, String fecha_registro) {
+    public vcaja(int idcaja, int idpaciente, int idconsultorio, String trabajador, double costo_consulta, String fecha_registro) {
         this.idcaja = idcaja;
+        this.idpaciente = idpaciente;
         this.idconsultorio = idconsultorio;
         this.trabajador = trabajador;
         this.costo_consulta = costo_consulta;
@@ -34,6 +36,14 @@ public class vcaja {
 
     public void setIdcaja(int idcaja) {
         this.idcaja = idcaja;
+    }
+
+    public int getIdpaciente() {
+        return idpaciente;
+    }
+
+    public void setIdpaciente(int idpaciente) {
+        this.idpaciente = idpaciente;
     }
 
     public int getIdconsultorio() {
@@ -68,6 +78,6 @@ public class vcaja {
         this.fecha_registro = fecha_registro;
     }
 
-
+   
     
 }

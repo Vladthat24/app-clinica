@@ -16,12 +16,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Desarrollo
  */
-public class frmvista_paciente_certi_salud extends javax.swing.JFrame {
+public class frmvista_paciente_caja extends javax.swing.JFrame {
 
     /**
      * Creates new form frmvista_paciente_certi_salud
      */
-    public frmvista_paciente_certi_salud() {
+    public frmvista_paciente_caja() {
         initComponents();
         mostrar("");
         this.setLocationRelativeTo(null);
@@ -223,7 +223,7 @@ public class frmvista_paciente_certi_salud extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
             int fila = tablalistado.getSelectedRow();
-            String id, historiaclinica,tipo_documento,num_documento,nombre,apellidos,direccion,edad;
+            String id, historiaclinica,tipo_documento,num_documento,nombre,apellidos;
 
             id = tablalistado.getValueAt(fila, 0).toString();
             historiaclinica = tablalistado.getValueAt(fila, 1).toString();
@@ -231,19 +231,17 @@ public class frmvista_paciente_certi_salud extends javax.swing.JFrame {
             num_documento=tablalistado.getValueAt(fila, 3).toString();
             nombre=tablalistado.getValueAt(fila,4).toString();
             apellidos=tablalistado.getValueAt(fila, 5).toString()+" "+tablalistado.getValueAt(fila,6).toString();
-            edad=tablalistado.getValueAt(fila,15).toString();
-            direccion=tablalistado.getValueAt(fila,8).toString();
+            
                     
             
 
-            frmcertificado_salud.txtidpaciente.setText(id);
-            frmcertificado_salud.lblhistoriaclinica.setText(historiaclinica);
-            frmcertificado_salud.lbltipodoc.setText(tipo_documento);
-            frmcertificado_salud.lblnum_documento.setText(num_documento);
-            frmcertificado_salud.lblnombre.setText(nombre);
-            frmcertificado_salud.lblapellidos.setText(apellidos);
-            frmcertificado_salud.lbledad.setText(edad);
-            frmcertificado_salud.lbldireccion.setText(direccion);
+            frmcaja.txtidpaciente.setText(id);
+            frmcaja.lblhistoriaclinica.setText(historiaclinica);
+            frmcaja.lbltipodoc.setText(tipo_documento);
+            frmcaja.lblnumero_documento.setText(num_documento);
+            frmcaja.lblnombreapellidos.setText(nombre+" "+apellidos);
+            
+
             
 
             this.dispose();
@@ -280,20 +278,21 @@ public class frmvista_paciente_certi_salud extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmvista_paciente_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_paciente_caja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmvista_paciente_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_paciente_caja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmvista_paciente_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_paciente_caja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmvista_paciente_certi_salud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmvista_paciente_caja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmvista_paciente_certi_salud().setVisible(true);
+                new frmvista_paciente_caja().setVisible(true);
             }
         });
     }
