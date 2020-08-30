@@ -12,35 +12,32 @@ import java.sql.Date;
  * @author VladHat
  */
 public class vpaciente {
-    
-  private int idpaciente;
-  private String hitoria_clinica;
-  private String tipo_documento;
-  private String numero_documento;
-  private String nombres;
-  private String apellido_paterno;
-  private String apellido_materno;
-  private String tipo_seguro;
-  private String direccion;
-  private String celular;
-  private String email;
-  private String fecha_nacimiento;
-  private String lugar_nac;
-  private String lugar_proc;
-  private String sexo;
-  private String edad;
-  private String estado_civil;
-  private String fa_nombres;
-  private String fa_apellidos;
-  private String fa_edad;
-  private String fa_direccion;
-  private String digitador;
-  private String fecha_registro;
+
+    private int idpaciente;
+    private String hitoria_clinica;
+    private String tipo_documento;
+    private String numero_documento;
+    private String nombres;
+    private String apellido_paterno;
+    private String apellido_materno;
+    private String direccion;
+    private String celular;
+    private String fecha_nacimiento;
+    private String lugar_proc;
+    private String sexo;
+    private String edad;
+    private String estado_civil;
+    private String ocupacion;
+    private String antecedente_enfermedad;
+    private String antec_operacion;
+    private String reacc_medicamento;
+    private String digitador;
+    private String fecha_registro;
 
     public vpaciente() {
     }
 
-    public vpaciente(int idpaciente, String hitoria_clinica, String tipo_documento, String numero_documento, String nombres, String apellido_paterno, String apellido_materno, String tipo_seguro, String direccion, String celular, String email, String fecha_nacimiento, String lugar_nac, String lugar_proc, String sexo, String edad, String estado_civil, String fa_nombres, String fa_apellidos, String fa_edad, String fa_direccion, String digitador, String fecha_registro) {
+    public vpaciente(int idpaciente, String hitoria_clinica, String tipo_documento, String numero_documento, String nombres, String apellido_paterno, String apellido_materno, String direccion, String celular, String fecha_nacimiento, String lugar_proc, String sexo, String edad, String estado_civil, String ocupacion, String antecedente_enfermedad, String antec_operacion, String reacc_medicamento, String digitador, String fecha_registro) {
         this.idpaciente = idpaciente;
         this.hitoria_clinica = hitoria_clinica;
         this.tipo_documento = tipo_documento;
@@ -48,20 +45,17 @@ public class vpaciente {
         this.nombres = nombres;
         this.apellido_paterno = apellido_paterno;
         this.apellido_materno = apellido_materno;
-        this.tipo_seguro = tipo_seguro;
         this.direccion = direccion;
         this.celular = celular;
-        this.email = email;
         this.fecha_nacimiento = fecha_nacimiento;
-        this.lugar_nac = lugar_nac;
         this.lugar_proc = lugar_proc;
         this.sexo = sexo;
         this.edad = edad;
         this.estado_civil = estado_civil;
-        this.fa_nombres = fa_nombres;
-        this.fa_apellidos = fa_apellidos;
-        this.fa_edad = fa_edad;
-        this.fa_direccion = fa_direccion;
+        this.ocupacion = ocupacion;
+        this.antecedente_enfermedad = antecedente_enfermedad;
+        this.antec_operacion = antec_operacion;
+        this.reacc_medicamento = reacc_medicamento;
         this.digitador = digitador;
         this.fecha_registro = fecha_registro;
     }
@@ -122,14 +116,6 @@ public class vpaciente {
         this.apellido_materno = apellido_materno;
     }
 
-    public String getTipo_seguro() {
-        return tipo_seguro;
-    }
-
-    public void setTipo_seguro(String tipo_seguro) {
-        this.tipo_seguro = tipo_seguro;
-    }
-
     public String getDireccion() {
         return direccion;
     }
@@ -146,28 +132,12 @@ public class vpaciente {
         this.celular = celular;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
     public void setFecha_nacimiento(String fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
-    }
-
-    public String getLugar_nac() {
-        return lugar_nac;
-    }
-
-    public void setLugar_nac(String lugar_nac) {
-        this.lugar_nac = lugar_nac;
     }
 
     public String getLugar_proc() {
@@ -202,36 +172,36 @@ public class vpaciente {
         this.estado_civil = estado_civil;
     }
 
-    public String getFa_nombres() {
-        return fa_nombres;
+    public String getOcupacion() {
+        return ocupacion;
     }
 
-    public void setFa_nombres(String fa_nombres) {
-        this.fa_nombres = fa_nombres;
+    public void setOcupacion(String ocupacion) {
+        this.ocupacion = ocupacion;
     }
 
-    public String getFa_apellidos() {
-        return fa_apellidos;
+    public String getAntecedente_enfermedad() {
+        return antecedente_enfermedad;
     }
 
-    public void setFa_apellidos(String fa_apellidos) {
-        this.fa_apellidos = fa_apellidos;
+    public void setAntecedente_enfermedad(String antecedente_enfermedad) {
+        this.antecedente_enfermedad = antecedente_enfermedad;
     }
 
-    public String getFa_edad() {
-        return fa_edad;
+    public String getAntec_operacion() {
+        return antec_operacion;
     }
 
-    public void setFa_edad(String fa_edad) {
-        this.fa_edad = fa_edad;
+    public void setAntec_operacion(String antec_operacion) {
+        this.antec_operacion = antec_operacion;
     }
 
-    public String getFa_direccion() {
-        return fa_direccion;
+    public String getReacc_medicamento() {
+        return reacc_medicamento;
     }
 
-    public void setFa_direccion(String fa_direccion) {
-        this.fa_direccion = fa_direccion;
+    public void setReacc_medicamento(String reacc_medicamento) {
+        this.reacc_medicamento = reacc_medicamento;
     }
 
     public String getDigitador() {
@@ -250,8 +220,5 @@ public class vpaciente {
         this.fecha_registro = fecha_registro;
     }
 
-
-
- 
+  
 }
-

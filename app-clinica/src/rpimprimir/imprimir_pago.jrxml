@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="221" pageHeight="576" orientation="Landscape" columnWidth="180" leftMargin="21" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2325960d-aee4-45aa-a3b4-a0f4fc184d2e">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="124"/>
+	<parameter name="idpago" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select p.idpago,a.nombre,a.apellidos,a.colegiatura,
+	   a.num_colegiatura,a.profesion,a.tipo_documento,a.num_documento,con.nombre_consultorio,
+	   con.numero_consultorio,con.piso_consultorio,c.idpaciente,paciente.historia_clinica,
+       paciente.tipo_documento,paciente.numero_documento,paciente.nombres,paciente.apellido_paterno,paciente.apellido_materno,c.costo_consulta,
+	   p.tipo_comprobante,p.num_comprobante,p.igv,p.cantidad_pago,
+       p.subtotal,p.total,p.vuelto,p.fecha_registro,p.hora,p.trabajador
+from tap_pago p 
+inner join tap_caja c 
+on p.idcaja=c.idcaja
+inner join tap_consultorio con
+on c.idconsultorio=con.idconsultorio
+inner join tap_asistenciales a
+on con.idasistencial=a.idasistenciales
+inner join tap_paciente paciente
+on c.idpaciente=paciente.idpaciente
+where idpago=$P{idpago}]]>
+	</queryString>
+	<field name="idpago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="colegiatura" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="num_colegiatura" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="profesion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo_documento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="num_documento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_consultorio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numero_consultorio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="piso_consultorio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idpaciente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="historia_clinica" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numero_documento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombres" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellido_paterno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellido_materno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="costo_consulta" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo_comprobante" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="num_comprobante" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="igv" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad_pago" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="subtotal" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vuelto" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_registro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hora" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="trabajador" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="74">
+			<staticText>
+				<reportElement x="48" y="41" width="87" height="16" uuid="58aa6398-40fd-4ca7-81d2-e44450e5126d"/>
+				<text><![CDATA[CENTRO MEDICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="58" width="87" height="14" uuid="6472f3ea-4e88-4136-a42a-2ad1211c2f20"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[MARIA SANTISIMA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="37" y="41" width="111" height="1" uuid="68b6a094-62da-459c-b465-85d2ad8232c9"/>
+			</line>
+			<line>
+				<reportElement x="37" y="57" width="111" height="1" uuid="1bf1eaea-9bf0-4467-81bc-18fa33fd169c"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="78">
+			<textField>
+				<reportElement x="135" y="0" width="45" height="15" uuid="a3ae667a-cd2e-466e-a832-71592fa8e4dc"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idpago}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="82" y="0" width="53" height="15" uuid="3cff9f98-4f8e-4eb3-a200-02b9e8b5c774"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<text><![CDATA[N° de Operacion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="25" width="153" height="16" uuid="e4bc07b9-490f-4be4-b9df-5c71d6091442"/>
+				<text><![CDATA[CENTRO MEDICO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="81">
+			<staticText>
+				<reportElement x="16" y="54" width="153" height="16" uuid="8c10885f-462c-41b5-9b6a-7a58ad92a0e3"/>
+				<text><![CDATA[CENTRO MEDICO]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

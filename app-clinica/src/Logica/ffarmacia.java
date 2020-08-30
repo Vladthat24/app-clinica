@@ -25,6 +25,47 @@ public class ffarmacia {
     private String sql = "";
 
     public Integer totalregistros;
+    public DefaultTableModel mostrarID(int idfarmacia) {
+        DefaultTableModel modelo;
+
+        String[] titulos = {"ID", "Categoria", "Nombre", "Precio Venta", "Stock", "Laboratorio", "Presentacion", "Feche de Registro", "Fecha de Vencimiento"};
+        String[] registro = new String[9];
+
+        totalregistros = 0;
+        modelo = new DefaultTableModel(null, titulos);
+        sql = "SELECT idfarmacia,categoria,"
+                + "nombre,precio_venta,stock,"
+                + "laboratorio,presentacion,"
+                + "DATE_FORMAT(STR_TO_DATE(REPLACE(fecha_registro,'-','.'),GET_FORMAT(date,'EUR')),\"%d-%m-%Y\") as fecha_registro,"
+                + "DATE_FORMAT(fecha_vencimiento, \"%d-%m-%Y\") as fecha_vencimiento FROM tap_farmacia where idfarmacia = " + idfarmacia + " order by idfarmacia desc";
+
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+
+                registro[0] = rs.getString("idfarmacia");
+                registro[1] = rs.getString("categoria");
+                registro[2] = rs.getString("nombre");
+                registro[3] = rs.getString("precio_venta");
+                registro[4] = rs.getString("stock");
+                registro[5] = rs.getString("laboratorio");
+                registro[6] = rs.getString("presentacion");
+                registro[7] = rs.getString("fecha_registro");
+                registro[8] = rs.getString("fecha_vencimiento");
+
+                totalregistros = totalregistros + 1;
+                modelo.addRow(registro);
+            }
+            return modelo;
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e + "ERROR SELECT");
+            return null;
+        }
+
+    }
 
     public DefaultTableModel mostrar(String buscar) {
         DefaultTableModel modelo;
@@ -160,6 +201,55 @@ public class ffarmacia {
 
             return false;
         }
+    }
+
+    public vfarmacia listarID(int id) {
+        vfarmacia f = new vfarmacia();
+        String sql = "select * from tap_farmacia where idfarmacia=?";
+        
+        try {
+            
+            PreparedStatement pst = cn.prepareStatement(sql);
+
+            pst.setInt(1, id);
+
+            ResultSet rs = pst.executeQuery(sql);
+
+            while (rs.next()) {
+                f.setIdfarmacia(rs.getInt(1));
+                f.setCategoria(rs.getString(2));
+                f.setNombre(rs.getString(3));
+                f.setPrecio_venta(rs.getDouble(4));
+                f.setStock(rs.getInt(5));
+                f.setLaboratorio(rs.getString(6));
+                f.setPresentacion(rs.getString(7));
+                f.setFecha_registro(rs.getString(8));
+                f.setFecha_vencimiento(rs.getString(9));
+
+            }
+
+        } catch (Exception e) {
+        }
+        return f;
+    }
+
+    public int actualizarStock(int cant, int idproducto) {
+        int r = 0;
+
+        String sql = "Update tap_farmacia set stock=? where idfarmacia=?";
+
+        try {
+
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setInt(1, cant);
+            pst.setInt(2, idproducto);
+            pst.executeUpdate();
+            
+        } catch (Exception e) {
+
+        }
+        return r;
+
     }
 
 }

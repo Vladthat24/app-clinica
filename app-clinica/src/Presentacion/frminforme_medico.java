@@ -293,12 +293,11 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconifiable(true);
-        setTitle("SISTEMA DE GESTION DE PROCESOS");
 
         lbltitulo.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        lbltitulo.setText(".:: INFORME MEDICO ::.");
+        lbltitulo.setText("INFORME MEDICO");
 
-        jPanel1.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel1.setBackground(new java.awt.Color(78, 150, 203));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btnnuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/document_add.png"))); // NOI18N
@@ -317,7 +316,7 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel3.setBackground(new java.awt.Color(78, 150, 203));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Asistencial:"));
 
         lblfecha_registro.setBackground(new java.awt.Color(158, 179, 193));
@@ -339,7 +338,7 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
         lblcolegiatura.setBackground(new java.awt.Color(158, 179, 193));
         lblcolegiatura.setBorder(javax.swing.BorderFactory.createTitledBorder("Colegiatura"));
 
-        txtAreaDiagnostico.setBackground(new java.awt.Color(158, 179, 193));
+        txtAreaDiagnostico.setBackground(new java.awt.Color(78, 150, 203));
         txtAreaDiagnostico.setColumns(20);
         txtAreaDiagnostico.setRows(5);
         txtAreaDiagnostico.setBorder(javax.swing.BorderFactory.createTitledBorder("Diagnostico "));
@@ -379,7 +378,7 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jPanel5.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel5.setBackground(new java.awt.Color(78, 150, 203));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Pacientes:"));
 
         btnpaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/informe_medico.png"))); // NOI18N
@@ -515,12 +514,12 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
                                 .addComponent(txtidpaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtidasistenciales, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         registro.addTab("Registro de Certificados", jPanel1);
 
-        jPanel4.setBackground(new java.awt.Color(88, 170, 168));
+        jPanel4.setBackground(new java.awt.Color(171, 219, 154));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         tablalistado.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -600,7 +599,7 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
                 .addComponent(btnimpresora)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnreporte)
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(211, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -616,16 +615,18 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lbltitulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(registro)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(497, 497, 497)
+                .addComponent(lbltitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lbltitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registro)

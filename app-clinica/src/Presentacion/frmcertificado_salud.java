@@ -286,12 +286,11 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconifiable(true);
-        setTitle("SISTEMA DE GESTION DE PROCESOS");
 
         lbltitulo.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        lbltitulo.setText(".:: CERTIFICADO DE SALUD ::.");
+        lbltitulo.setText("CERTIFICADO DE SALUD");
 
-        jPanel1.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel1.setBackground(new java.awt.Color(78, 150, 203));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btnnuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/document_add.png"))); // NOI18N
@@ -310,10 +309,11 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel3.setBackground(new java.awt.Color(78, 150, 203));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Asistencial:"));
 
-        txtserologia.setBackground(new java.awt.Color(158, 179, 193));
+        txtserologia.setEditable(false);
+        txtserologia.setBackground(new java.awt.Color(78, 150, 203));
         txtserologia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Serologia:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         txtserologia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -321,7 +321,8 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
             }
         });
 
-        txtexamenrx.setBackground(new java.awt.Color(158, 179, 193));
+        txtexamenrx.setEditable(false);
+        txtexamenrx.setBackground(new java.awt.Color(78, 150, 203));
         txtexamenrx.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Examen RX:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         txtexamenrx.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -387,10 +388,10 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
                 .addComponent(lblfecha_registro, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
         );
 
-        jPanel5.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel5.setBackground(new java.awt.Color(78, 150, 203));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Pacientes:"));
 
-        btnpaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/informe_medico.png"))); // NOI18N
+        btnpaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/memo.png"))); // NOI18N
         btnpaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnpacienteActionPerformed(evt);
@@ -521,7 +522,7 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
 
         registro.addTab("Registro de Certificados", jPanel1);
 
-        jPanel4.setBackground(new java.awt.Color(88, 170, 168));
+        jPanel4.setBackground(new java.awt.Color(171, 219, 154));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         tablalistado.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -619,17 +620,21 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(registro)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbltitulo)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(345, 345, 345))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lbltitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(registro, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -21,7 +21,7 @@ public class frminicio extends javax.swing.JFrame {
         initComponents();
         lblidpersona.setVisible(false);
         this.setExtendedState(frminicio.MAXIMIZED_BOTH);
-        this.setTitle("Sistema Automatico de Documentación");
+        this.setTitle("CENTRO MEDICO - MARIA SANTISIMA ");
     }
 
     /**
@@ -40,9 +40,6 @@ public class frminicio extends javax.swing.JFrame {
         mnusisreserva = new javax.swing.JMenu();
         mnurecepcion = new javax.swing.JMenu();
         cutMenuItem = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         mnuremiciondedoc = new javax.swing.JMenu();
@@ -52,6 +49,7 @@ public class frminicio extends javax.swing.JFrame {
         mnuregistros = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         mnuconfiguraciones = new javax.swing.JMenu();
         menuacceso = new javax.swing.JMenuItem();
         mnusalir = new javax.swing.JMenu();
@@ -59,7 +57,8 @@ public class frminicio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(new ImageIcon(getClass().getResource("/Files/logomariasantisimaII.PNG")).getImage());
 
-        escritorio.setBackground(new java.awt.Color(102, 255, 255));
+        escritorio.setBackground(new java.awt.Color(35, 216, 206));
+        escritorio.setForeground(new java.awt.Color(51, 255, 0));
 
         lblidpersona.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblidpersona.setText("jLabel1");
@@ -70,6 +69,8 @@ public class frminicio extends javax.swing.JFrame {
         lblacceso.setText("jLabel7");
         escritorio.add(lblacceso);
         lblacceso.setBounds(20, 40, 130, 16);
+
+        menuBar.setBackground(new java.awt.Color(78, 150, 203));
 
         mnusisreserva.setBackground(new java.awt.Color(255, 255, 255));
         mnusisreserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/logomariasantisimaII.PNG"))); // NOI18N
@@ -83,33 +84,13 @@ public class frminicio extends javax.swing.JFrame {
         cutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         cutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/caja-registradora.png"))); // NOI18N
         cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("CAJA");
+        cutMenuItem.setText("Caja");
         cutMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cutMenuItemActionPerformed(evt);
             }
         });
         mnurecepcion.add(cutMenuItem);
-
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/consumo.png"))); // NOI18N
-        jMenuItem2.setText("COSUMO");
-        mnurecepcion.add(jMenuItem2);
-
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/pagar.png"))); // NOI18N
-        jMenuItem3.setText("PAGO");
-        mnurecepcion.add(jMenuItem3);
-
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/consultorio.png"))); // NOI18N
-        jMenuItem5.setText("CONSULTORIO");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        mnurecepcion.add(jMenuItem5);
 
         menuBar.add(mnurecepcion);
 
@@ -118,7 +99,7 @@ public class frminicio extends javax.swing.JFrame {
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/farmaco_modulo.png"))); // NOI18N
-        jMenuItem4.setText("MODULO FARMACIA");
+        jMenuItem4.setText("Modulo de Farmacia");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -134,7 +115,7 @@ public class frminicio extends javax.swing.JFrame {
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/memo.png"))); // NOI18N
-        jMenuItem1.setText("HITORIA CLINICA");
+        jMenuItem1.setText("Historia Clinica");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -144,7 +125,7 @@ public class frminicio extends javax.swing.JFrame {
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/memecircular.png"))); // NOI18N
-        jMenuItem6.setText("CERT. SALUD");
+        jMenuItem6.setText("Certificado de Salud");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -154,7 +135,7 @@ public class frminicio extends javax.swing.JFrame {
 
         jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/informe_medico.png"))); // NOI18N
-        jMenuItem10.setText("INFOR. MEDICO");
+        jMenuItem10.setText("Informe Medico");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem10ActionPerformed(evt);
@@ -186,6 +167,16 @@ public class frminicio extends javax.swing.JFrame {
             }
         });
         mnuregistros.add(jMenuItem9);
+
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/consultorio.png"))); // NOI18N
+        jMenuItem5.setText("Consultorio");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        mnuregistros.add(jMenuItem5);
 
         menuBar.add(mnuregistros);
 
@@ -349,8 +340,6 @@ public class frminicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;

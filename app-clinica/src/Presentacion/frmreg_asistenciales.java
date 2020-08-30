@@ -297,12 +297,11 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconifiable(true);
-        setTitle("SISTEMA DE GESTION DE PROCESOS");
 
-        jPanel1.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel1.setBackground(new java.awt.Color(78, 150, 203));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro Asistenciales:"));
 
-        txtnombre.setBackground(new java.awt.Color(158, 179, 193));
+        txtnombre.setBackground(new java.awt.Color(78, 150, 203));
         txtnombre.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
         txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -310,7 +309,7 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
             }
         });
 
-        txtapellidos.setBackground(new java.awt.Color(158, 179, 193));
+        txtapellidos.setBackground(new java.awt.Color(78, 150, 203));
         txtapellidos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Apellidos:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
         txtapellidos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -318,7 +317,7 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
             }
         });
 
-        txtcargo_institucion.setBackground(new java.awt.Color(158, 179, 193));
+        txtcargo_institucion.setBackground(new java.awt.Color(78, 150, 203));
         txtcargo_institucion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cargos en la Institucion:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
         txtcargo_institucion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -326,7 +325,7 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
             }
         });
 
-        txtmodalidad_contrato.setBackground(new java.awt.Color(158, 179, 193));
+        txtmodalidad_contrato.setBackground(new java.awt.Color(78, 150, 203));
         txtmodalidad_contrato.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modalidad de Contrato:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
         txtmodalidad_contrato.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -353,7 +352,7 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(182, 195, 204));
+        jPanel2.setBackground(new java.awt.Color(78, 150, 203));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         cbocolegiatura.setBackground(new java.awt.Color(158, 179, 193));
@@ -368,7 +367,7 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
             }
         });
 
-        txtnum_colegiatura.setBackground(new java.awt.Color(158, 179, 193));
+        txtnum_colegiatura.setBackground(new java.awt.Color(78, 150, 203));
         txtnum_colegiatura.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Numero de Colegiatura:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
         txtnum_colegiatura.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -408,7 +407,7 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
         cbotipo_doc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "D.N.I.", "PASAPORTE", " " }));
         cbotipo_doc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
 
-        txtnum_doc.setBackground(new java.awt.Color(158, 179, 193));
+        txtnum_doc.setBackground(new java.awt.Color(78, 150, 203));
         txtnum_doc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "N° de Doc.:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
         txtnum_doc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -421,7 +420,7 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
             }
         });
 
-        txtcelular.setBackground(new java.awt.Color(158, 179, 193));
+        txtcelular.setBackground(new java.awt.Color(78, 150, 203));
         txtcelular.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Celular:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
         txtcelular.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -434,7 +433,7 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
         cboprofesion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medico ", "Tec. Enfermeria", "Obtetricia", "Psicologos", "Lic. en Enfermeria", "Nutricionista", " " }));
         cboprofesion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Profesión:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
 
-        txtemail.setBackground(new java.awt.Color(158, 179, 193));
+        txtemail.setBackground(new java.awt.Color(78, 150, 203));
         txtemail.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Correo:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 12))); // NOI18N
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -524,9 +523,9 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
         );
 
         lbltitulo.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        lbltitulo.setText(".:: ASISTENCIALES ::.");
+        lbltitulo.setText(" ASISTENCIALES");
 
-        jPanel4.setBackground(new java.awt.Color(88, 170, 168));
+        jPanel4.setBackground(new java.awt.Color(171, 219, 154));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Listado de Asistenciales:"));
 
         tablalistado.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -613,17 +612,19 @@ public class frmreg_asistenciales extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbltitulo))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lbltitulo)
+                .addGap(490, 490, 490))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lbltitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

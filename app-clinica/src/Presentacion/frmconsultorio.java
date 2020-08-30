@@ -214,13 +214,13 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
         btneliminar = new javax.swing.JButton();
         btnimpresora = new javax.swing.JButton();
         btnreporte = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconifiable(true);
-        setTitle("SISTEMA DE GESTION DE PROCESOS");
 
-        jPanel1.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel1.setBackground(new java.awt.Color(78, 150, 203));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btnnuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/document_add.png"))); // NOI18N
@@ -239,7 +239,7 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel3.setBackground(new java.awt.Color(78, 150, 203));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Asistencial:"));
 
         btnasistencial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/asistencial.png"))); // NOI18N
@@ -286,10 +286,10 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel5.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel5.setBackground(new java.awt.Color(78, 150, 203));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Pacientes:"));
 
-        txtnombreconsultorio.setBackground(new java.awt.Color(158, 179, 193));
+        txtnombreconsultorio.setBackground(new java.awt.Color(78, 150, 203));
         txtnombreconsultorio.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre del Consultorio", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         txtnombreconsultorio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -297,7 +297,7 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
             }
         });
 
-        txtnumeroconsultorio.setBackground(new java.awt.Color(158, 179, 193));
+        txtnumeroconsultorio.setBackground(new java.awt.Color(78, 150, 203));
         txtnumeroconsultorio.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "N° de Consultorio", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         txtnumeroconsultorio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -392,7 +392,7 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
 
         registro.addTab("Registro de Consultorio", jPanel1);
 
-        jPanel4.setBackground(new java.awt.Color(88, 170, 168));
+        jPanel4.setBackground(new java.awt.Color(171, 219, 154));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         tablalistado.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -482,16 +482,25 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
 
         registro.addTab("Listado de Consultorios", jPanel4);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("CONSULTORIOS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(registro)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(371, 371, 371)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(registro, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -670,6 +679,7 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton btnreporte;
     private javax.swing.JComboBox<String> cbopiso;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

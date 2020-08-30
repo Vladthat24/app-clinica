@@ -21,11 +21,13 @@ public class vpago {
     private double total;
     private double vuelto;
     private String fecha_registro;
+    private String hora;
+    private String trabajador;
 
     public vpago() {
     }
 
-    public vpago(int idpago, int idcaja, String tipo_comprobante, String num_comprobante, double igv, double cantidad_pago, double subtotal, double total, double vuelto, String fecha_registro) {
+    public vpago(int idpago, int idcaja, String tipo_comprobante, String num_comprobante, double igv, double cantidad_pago, double subtotal, double total, double vuelto, String fecha_registro, String hora, String trabajador) {
         this.idpago = idpago;
         this.idcaja = idcaja;
         this.tipo_comprobante = tipo_comprobante;
@@ -36,6 +38,8 @@ public class vpago {
         this.total = total;
         this.vuelto = vuelto;
         this.fecha_registro = fecha_registro;
+        this.hora = hora;
+        this.trabajador = trabajador;
     }
 
     public int getIdpago() {
@@ -117,6 +121,23 @@ public class vpago {
     public void setFecha_registro(String fecha_registro) {
         this.fecha_registro = fecha_registro;
     }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getTrabajador() {
+        return trabajador;
+    }
+
+    public void setTrabajador(String trabajador) {
+        this.trabajador = trabajador;
+    }
+ 
     
     
     

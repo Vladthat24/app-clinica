@@ -13,6 +13,7 @@ import Logica.fcertificado_salud;
 import Logica.fconsultorio;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Locale;
@@ -48,6 +49,8 @@ public class frmcaja extends javax.swing.JInternalFrame {
         LocalDate fechaactual = LocalDate.now();
 
         lblfecha_registro.setText(DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH).format(fechaactual));
+        LocalDateTime locaDate = LocalDateTime.now();
+        System.out.println(DateTimeFormatter.ofPattern("hh: mm: ss a", Locale.ENGLISH).format(locaDate));
 
     }
 
@@ -105,6 +108,32 @@ public class frmcaja extends javax.swing.JInternalFrame {
         tablalistado.getColumnModel().getColumn(2).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(2).setPreferredWidth(0);
 
+        tablalistado.getColumnModel().getColumn(12).setMaxWidth(35);
+        tablalistado.getColumnModel().getColumn(12).setMinWidth(35);
+
+        tablalistado.getColumnModel().getColumn(14).setMaxWidth(45);
+        tablalistado.getColumnModel().getColumn(14).setMinWidth(45);
+
+        tablalistado.getColumnModel().getColumn(8).setMaxWidth(45);
+        tablalistado.getColumnModel().getColumn(8).setMinWidth(45);
+
+        tablalistado.getColumnModel().getColumn(6).setMaxWidth(190);
+        tablalistado.getColumnModel().getColumn(6).setMinWidth(190);
+
+        tablalistado.getColumnModel().getColumn(7).setMaxWidth(190);
+        tablalistado.getColumnModel().getColumn(7).setMinWidth(190);
+
+        tablalistado.getColumnModel().getColumn(3).setMaxWidth(80);
+        tablalistado.getColumnModel().getColumn(3).setMinWidth(80);
+
+        tablalistado.getColumnModel().getColumn(4).setMaxWidth(80);
+        tablalistado.getColumnModel().getColumn(4).setMinWidth(80);
+
+        tablalistado.getColumnModel().getColumn(5).setMaxWidth(80);
+        tablalistado.getColumnModel().getColumn(5).setMinWidth(80);
+        
+        tablalistado.getColumnModel().getColumn(9).setMaxWidth(50);
+        tablalistado.getColumnModel().getColumn(9).setMinWidth(50);
     }
 
     void inhabilitar() {
@@ -261,10 +290,10 @@ public class frmcaja extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setTitle("SISTEMA DE GESTION DE PROCESOS");
 
-        jPanel1.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel1.setBackground(new java.awt.Color(78, 150, 203));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jPanel3.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel3.setBackground(new java.awt.Color(78, 150, 203));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Asistencial:"));
 
         btnasistencial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/consultorio.png"))); // NOI18N
@@ -274,13 +303,13 @@ public class frmcaja extends javax.swing.JInternalFrame {
             }
         });
 
-        lblnombre_apellidos_asisten.setBackground(new java.awt.Color(158, 179, 193));
+        lblnombre_apellidos_asisten.setBackground(new java.awt.Color(78, 150, 203));
         lblnombre_apellidos_asisten.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombres y Apelldios del Asistencial:"));
 
-        lblnum_colegiatura.setBackground(new java.awt.Color(158, 179, 193));
+        lblnum_colegiatura.setBackground(new java.awt.Color(78, 150, 203));
         lblnum_colegiatura.setBorder(javax.swing.BorderFactory.createTitledBorder("N° Colegiatura"));
 
-        lblcolegiatura.setBackground(new java.awt.Color(158, 179, 193));
+        lblcolegiatura.setBackground(new java.awt.Color(78, 150, 203));
         lblcolegiatura.setBorder(javax.swing.BorderFactory.createTitledBorder("Colegiatura"));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -307,19 +336,19 @@ public class frmcaja extends javax.swing.JInternalFrame {
                     .addComponent(lblcolegiatura, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jPanel5.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel5.setBackground(new java.awt.Color(78, 150, 203));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Consultorio:"));
 
-        lblnombre_consultorio.setBackground(new java.awt.Color(158, 179, 193));
+        lblnombre_consultorio.setBackground(new java.awt.Color(78, 150, 203));
         lblnombre_consultorio.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombre del Consultorio"));
 
-        lblpiso_consultorio.setBackground(new java.awt.Color(158, 179, 193));
+        lblpiso_consultorio.setBackground(new java.awt.Color(78, 150, 203));
         lblpiso_consultorio.setBorder(javax.swing.BorderFactory.createTitledBorder("Piso"));
 
-        lbltrabajador.setBackground(new java.awt.Color(158, 179, 193));
+        lbltrabajador.setBackground(new java.awt.Color(78, 150, 203));
         lbltrabajador.setBorder(javax.swing.BorderFactory.createTitledBorder("Operador"));
 
-        lblnumero_consultorio.setBackground(new java.awt.Color(158, 179, 193));
+        lblnumero_consultorio.setBackground(new java.awt.Color(78, 150, 203));
         lblnumero_consultorio.setBorder(javax.swing.BorderFactory.createTitledBorder("N° del Consultorio"));
 
         txtcosto_consulta.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -361,22 +390,26 @@ public class frmcaja extends javax.swing.JInternalFrame {
                 .addGap(16, 16, 16))
         );
 
-        jPanel2.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel2.setBackground(new java.awt.Color(78, 150, 203));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Paciente:"));
 
+        lblnumero_documento.setBackground(new java.awt.Color(78, 150, 203));
         lblnumero_documento.setBorder(javax.swing.BorderFactory.createTitledBorder("N° de Documento:"));
 
+        lblhistoriaclinica.setBackground(new java.awt.Color(78, 150, 203));
         lblhistoriaclinica.setBorder(javax.swing.BorderFactory.createTitledBorder("Historia Clinica:"));
 
+        lbltipodoc.setBackground(new java.awt.Color(78, 150, 203));
         lbltipodoc.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo Doc.:"));
 
-        btnPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/informe_medico.png"))); // NOI18N
+        btnPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/memo.png"))); // NOI18N
         btnPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPacienteActionPerformed(evt);
             }
         });
 
+        lblnombreapellidos.setBackground(new java.awt.Color(78, 150, 203));
         lblnombreapellidos.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombre y Apellido del Paciente:"));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -402,20 +435,19 @@ public class frmcaja extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbltipodoc, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblnumero_documento, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblhistoriaclinica, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblhistoriaclinica, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbltipodoc, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblnumero_documento, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblnombreapellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnPaciente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addComponent(btnPaciente, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel6.setBackground(new java.awt.Color(158, 179, 193));
+        jPanel6.setBackground(new java.awt.Color(78, 150, 203));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Acciones:"));
 
         btnnuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/document_add.png"))); // NOI18N
@@ -450,6 +482,11 @@ public class frmcaja extends javax.swing.JInternalFrame {
 
         btnPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/pagar.png"))); // NOI18N
         btnPago.setText("Pagos");
+        btnPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -481,11 +518,12 @@ public class frmcaja extends javax.swing.JInternalFrame {
                     .addComponent(txtidconsultorio, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtidcaja, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnguardar)
-                    .addComponent(btnnuevo)
-                    .addComponent(btnConsumo)
-                    .addComponent(btnPago))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnnuevo)
+                        .addComponent(btnConsumo)
+                        .addComponent(btnPago)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -539,7 +577,7 @@ public class frmcaja extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel4.setBackground(new java.awt.Color(88, 170, 168));
+        jPanel4.setBackground(new java.awt.Color(171, 219, 154));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         tablalistado.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -777,6 +815,23 @@ public class frmcaja extends javax.swing.JInternalFrame {
         from.toFront();
         from.setVisible(true);
     }//GEN-LAST:event_btnPacienteActionPerformed
+
+    private void btnPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagoActionPerformed
+        // TODO add your handling code here:
+        int fila = tablalistado.getSelectedRow();
+
+        frmpago.idcaja = tablalistado.getValueAt(fila, 0).toString();
+        frmpago.paciente = tablalistado.getValueAt(fila, 6).toString();
+        frmpago.totalcaja = Double.parseDouble(tablalistado.getValueAt(fila, 14).toString());
+
+        frmpago.idconsultorio = tablalistado.getValueAt(fila, 1).toString();
+        frmpago.consultorio = tablalistado.getValueAt(fila, 10).toString();
+
+        frmpago form = new frmpago();
+        frminicio.escritorio.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnPagoActionPerformed
 
     /**
      * @param args the command line arguments

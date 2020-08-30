@@ -31,7 +31,7 @@ public class fconsumo {
         totalconsumo = 0.0;
         modelo = new DefaultTableModel(null, titulos);
 
-        sSQL = "select c.idconsumo,c.idcaja,c.idfarmacia,f.nombre,c.cantidad,c.precio_venta"
+        sSQL = "select c.idconsumo,c.idcaja,c.idfarmacia,f.nombre,c.cantidad,f.precio_venta"
                 + ",c.estado,c.fecha_registro from tap_consumo c inner join tap_farmacia f on c.idfarmacia=f.idfarmacia "
                 + "where c.idcaja =" + buscar + " order by c.idconsumo desc";
 
