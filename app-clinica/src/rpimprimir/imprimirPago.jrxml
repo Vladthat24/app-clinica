@@ -1,59 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="216" pageHeight="144" orientation="Landscape" columnWidth="176" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="462f47d1-2b05-4fa3-8cbb-42f13359b294">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="216" pageHeight="311" orientation="Landscape" columnWidth="176" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[select * from tap_pago]]>
 	</queryString>
-	<field name="idpago" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="idcaja" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="tipo_comprobante" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="num_comprobante" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="igv" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="cantidad_pago" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="subtotal" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="total" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="vuelto" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="fecha_registro" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="hora" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="trabajador" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+	<field name="idpago" class="java.lang.Integer"/>
+	<field name="idcaja" class="java.lang.Integer"/>
+	<field name="tipo_comprobante" class="java.lang.String"/>
+	<field name="num_comprobante" class="java.lang.String"/>
+	<field name="igv" class="java.math.BigDecimal"/>
+	<field name="cantidad_pago" class="java.math.BigDecimal"/>
+	<field name="subtotal" class="java.math.BigDecimal"/>
+	<field name="total" class="java.math.BigDecimal"/>
+	<field name="vuelto" class="java.math.BigDecimal"/>
+	<field name="fecha_registro" class="java.lang.String"/>
+	<field name="hora" class="java.lang.String"/>
+	<field name="trabajador" class="java.lang.String"/>
 	<variable name="idpago_1" class="java.lang.Integer" resetType="Page" calculation="Sum">
 		<variableExpression><![CDATA[$F{idpago}]]></variableExpression>
 	</variable>
 	<detail>
 		<band height="104" splitType="Stretch">
 			<staticText>
-				<reportElement x="11" y="0" width="100" height="20" uuid="b6e1c408-a40f-437c-b6be-8874bb5e3e3a"/>
+				<reportElement x="0" y="0" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[idpago]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="11" y="20" width="100" height="20" uuid="cab34546-c767-491d-a5c7-835039c415a5"/>
-				<textFieldExpression><![CDATA[$F{idpago}]]></textFieldExpression>
+				<reportElement x="0" y="20" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{idpago}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
