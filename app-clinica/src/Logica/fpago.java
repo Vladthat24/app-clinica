@@ -68,6 +68,91 @@ public class fpago {
 
     }
 
+    public DefaultTableModel mostrarReporte(int idpago) {
+        DefaultTableModel modelo2;
+
+        String[] titulos = {"ID", "Nombre", "Apellidos",
+            "Colegiatura", "N° colegiatura", "Profesion",
+            "Tipo Documento", "N° Documento", "Nombre Consultorio",
+            "N° consultorio", "Piso consultorio", "Idpaciente",
+            "Historia Clinica", "Tipo Documento", "N° documento", "Nombres", "Apellido Materno",
+            "Apellido Materno", "Costo Consulta", "Tipo Comprobante", "N° Comprobante", "IGV", "Cantidad Pago",
+            "Subtotal", "total", "vuelto", "Fecha Registro", "Hora", "Trabajador"};
+
+        String[] registro = new String[12];
+
+        totalregistros_total = 0;
+        modelo2 = new DefaultTableModel(null, titulos);
+
+        sSQL = "select p.idpago,a.nombre,a.apellidos,a.colegiatura,"
+                + "a.num_colegiatura,a.profesion,a.tipo_documento,a.num_documento,con.nombre_consultorio,"
+                + "con.numero_consultorio,con.piso_consultorio,c.idpaciente,paciente.historia_clinica,"
+                + "paciente.tipo_documento,paciente.numero_documento,paciente.nombres,"
+                + "paciente.apellido_paterno,paciente.apellido_materno,c.costo_consulta,"
+                + "p.tipo_comprobante,p.num_comprobante,p.igv,p.cantidad_pago,"
+                + "p.subtotal,p.total,p.vuelto,p.fecha_registro,p.hora,p.trabajador "
+                + "from tap_pago p "
+                + "left join tap_caja c "
+                + "on p.idcaja=c.idcaja "
+                + "left join tap_consultorio con "
+                + "on c.idconsultorio=con.idconsultorio "
+                + "left join tap_asistenciales a "
+                + "on con.idasistencial=a.idasistenciales "
+                + "left join tap_paciente paciente "
+                + "on c.idpaciente=paciente.idpaciente from tap_pago where idpago= " + idpago + " order by idpago desc";
+
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sSQL);
+
+            while (rs.next()) {
+                registro[0] = rs.getString("p.idpago");
+                registro[1] = rs.getString("a.nombre");
+                registro[2] = rs.getString("a.apellidos");
+                registro[3] = rs.getString("a.colegiatura");
+                registro[4] = rs.getString("a.num_colegiatura");
+                registro[5] = rs.getString("a.profesion");
+                registro[6] = rs.getString("a.tipo_documento");
+                registro[7] = rs.getString("a.num_documento");
+                registro[8] = rs.getString("con.nombre_consultorio");
+                registro[9] = rs.getString("con.numero_consultorio");
+                registro[10] = rs.getString("con.piso_consultorio");
+
+                registro[11] = rs.getString("c.idpaciente");
+                registro[12] = rs.getString("paciente.historia_clinica");
+                registro[13] = rs.getString("paciente.tipo_documento");
+                registro[14] = rs.getString("paciente.numero_documento");
+                registro[15] = rs.getString("paciente.nombres");
+                registro[16] = rs.getString("paciente.apellido_paterno");
+
+                registro[17] = rs.getString("paciente.apellido_materno");
+                registro[18] = rs.getString("c.costo_consulta");
+                registro[19] = rs.getString("p.tipo_comprobante");
+                registro[20] = rs.getString("p.num_comprobante");
+                registro[21] = rs.getString("p.igv");
+                registro[22] = rs.getString("p.cantidad_pago");
+
+                registro[23] = rs.getString("p.subtotal");
+                registro[24] = rs.getString("p.total");
+                registro[25] = rs.getString("p.vuelto");
+
+                registro[26] = rs.getString("p.fecha_registro");
+                registro[27] = rs.getString("p.hora");
+                registro[28] = rs.getString("p.trabajador");
+
+                totalregistros_total = totalregistros_total + 1;
+                modelo2.addRow(registro);
+
+            }
+            return modelo2;
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e + "ERROR SELECT FPAGO");
+            return null;
+        }
+
+    }
+
     public DefaultTableModel mostrar(String buscar) {
         DefaultTableModel modelo;
 

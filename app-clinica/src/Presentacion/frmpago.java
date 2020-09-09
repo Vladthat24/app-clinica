@@ -16,6 +16,17 @@ import Logica.fconsultorio;
 import Logica.fconsumo;
 import Logica.ffarmacia;
 import Logica.fpago;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.print.PageFormat;
+import java.awt.print.Paper;
+import java.awt.print.Printable;
+import static java.awt.print.Printable.NO_SUCH_PAGE;
+import static java.awt.print.Printable.PAGE_EXISTS;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
@@ -43,7 +54,7 @@ public class frmpago extends javax.swing.JInternalFrame {
     String fecha_final;
     int num_doc;
     int idpago_modelviewclick;
-    
+
     public frmpago() {
         JOptionPane.showMessageDialog(rootPane, "Verificar bien los datos ingresados,no hay opcion a eliminar el pago una vez efectuado");
         initComponents();
@@ -54,21 +65,21 @@ public class frmpago extends javax.swing.JInternalFrame {
         txtidconsultorio.setText(idconsultorio);
         lblconsultorio.setText(consultorio);
         lbltrabajador.setText(acceso);
-        
+
         //costo de la consulta
-        double igv_consulta = totalcaja*0.18;
-        double totalconsulta=totalcaja+igv_consulta;
+        double igv_consulta = totalcaja * 0.18;
+        double totalconsulta = totalcaja + igv_consulta;
         lblcosto_consulta.setText(Double.toString(totalconsulta));
-        
+
         fconsumo func = new fconsumo();
         func.mostrar(idcaja);
-        
+
         //SUB TOTAL DEL CONSUMIDO 
         //sin autmentarle el igv en consulta y medicamentos
         lbloperacion_gravada.setText(Double.toString(totalcaja + func.totalconsumo));
-        
+
     }
-    
+
     public String accion = "guardar";
     private String acceso = frmusuariologin.tablalistado.getValueAt(0, 3).toString();
     public static String idcaja;
@@ -76,20 +87,20 @@ public class frmpago extends javax.swing.JInternalFrame {
     public static String idconsultorio;
     public static String consultorio;
     public static Double totalcaja;
-    
+
     void fecha_actual() {
-        
+
         LocalDate fechaactual = LocalDate.now();
-        
+
         lblfecha_registro.setText(DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH).format(fechaactual));
         LocalDateTime locaDate = LocalDateTime.now();
-        
+
         lblhora.setText(DateTimeFormatter.ofPattern("hh: mm: ss a", Locale.ENGLISH).format(locaDate));
-        
+
     }
-    
+
     void guardar() {
-        
+
         if (txtefectivo_recibido.getText().length() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Debes ingresar el efectivo");
             txtefectivo_recibido.requestFocus();
@@ -100,10 +111,10 @@ public class frmpago extends javax.swing.JInternalFrame {
             txtefectivo_recibido.requestFocus();
             return;
         }
-        
+
         vpago dts = new vpago();
         fpago func = new fpago();
-        
+
         dts.setIdcaja(Integer.parseInt(txtidcaja.getText()));
         int selecc = cbotipocomprobante.getSelectedIndex();
         selecc = cbotipocomprobante.getSelectedIndex();
@@ -117,14 +128,14 @@ public class frmpago extends javax.swing.JInternalFrame {
         dts.setFecha_registro(lblfecha_registro.getText());
         dts.setHora(lblhora.getText());
         dts.setTrabajador(lbltrabajador.getText());
-        
+
         if (accion.equals("guardar")) {
-            
+
             if (func.insertar(dts)) {
                 JOptionPane.showMessageDialog(rootPane, "El Registro fue ingresado exitosamente");
                 mostrar(idcaja);
                 inhabilitar();
-                
+
             }
         } else if (accion.equals("editar")) {
             dts.setIdcaja(Integer.parseInt(txtidcaja.getText()));
@@ -132,42 +143,42 @@ public class frmpago extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "El Registro fue editado exitosamente");
                 mostrar(idcaja);
                 inhabilitar();
-                
+
             }
         }
-        
+
     }
-    
+
     void ocultar_columnas() {
-        
+
         tablalistado.getColumnModel().getColumn(0).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(0).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(0).setPreferredWidth(0);
-        
+
         tablalistado.getColumnModel().getColumn(1).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(1).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(1).setPreferredWidth(0);
-        
+
         tablalistado.getColumnModel().getColumn(4).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(4).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(4).setPreferredWidth(0);
-        
+
         tablalistado.getColumnModel().getColumn(5).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(5).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(5).setPreferredWidth(0);
-        
+
         tablalistado.getColumnModel().getColumn(6).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(6).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(6).setPreferredWidth(0);
-        
+
         tablalistado.getColumnModel().getColumn(8).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(8).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(8).setPreferredWidth(0);
-        
+
     }
-    
+
     void ocultar_columnas_consumo() {
-        
+
         tablalistadoconsumo_pago.getColumnModel().getColumn(0).setMaxWidth(35);
         tablalistadoconsumo_pago.getColumnModel().getColumn(0).setMinWidth(35);
 //        tablalistado.getColumnModel().getColumn(0).setPreferredWidth(35);
@@ -175,18 +186,18 @@ public class frmpago extends javax.swing.JInternalFrame {
         tablalistadoconsumo_pago.getColumnModel().getColumn(1).setMaxWidth(0);
         tablalistadoconsumo_pago.getColumnModel().getColumn(1).setMinWidth(0);
         tablalistadoconsumo_pago.getColumnModel().getColumn(1).setPreferredWidth(0);
-        
+
         tablalistadoconsumo_pago.getColumnModel().getColumn(2).setMaxWidth(0);
         tablalistadoconsumo_pago.getColumnModel().getColumn(2).setMinWidth(0);
         tablalistadoconsumo_pago.getColumnModel().getColumn(2).setPreferredWidth(0);
-        
+
     }
-    
+
     void inhabilitar() {
         txtidpago.setVisible(false);
         txtidcaja.setVisible(false);
         txtidconsultorio.setVisible(false);
-        
+
         lblpaciente.setEnabled(true);
         lblconsultorio.setEnabled(true);
         cbotipocomprobante.setEnabled(false);
@@ -202,24 +213,24 @@ public class frmpago extends javax.swing.JInternalFrame {
         lblhora.setEnabled(false);
         lbltotalregistros.setEnabled(false);
         lblconsumo.setEnabled(false);
-        
+
         btnguardar.setEnabled(false);
         btnimpresora.setEnabled(false);
-        
+
         lblcosto_consulta.setText("");
         txtefectivo_recibido.setText("");
         lbligv.setText("");
         lblsub_total.setText("");
         lbltotal.setText("");
         lblvuelto.setText("");
-        
+
     }
-    
+
     void habilitar() {
         txtidpago.setVisible(false);
         txtidcaja.setVisible(false);
         txtidconsultorio.setVisible(false);
-        
+
         lblpaciente.setEnabled(true);
         lblconsultorio.setEnabled(true);
         cbotipocomprobante.setEnabled(true);
@@ -235,12 +246,12 @@ public class frmpago extends javax.swing.JInternalFrame {
         lblhora.setEnabled(true);
         lbltotalregistros.setEnabled(true);
         lblconsumo.setEnabled(true);
-        
+
         btnguardar.setEnabled(true);
         btnimpresora.setEnabled(true);
-        
+
     }
-    
+
     void mostrar(String buscar) {
         try {
             DefaultTableModel modelo;
@@ -252,12 +263,12 @@ public class frmpago extends javax.swing.JInternalFrame {
             fpago func4 = new fpago();
             modelo2 = func4.mostrarTotal("");
             int n_comprobante = func4.totalregistros_total + 1;
-            
+
             lblnumero_comprobante.setText(String.format("%05d", n_comprobante));
-            
+
             tablalistado.setModel(modelo);
             ocultar_columnas();
-            
+
             lbltotalregistros.setText("Total Pagos " + Integer.toString(func.totalregistros));
 
             //Mostrar los datos de los consumos
@@ -265,15 +276,14 @@ public class frmpago extends javax.swing.JInternalFrame {
             modelo = func2.mostrar(buscar);
             tablalistadoconsumo_pago.setModel(modelo);
             ocultar_columnas_consumo();
-            
+
             lbltotalregistros.setText("Total Consumos " + func2.totalregistros);
-            
+
             //COSTO DEL CONSUMO DE LOS MEDICAMENTOS:
-            double igv_consumo=func2.totalconsumo*0.18;
-            double consumototal_con_igv=func2.totalconsumo+igv_consumo;
+            double igv_consumo = func2.totalconsumo * 0.18;
+            double consumototal_con_igv = func2.totalconsumo + igv_consumo;
             lblconsumo.setText("Consumo de Medicamentos : S/." + consumototal_con_igv);
-                
-            
+
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(rootPane, e);
         }
@@ -769,10 +779,10 @@ public class frmpago extends javax.swing.JInternalFrame {
         fecha_actual();
     }//GEN-LAST:event_btnnuevoActionPerformed
     void actualizarStock() {
-        
+
         int id, cant;
         int valorTabla = tablalistadoconsumo_pago.getRowCount();
-        
+
         if (valorTabla == 0) {
             guardar();
         } else {
@@ -790,7 +800,7 @@ public class frmpago extends javax.swing.JInternalFrame {
                 modelo = f.mostrarID(id);
                 int stock_actual = Integer.parseInt(modelo.getValueAt(0, 4).toString());
                 String nombre_medicamento = modelo.getValueAt(0, 2).toString();
-                
+
                 if (stock_actual == 0) {
                     JOptionPane.showMessageDialog(rootPane, "No cuenta Stock");
                     return;
@@ -799,10 +809,10 @@ public class frmpago extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(rootPane, "Se cuenta con " + stock_actual + " " + nombre_medicamento + " en Almacen");
                     return;
                 }
-                
+
                 int sa = stock_actual - cant;
                 f.actualizarStock(sa, id);
-                
+
             }
             guardar();
         }
@@ -810,7 +820,7 @@ public class frmpago extends javax.swing.JInternalFrame {
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         // TODO add your handling code here:
         actualizarStock();
-        
+
 
     }//GEN-LAST:event_btnguardarActionPerformed
 
@@ -842,9 +852,9 @@ public class frmpago extends javax.swing.JInternalFrame {
         btnguardar.setText("editar");
         habilitar();
         accion = "editar";
-        
+
         int fila = tablalistado.rowAtPoint(evt.getPoint());
-        
+
         txtidpago.setText(tablalistado.getValueAt(fila, 0).toString());
         txtidcaja.setText(tablalistado.getValueAt(fila, 1).toString());
         cbotipocomprobante.setSelectedItem(tablalistado.getValueAt(fila, 2).toString());
@@ -857,44 +867,198 @@ public class frmpago extends javax.swing.JInternalFrame {
         lblfecha_registro.setText(tablalistado.getValueAt(fila, 9).toString());
         lblhora.setText(tablalistado.getValueAt(fila, 10).toString());
         lbltrabajador.setText(tablalistado.getValueAt(fila, 11).toString());
-        
+
         idpago_modelviewclick = Integer.parseInt(txtidpago.getText());
 
     }//GEN-LAST:event_tablalistadoMouseClicked
+    public PageFormat getPageFormat(PrinterJob pj) {
+
+        PageFormat pf = pj.defaultPage();
+        Paper paper = pf.getPaper();
+
+        double middleHeight = 8.0;
+        double headerHeight = 2.0;
+        double footerHeight = 2.0;
+        double width = convert_CM_To_PPI(8);      //printer know only point per inch.default value is 72ppi
+        double height = convert_CM_To_PPI(headerHeight + middleHeight + footerHeight);
+        paper.setSize(width, height);
+        paper.setImageableArea(
+                0,
+                10,
+                width,
+                height - convert_CM_To_PPI(1)
+        );   //define boarder size    after that print area width is about 180 points
+
+        pf.setOrientation(PageFormat.PORTRAIT);           //select orientation portrait or landscape but for this time portrait
+        pf.setPaper(paper);
+
+        return pf;
+    }
+
+    protected static double convert_CM_To_PPI(double cm) {
+        return toPPI(cm * 0.393600787);
+    }
+
+    protected static double toPPI(double inch) {
+        return inch * 72d;
+    }
+
+    public class BillPrintable implements Printable {
+
+        public int print(Graphics graphics, PageFormat pageFormat, int pageIndex)
+                throws PrinterException {
+
+            int result = NO_SUCH_PAGE;
+            if (pageIndex == 0) {
+
+                Graphics2D g2d = (Graphics2D) graphics;
+
+                double width = pageFormat.getImageableWidth();
+
+                g2d.translate((int) pageFormat.getImageableX(), (int) pageFormat.getImageableY());
+
+                ////////// code by alqama//////////////
+                FontMetrics metrics = g2d.getFontMetrics(new Font("Arial", Font.BOLD, 7));
+                //    int idLength=metrics.stringWidth("000000");
+                //int idLength=metrics.stringWidth("00");
+                int idLength = metrics.stringWidth("000");
+                int amtLength = metrics.stringWidth("000000");
+                int qtyLength = metrics.stringWidth("00000");
+                int priceLength = metrics.stringWidth("000000");
+                int prodLength = (int) width - idLength - amtLength - qtyLength - priceLength - 17;
+
+                //    int idPosition=0;
+                //    int productPosition=idPosition + idLength + 2;
+                //    int pricePosition=productPosition + prodLength +10;
+                //    int qtyPosition=pricePosition + priceLength + 2;
+                //    int amtPosition=qtyPosition + qtyLength + 2;
+                int productPosition = 0;
+                int discountPosition = prodLength + 5;
+                int pricePosition = discountPosition + idLength + 10;
+                int qtyPosition = pricePosition + priceLength + 4;
+                int amtPosition = qtyPosition + qtyLength;
+
+                try {
+                    /*Draw Header*/
+                    int y = 20;
+                    int yShift = 10;
+                    int headerRectHeight = 15;
+                    int headerRectHeighta = 40;
+
+                    ///////////////// Product names Get ///////////
+                    fpago f = new fpago();
+                    vpago v = new vpago();
+
+                    DefaultTableModel modelo;
+                    modelo = f.mostrarReporte(idpago_modelviewclick);
+                    
+                    
+                    String pn1a = pn1.getText();
+                    String pn2a = pn2.getText();
+                    String pn3a = pn3.getText();
+                    String pn4a = pn4.getText();
+                    ///////////////// Product names Get ///////////
+
+                    ///////////////// Product price Get ///////////
+                    int pp1a = Integer.valueOf(pp1.getText());
+                    int pp2a = Integer.valueOf(pp2.getText());
+                    int pp3a = Integer.valueOf(pp3.getText());
+                    int pp4a = Integer.valueOf(pp4.getText());
+                    int sum = pp1a + pp2a + pp3a + pp4a;
+                    ///////////////// Product price Get ///////////
+
+                    g2d.setFont(new Font("Monospaced", Font.PLAIN, 9));
+                    g2d.drawString("-------------------------------------", 12, y);
+                    y += yShift;
+                    g2d.drawString("      Restaurant Bill Receipt        ", 12, y);
+                    y += yShift;
+                    g2d.drawString("-------------------------------------", 12, y);
+                    y += headerRectHeight;
+
+                    g2d.drawString("-------------------------------------", 10, y);
+                    y += yShift;
+                    g2d.drawString(" Food Name                 T.Price   ", 10, y);
+                    y += yShift;
+                    g2d.drawString("-------------------------------------", 10, y);
+                    y += headerRectHeight;
+                    g2d.drawString(" " + pn1a + "                  " + pp1a + "  ", 10, y);
+                    y += yShift;
+                    g2d.drawString(" " + pn2a + "                  " + pp2a + "  ", 10, y);
+                    y += yShift;
+                    g2d.drawString(" " + pn3a + "                  " + pp3a + "  ", 10, y);
+                    y += yShift;
+                    g2d.drawString(" " + pn4a + "                  " + pp4a + "  ", 10, y);
+                    y += yShift;
+                    g2d.drawString("-------------------------------------", 10, y);
+                    y += yShift;
+                    g2d.drawString(" Total amount: " + sum + "               ", 10, y);
+                    y += yShift;
+                    g2d.drawString("-------------------------------------", 10, y);
+                    y += yShift;
+                    g2d.drawString("          Free Home Delivery         ", 10, y);
+                    y += yShift;
+                    g2d.drawString("             03111111111             ", 10, y);
+                    y += yShift;
+                    g2d.drawString("*************************************", 10, y);
+                    y += yShift;
+                    g2d.drawString("    THANKS TO VISIT OUR RESTUARANT   ", 10, y);
+                    y += yShift;
+                    g2d.drawString("*************************************", 10, y);
+                    y += yShift;
+
+//            g2d.setFont(new Font("Monospaced",Font.BOLD,10));
+//            g2d.drawString("Customer Shopping Invoice", 30,y);y+=yShift; 
+                } catch (Exception r) {
+                    r.printStackTrace();
+                }
+
+                result = PAGE_EXISTS;
+            }
+            return result;
+        }
+    }
 
     private void btnimpresoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnimpresoraActionPerformed
         // TODO add your handling code here:
-        impPago imprimirPago = new impPago();
-        imprimirPago.ImpPago(idpago_modelviewclick);
+        PrinterJob pj = PrinterJob.getPrinterJob();
+        pj.setPrintable(new BillPrintable(), getPageFormat(pj));
+        try {
+            pj.print();
+
+        } catch (PrinterException ex) {
+            ex.printStackTrace();
+        }
+
+
     }//GEN-LAST:event_btnimpresoraActionPerformed
 
     private void txtefectivo_recibidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtefectivo_recibidoKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
             //SACAR EL IGV DE UN MONTO = TOTAL/1.18;
-            
+
             double subtotal = 0, efectivo_recibido = 0, igv = 0, total = 0, vuelto = 0;
-            
+
             subtotal = Double.parseDouble(lbloperacion_gravada.getText());
             efectivo_recibido = Double.parseDouble(txtefectivo_recibido.getText());
-            
+
             igv = Math.round((subtotal * 0.18) * 100) / 100d;
-            
+
             total = Math.round((subtotal + igv) * 100) / 100d;
-            
+
             if (efectivo_recibido < total) {
                 JOptionPane.showMessageDialog(rootPane, "El Monto Ingresado es Menor al Costo Total");
                 return;
             } else {
-                
+
                 vuelto = Math.round((efectivo_recibido - total) * 100) / 100d;
             }
-            
+
             lbligv.setText(String.valueOf(igv));
             lbloperacion_gravada.setText(String.valueOf(subtotal));
             lblsub_total.setText(String.valueOf(total));
             lbltotal.setText(String.valueOf(total));
             lblvuelto.setText(String.valueOf(vuelto));
-            
+
         }        // TODO add your handling code here:
 
 
