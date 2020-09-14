@@ -66,7 +66,7 @@ public class frmvista_consumo_farmacia extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(90, 173, 167));
+        jPanel1.setBackground(new java.awt.Color(171, 219, 154));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listado de Productos:"));
 
         tablalistado.setBackground(new java.awt.Color(158, 179, 193));

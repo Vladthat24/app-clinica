@@ -12,6 +12,7 @@ import Logica.fcaja;
 import Logica.fcertificado_salud;
 import Logica.fconsultorio;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -19,6 +20,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import reports.reporte_caja;
 
 import reports.reporte_certificado_salud;
 import rpimprimir.imprimir_certificado_salud;
@@ -34,6 +36,7 @@ public class frmcaja extends javax.swing.JInternalFrame {
      */
     String fecha_inicial;
     String fecha_final;
+
     int num_doc;
 
     public frmcaja() {
@@ -131,7 +134,7 @@ public class frmcaja extends javax.swing.JInternalFrame {
 
         tablalistado.getColumnModel().getColumn(5).setMaxWidth(80);
         tablalistado.getColumnModel().getColumn(5).setMinWidth(80);
-        
+
         tablalistado.getColumnModel().getColumn(9).setMaxWidth(50);
         tablalistado.getColumnModel().getColumn(9).setMinWidth(50);
     }
@@ -214,6 +217,10 @@ public class frmcaja extends javax.swing.JInternalFrame {
         lbltotalregistros.setEnabled(true);
 
         txtbuscarnombre.setText("");
+        lblhistoriaclinica.setText("");
+        lbltipodoc.setText("");
+        lblnumero_documento.setText("");
+        lblnombreapellidos.setText("");
         lblnombre_apellidos_asisten.setText("");
         lblcolegiatura.setText("");
         lblnum_colegiatura.setText("");
@@ -610,7 +617,7 @@ public class frmcaja extends javax.swing.JInternalFrame {
         });
 
         btnimpresora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/impresora.png"))); // NOI18N
-        btnimpresora.setText("Imprimir");
+        btnimpresora.setText("Reporte por Rango de Fechas");
         btnimpresora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnimpresoraActionPerformed(evt);
@@ -618,7 +625,7 @@ public class frmcaja extends javax.swing.JInternalFrame {
         });
 
         btnreporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/reporte_2.png"))); // NOI18N
-        btnreporte.setText("Reporte");
+        btnreporte.setText("Reporte del Dia");
         btnreporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnreporteActionPerformed(evt);
@@ -644,9 +651,9 @@ public class frmcaja extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnimpresora, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnimpresora)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnreporte, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnreporte, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblfecha_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
@@ -730,7 +737,7 @@ public class frmcaja extends javax.swing.JInternalFrame {
         txtcosto_consulta.setText(tablalistado.getValueAt(fila, 14).toString());
         lblfecha_registro.setText(tablalistado.getValueAt(fila, 15).toString());
 
-//        fecha_inicial = lblfecha_registro.getText();
+//        fecha_hoy = lblfecha_registro.getText();
 //        fecha_final = lblfecha_registro.getText();
 //        num_doc = Integer.parseInt(lblnum_documento.getText());
     }//GEN-LAST:event_tablalistadoMouseClicked
@@ -760,18 +767,28 @@ public class frmcaja extends javax.swing.JInternalFrame {
 
     private void btnimpresoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnimpresoraActionPerformed
         // TODO add your handling code here:
-        imprimir_certificado_salud gw = new imprimir_certificado_salud();
-        gw.reportePacientes(num_doc);
+        fecha_inicial = JOptionPane.showInputDialog("INGRESE FECHA INICIAL CON FORMATO 00-00-0000");
+        fecha_final = JOptionPane.showInputDialog("INGRESE FECHA FINAL CON FORMATO 00-00-0000");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String fi=formatter.format(fecha_inicial);
+        String ff=formatter.format(fecha_final);
+        System.out.println("" + fi);
+        System.out.println("" + ff);
+
+//        imprimir_certificado_salud gw = new imprimir_certificado_salud();
+//        gw.reportePacientes(num_doc);
 
     }//GEN-LAST:event_btnimpresoraActionPerformed
 
     private void btnreporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreporteActionPerformed
-        // TODO add your handling code here:
+        LocalDate fechaactual = LocalDate.now();
 
-        fecha_inicial = JOptionPane.showInputDialog("Ingresa la fecha inicial dia/mes/año");
-        fecha_final = JOptionPane.showInputDialog("Ingresa la fecha final dia/mes/año");
-        reporte_certificado_salud g = new reporte_certificado_salud();
-        g.reportePacientes(fecha_inicial, fecha_final);
+        String fecha_hoy = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH).format(fechaactual);        // TODO add your handling code here:
+        System.out.println("" + fecha_hoy);
+
+        reporte_caja g = new reporte_caja();
+        g.reportePacientes(fecha_hoy);
+
     }//GEN-LAST:event_btnreporteActionPerformed
 
     private void txtidcajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidcajaActionPerformed

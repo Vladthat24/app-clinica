@@ -610,9 +610,9 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btneliminar" min="-2" pref="119" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnimpresora" min="-2" pref="126" max="-2" attributes="0"/>
+                  <Component id="btnimpresora" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnreporte" min="-2" pref="119" max="-2" attributes="0"/>
+                  <Component id="btnreporte" min="-2" pref="159" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="lblfecha_registro" min="-2" pref="216" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
@@ -702,7 +702,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Files/impresora.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Imprimir"/>
+            <Property name="text" type="java.lang.String" value="Reporte por Rango de Fechas"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnimpresoraActionPerformed"/>
@@ -713,7 +713,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Files/reporte_2.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Reporte"/>
+            <Property name="text" type="java.lang.String" value="Reporte del Dia"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnreporteActionPerformed"/>

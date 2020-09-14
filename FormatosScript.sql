@@ -1,5 +1,15 @@
+/*-----------------------------------------------------
+CODIGO PARA REALIZAR OPERACIONES DE DELETE REGISTRO
+-----------------------------------------------------*/
 SET FOREIGN_KEY_CHECKS = 0;
+
+/*-----------------------------------------------------
+UTILIZAR LA DB
+-----------------------------------------------------*/
 use dbclinica;
+/*-----------------------------------------------------
+REPORTE DE CAJA - CLIENTES
+-----------------------------------------------------*/
 select ca.idcaja,ca.idpaciente,p.historia_clinica,p.tipo_documento,
 		p.numero_documento,p.nombres,p.apellido_paterno,p.apellido_materno,
         ca.idconsultorio,c.idasistencial,a.nombre,
@@ -11,12 +21,16 @@ from tap_caja ca
 left join tap_consultorio c on ca.idconsultorio=c.idconsultorio 
 left join tap_asistenciales a on c.idasistencial=a.idasistenciales
 left join tap_paciente p on ca.idpaciente=p.idpaciente;
-
+/*-----------------------------------------------------
+FUNCION SUMAR STOCK  - TABLA FARMACIA
+-----------------------------------------------------*/
 SELECT * FROM dbclinica.tap_farmacia;
 select sum(stock) from dbclinica.tap_farmacia;
 select (precio_venta*stock) as SubTotal from dbclinica.tap_farmacia;
 
-/*FORMATO FECHA DE LA TABLA FARMACIA*/
+/*-----------------------------------------------------
+FORMATO FECHA DE LA TABLA FARMACIA
+-----------------------------------------------------*/
 select idfarmacia,categoria,nombre,precio_venta,stock,laboratorio,presentacion,fecha_registro,DATE_FORMAT(STR_TO_DATE(REPLACE(fecha_registro,'-','.'),
 GET_FORMAT(date,'EUR')),"%d-%m-%Y"),DATE_FORMAT(fecha_vencimiento, "%d-%m-%Y"),fecha_vencimiento
 from dbclinica.tap_farmacia;
@@ -29,10 +43,10 @@ select c.idconsumo,c.idcaja,c.idfarmacia,f.nombre,c.cantidad,f.precio_venta
 ,c.estado,c.fecha_registro from tap_consumo c 
 inner join tap_farmacia f on c.idfarmacia=f.idfarmacia;
 
-
+/*-----------------------------------------------------
+SELECT DE LAS TABLAS
+-----------------------------------------------------*/
 select * from tap_consultorio;
-
-
 select * from tap_trabajador;
 select * from tap_asistenciales;
 select * from tap_paciente;
@@ -41,32 +55,17 @@ select * from tap_caja;
 select * from tap_farmacia;
 select * from tap_consumo;
 select * from tap_trabajador;
+select * from tap_certificadosalud;
 
-SELECT
-     tap_asistenciales.`idasistenciales` AS tap_asistenciales_idasistenciales,
-     tap_asistenciales.`nombre` AS tap_asistenciales_nombre,
-     tap_asistenciales.`apellidos` AS tap_asistenciales_apellidos,
-     tap_asistenciales.`cargo_institucion` AS tap_asistenciales_cargo_institucion,
-     tap_asistenciales.`modalidad_contrato` AS tap_asistenciales_modalidad_contrato,
-     tap_asistenciales.`colegiatura` AS tap_asistenciales_colegiatura,
-     tap_asistenciales.`num_colegiatura` AS tap_asistenciales_num_colegiatura,
-     tap_asistenciales.`profesion` AS tap_asistenciales_profesion,
-     tap_asistenciales.`tipo_documento` AS tap_asistenciales_tipo_documento,
-     tap_asistenciales.`num_documento` AS tap_asistenciales_num_documento,
-     tap_asistenciales.`celular` AS tap_asistenciales_celular,
-     tap_asistenciales.`email` AS tap_asistenciales_email,
-     tap_asistenciales.`fecha_registro` AS tap_asistenciales_fecha_registro
-FROM
-     `tap_asistenciales` tap_asistenciales
-delete from tap_caja where idcaja=1;
-Update tap_farmacia set stock=? where idfarmacia=1;
-
+/*-----------------------------------------------------
+REPORTE DE PAGO CON IDPAGO- TABLA PAGO
+-----------------------------------------------------*/
 select p.idpago,a.nombre,a.apellidos,a.colegiatura,
 	   a.num_colegiatura,a.profesion,a.tipo_documento,a.num_documento,con.nombre_consultorio,
 	   con.numero_consultorio,con.piso_consultorio,c.idpaciente,paciente.historia_clinica,
-       paciente.tipo_documento,paciente.numero_documento,paciente.nombres,paciente.apellido_paterno,paciente.apellido_materno,c.costo_consulta,
-	   p.tipo_comprobante,p.num_comprobante,p.igv,p.cantidad_pago,
-       p.subtotal,p.total,p.vuelto,p.fecha_registro,p.hora,p.trabajador
+       paciente.tipo_documento,paciente.numero_documento,paciente.nombres,paciente.apellido_paterno,paciente.apellido_materno,CONCAT('S/.',FORMAT(c.costo_consulta,2)) costo_consulta,
+	   p.tipo_comprobante,p.num_comprobante,CONCAT('S./',FORMAT(p.igv,2)) igv,CONCAT('S./',FORMAT(p.cantidad_pago,2)) cantidad_pago,
+       CONCAT('S/.',FORMAT(p.subtotal,2)) subtotal,CONCAT('S/.',FORMAT(p.total,2)) total,CONCAT('S/.',FORMAT(p.vuelto,2)) vuelto,p.fecha_registro,p.hora,p.trabajador
 from tap_pago p 
 inner join tap_caja c 
 on p.idcaja=c.idcaja
@@ -76,4 +75,36 @@ inner join tap_asistenciales a
 on con.idasistencial=a.idasistenciales
 inner join tap_paciente paciente
 on c.idpaciente=paciente.idpaciente
-where idpago=18;
+where idpago=19;
+/*-----------------------------------------------------
+REPORTE DE PAGO CON IDCAJA- TABLA PAGO 
+-----------------------------------------------------*/
+select c.idcaja,p.idpago,a.nombre,a.apellidos,a.colegiatura,
+	   a.num_colegiatura,a.profesion,a.tipo_documento,a.num_documento,con.nombre_consultorio,
+	   con.numero_consultorio,con.piso_consultorio,c.idpaciente,paciente.historia_clinica,
+       paciente.tipo_documento,paciente.numero_documento,paciente.nombres,paciente.apellido_paterno,paciente.apellido_materno,CONCAT('S/.',FORMAT(c.costo_consulta,2)) costo_consulta,
+	   p.tipo_comprobante,p.num_comprobante,CONCAT('S./',FORMAT(p.igv,2)) igv,CONCAT('S./',FORMAT(p.cantidad_pago,2)) cantidad_pago,
+       CONCAT('S/.',FORMAT(p.subtotal,2)) subtotal,CONCAT('S/.',FORMAT(p.total,2)) total,CONCAT('S/.',FORMAT(p.vuelto,2)) vuelto,c.fecha_registro,p.hora,p.trabajador
+from tap_caja c 
+left join tap_pago p 
+on c.idcaja=p.idcaja
+left join tap_consultorio con
+on c.idconsultorio=con.idconsultorio
+left join tap_asistenciales a
+on con.idasistencial=a.idasistenciales
+left join tap_paciente paciente
+on c.idpaciente=paciente.idpaciente
+where DATE_FORMAT( STR_TO_DATE( c.fecha_registro , "%d-%m-%Y" ) , "%d-%m-%Y" ) between '28-08-2020' and '13-09-2020';
+
+select idpago,idcaja,sum(total) from tap_pago;
+select * from tap_paciente where STR_TO_DATE(fecha_registro , "%d-%m-%Y" ) between '2020-08-30' and '2020-08-30';
+
+
+select c.idcertificado_salud,c.idasistenciales,a.nombre,a.apellidos,a.colegiatura,a.num_colegiatura,c.idpaciente,p.historia_clinica,p.tipo_documento,
+p.numero_documento,p.nombres,p.apellido_paterno,p.apellido_materno,p.edad,p.direccion,c.serelogia,examen_rx,c.fecha_registro 
+from tap_certificadosalud c 
+inner join tap_asistenciales a 
+on c.idasistenciales=a.idasistenciales 
+inner join tap_paciente p 
+on c.idpaciente=p.idpaciente
+

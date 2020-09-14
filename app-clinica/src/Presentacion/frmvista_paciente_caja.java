@@ -27,8 +27,9 @@ public class frmvista_paciente_caja extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    void ocultar_columna() {
-        
+
+    void ocultar_columnas() {
+        //idpaciente
         tablalistado.getColumnModel().getColumn(0).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(0).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(0).setPreferredWidth(0);
@@ -86,10 +87,6 @@ public class frmvista_paciente_caja extends javax.swing.JFrame {
         tablalistado.getColumnModel().getColumn(19).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(19).setPreferredWidth(0);
 
-        tablalistado.getColumnModel().getColumn(20).setMaxWidth(0);
-        tablalistado.getColumnModel().getColumn(20).setMinWidth(0);
-        tablalistado.getColumnModel().getColumn(20).setPreferredWidth(0);
-
     }
 
     void mostrar(String buscar) {
@@ -100,7 +97,7 @@ public class frmvista_paciente_caja extends javax.swing.JFrame {
             modelo = func.mostrar(buscar);
 
             tablalistado.setModel(modelo);
-            ocultar_columna();
+            ocultar_columnas();
             lblTotalregistros.setText("Total Registros " + Integer.toString(func.totalregistros));
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(rootPane, e + "ERROR SELECT");
@@ -126,8 +123,8 @@ public class frmvista_paciente_caja extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(90, 173, 167));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listrado Trabajador"));
+        jPanel1.setBackground(new java.awt.Color(171, 219, 154));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listrado de Pacientes:"));
 
         tablalistado.setBackground(new java.awt.Color(158, 179, 193));
         tablalistado.setModel(new javax.swing.table.DefaultTableModel(
@@ -197,23 +194,18 @@ public class frmvista_paciente_caja extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblTotalregistros, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

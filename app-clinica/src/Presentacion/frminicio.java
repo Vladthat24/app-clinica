@@ -50,6 +50,8 @@ public class frminicio extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        mnureportes = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         mnuconfiguraciones = new javax.swing.JMenu();
         menuacceso = new javax.swing.JMenuItem();
         mnusalir = new javax.swing.JMenu();
@@ -180,6 +182,21 @@ public class frminicio extends javax.swing.JFrame {
 
         menuBar.add(mnuregistros);
 
+        mnureportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/reporte_2.png"))); // NOI18N
+        mnureportes.setText("Reportes");
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/Reservas.png"))); // NOI18N
+        jMenuItem2.setText("Reportes Generales");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        mnureportes.add(jMenuItem2);
+
+        menuBar.add(mnureportes);
+
         mnuconfiguraciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/Configuraciones.png"))); // NOI18N
         mnuconfiguraciones.setText("Configuraciones");
 
@@ -296,6 +313,14 @@ public class frminicio extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        frmReportes form = new frmReportes();
+        escritorio.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -340,6 +365,7 @@ public class frminicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
@@ -353,6 +379,7 @@ public class frminicio extends javax.swing.JFrame {
     public static javax.swing.JMenu mnurecepcion;
     private javax.swing.JMenu mnuregistros;
     private javax.swing.JMenu mnuremiciondedoc;
+    private javax.swing.JMenu mnureportes;
     private javax.swing.JMenu mnusalir;
     private javax.swing.JMenu mnusisreserva;
     // End of variables declaration//GEN-END:variables

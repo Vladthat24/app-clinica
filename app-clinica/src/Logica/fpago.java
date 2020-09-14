@@ -79,7 +79,7 @@ public class fpago {
             "Apellido Materno", "Costo Consulta", "Tipo Comprobante", "N° Comprobante", "IGV", "Cantidad Pago",
             "Subtotal", "total", "vuelto", "Fecha Registro", "Hora", "Trabajador"};
 
-        String[] registro = new String[12];
+        String[] registro = new String[29];
 
         totalregistros_total = 0;
         modelo2 = new DefaultTableModel(null, titulos);
@@ -88,9 +88,9 @@ public class fpago {
                 + "a.num_colegiatura,a.profesion,a.tipo_documento,a.num_documento,con.nombre_consultorio,"
                 + "con.numero_consultorio,con.piso_consultorio,c.idpaciente,paciente.historia_clinica,"
                 + "paciente.tipo_documento,paciente.numero_documento,paciente.nombres,"
-                + "paciente.apellido_paterno,paciente.apellido_materno,c.costo_consulta,"
-                + "p.tipo_comprobante,p.num_comprobante,p.igv,p.cantidad_pago,"
-                + "p.subtotal,p.total,p.vuelto,p.fecha_registro,p.hora,p.trabajador "
+                + "paciente.apellido_paterno,paciente.apellido_materno,CONCAT('S/.',FORMAT(c.costo_consulta,2)) costo_consulta,"
+                + "p.tipo_comprobante,p.num_comprobante,CONCAT('S./',FORMAT(p.igv,2)) igv,CONCAT('S./',FORMAT(p.cantidad_pago,2)) cantidad_pago,"
+                + "CONCAT('S/.',FORMAT(p.subtotal,2)) subtotal,CONCAT('S/.',FORMAT(p.total,2)) total,CONCAT('S/.',FORMAT(p.vuelto,2)) vuelto,p.fecha_registro,p.hora,p.trabajador "
                 + "from tap_pago p "
                 + "left join tap_caja c "
                 + "on p.idcaja=c.idcaja "
@@ -99,7 +99,7 @@ public class fpago {
                 + "left join tap_asistenciales a "
                 + "on con.idasistencial=a.idasistenciales "
                 + "left join tap_paciente paciente "
-                + "on c.idpaciente=paciente.idpaciente from tap_pago where idpago= " + idpago + " order by idpago desc";
+                + "on c.idpaciente=paciente.idpaciente where idpago= " + idpago + " order by idpago desc";
 
         try {
             Statement st = cn.createStatement();
@@ -126,15 +126,15 @@ public class fpago {
                 registro[16] = rs.getString("paciente.apellido_paterno");
 
                 registro[17] = rs.getString("paciente.apellido_materno");
-                registro[18] = rs.getString("c.costo_consulta");
+                registro[18] = rs.getString("costo_consulta");
                 registro[19] = rs.getString("p.tipo_comprobante");
                 registro[20] = rs.getString("p.num_comprobante");
-                registro[21] = rs.getString("p.igv");
-                registro[22] = rs.getString("p.cantidad_pago");
+                registro[21] = rs.getString("igv");
+                registro[22] = rs.getString("cantidad_pago");
 
-                registro[23] = rs.getString("p.subtotal");
-                registro[24] = rs.getString("p.total");
-                registro[25] = rs.getString("p.vuelto");
+                registro[23] = rs.getString("subtotal");
+                registro[24] = rs.getString("total");
+                registro[25] = rs.getString("vuelto");
 
                 registro[26] = rs.getString("p.fecha_registro");
                 registro[27] = rs.getString("p.hora");
@@ -147,7 +147,7 @@ public class fpago {
             return modelo2;
 
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e + "ERROR SELECT FPAGO");
+            JOptionPane.showConfirmDialog(null, e + "ERROR SELECT REPORTE PAGO");
             return null;
         }
 

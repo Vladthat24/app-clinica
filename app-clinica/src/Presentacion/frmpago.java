@@ -324,7 +324,6 @@ public class frmpago extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         btnguardar = new javax.swing.JButton();
         btnnuevo = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         lbltrabajador = new javax.swing.JLabel();
@@ -559,13 +558,6 @@ public class frmpago extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Prueba");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -573,12 +565,10 @@ public class frmpago extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 21, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnnuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
@@ -590,8 +580,7 @@ public class frmpago extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnguardar)
-                    .addComponent(btnnuevo)
-                    .addComponent(jButton1))
+                    .addComponent(btnnuevo))
                 .addContainerGap())
         );
 
@@ -869,7 +858,7 @@ public class frmpago extends javax.swing.JInternalFrame {
         lbltrabajador.setText(tablalistado.getValueAt(fila, 11).toString());
 
         idpago_modelviewclick = Integer.parseInt(txtidpago.getText());
-
+        System.out.println("ID PAGO " + idpago_modelviewclick);
     }//GEN-LAST:event_tablalistadoMouseClicked
     public PageFormat getPageFormat(PrinterJob pj) {
 
@@ -940,70 +929,127 @@ public class frmpago extends javax.swing.JInternalFrame {
 
                 try {
                     /*Draw Header*/
-                    int y = 20;
-                    int yShift = 10;
-                    int headerRectHeight = 15;
-                    int headerRectHeighta = 40;
+                    int y = 17;//20
+                    int yShift = 10;//10
+                    int headerRectHeight = 7;//15
+                    int headerRectHeighta = 20;//40
 
-                    ///////////////// Product names Get ///////////
+                    ///////////////// PRODUCT NAMES GET FROM THE TABLE PAGO ID///////////
                     fpago f = new fpago();
                     vpago v = new vpago();
 
                     DefaultTableModel modelo;
                     modelo = f.mostrarReporte(idpago_modelviewclick);
-                    
-                    
-                    String pn1a = pn1.getText();
-                    String pn2a = pn2.getText();
-                    String pn3a = pn3.getText();
-                    String pn4a = pn4.getText();
+                    String idpago, nombre, apellidos, colegiatura, num_colegiatura,
+                            profesion, tipo_documento, num_documento, nombre_consultorio,
+                            numero_consultorio, piso_consultorio, idpaciente,
+                            historia_clinica, tipo_doc, numero_doc,
+                            nombres, apellidosp, apellidosm, costo_consulta,
+                            tipo_comprobante, num_comprobante, igv, cantidad_pago,
+                            subtotal, total, vuelto, hora, fecha_registro, trabajador;
+
+                    idpago = (String) modelo.getValueAt(0, 0);
+                    nombre = (String) modelo.getValueAt(0, 1);
+                    apellidos = (String) modelo.getValueAt(0, 2);
+                    colegiatura = (String) modelo.getValueAt(0, 3);
+                    num_colegiatura = (String) modelo.getValueAt(0, 4);
+                    profesion = (String) modelo.getValueAt(0, 5);
+                    tipo_documento = (String) modelo.getValueAt(0, 6);
+                    num_documento = (String) modelo.getValueAt(0, 7);
+                    nombre_consultorio = (String) modelo.getValueAt(0, 8);
+                    numero_consultorio = (String) modelo.getValueAt(0, 9);
+                    piso_consultorio = (String) modelo.getValueAt(0, 10);
+
+                    idpaciente = (String) modelo.getValueAt(0, 11);
+                    historia_clinica = (String) modelo.getValueAt(0, 12);
+                    tipo_doc = (String) modelo.getValueAt(0, 13);
+                    numero_doc = (String) modelo.getValueAt(0, 14);
+                    nombres = (String) modelo.getValueAt(0, 15);
+                    apellidosp = (String) modelo.getValueAt(0, 16);
+                    apellidosm = (String) modelo.getValueAt(0, 17);
+
+                    costo_consulta = (String) modelo.getValueAt(0, 18);
+                    tipo_comprobante = (String) modelo.getValueAt(0, 19);
+                    num_comprobante = (String) modelo.getValueAt(0, 20);
+                    igv = (String) modelo.getValueAt(0, 21);
+                    cantidad_pago = (String) modelo.getValueAt(0, 22);
+                    subtotal = (String) modelo.getValueAt(0, 23);
+                    total = (String) modelo.getValueAt(0, 24);
+                    vuelto = (String) modelo.getValueAt(0, 25);
+
+                    fecha_registro = (String) modelo.getValueAt(0, 26);
+                    hora = (String) modelo.getValueAt(0, 27);
+                    trabajador = (String) modelo.getValueAt(0, 28);
+
+//                    String pn1a = pn1.getText();
+//                    String pn2a = pn2.getText();
+//                    String pn3a = pn3.getText();
+//                    String pn4a = pn4.getText();
                     ///////////////// Product names Get ///////////
-
                     ///////////////// Product price Get ///////////
-                    int pp1a = Integer.valueOf(pp1.getText());
-                    int pp2a = Integer.valueOf(pp2.getText());
-                    int pp3a = Integer.valueOf(pp3.getText());
-                    int pp4a = Integer.valueOf(pp4.getText());
-                    int sum = pp1a + pp2a + pp3a + pp4a;
+//                    int pp1a = Integer.valueOf(pp1.getText());
+//                    int pp2a = Integer.valueOf(pp2.getText());
+//                    int pp3a = Integer.valueOf(pp3.getText());
+//                    int pp4a = Integer.valueOf(pp4.getText());
+//                    int sum = pp1a + pp2a + pp3a + pp4a;
                     ///////////////// Product price Get ///////////
-
                     g2d.setFont(new Font("Monospaced", Font.PLAIN, 9));
-                    g2d.drawString("-------------------------------------", 12, y);
+                    g2d.drawString("---------------------------- ", 10, y);
                     y += yShift;
-                    g2d.drawString("      Restaurant Bill Receipt        ", 12, y);
+                    g2d.drawString("       CENTRO MEDICO         ", 10, y);
                     y += yShift;
-                    g2d.drawString("-------------------------------------", 12, y);
+                    g2d.drawString("      SANTA SANTISIMA        ", 10, y);
+                    y += yShift;
+                    g2d.drawString("-----------------------------", 10, y);
                     y += headerRectHeight;
-
-                    g2d.drawString("-------------------------------------", 10, y);
+//                    g2d.drawString("-------------------------------------", 10, y);           
+                    g2d.drawString("Tipo Comprobante: " + tipo_comprobante + "", 7, y);
                     y += yShift;
-                    g2d.drawString(" Food Name                 T.Price   ", 10, y);
+                    g2d.drawString("N° Comprobante: " + num_comprobante + "", 7, y);
                     y += yShift;
-                    g2d.drawString("-------------------------------------", 10, y);
-                    y += headerRectHeight;
-                    g2d.drawString(" " + pn1a + "                  " + pp1a + "  ", 10, y);
+                    g2d.drawString("------------------------------", 7, y);
                     y += yShift;
-                    g2d.drawString(" " + pn2a + "                  " + pp2a + "  ", 10, y);
+                    g2d.drawString("Datos del Paciente:                  ", 7, y);
                     y += yShift;
-                    g2d.drawString(" " + pn3a + "                  " + pp3a + "  ", 10, y);
+                    g2d.drawString("Historia Clinica" + historia_clinica + " ", 7, y);
                     y += yShift;
-                    g2d.drawString(" " + pn4a + "                  " + pp4a + "  ", 10, y);
+                    g2d.drawString("Nombre: " + nombres + "              ", 7, y);
                     y += yShift;
-                    g2d.drawString("-------------------------------------", 10, y);
+                    g2d.drawString("Apellidos:" + apellidosp + " " + apellidosm + "", 7, y);
                     y += yShift;
-                    g2d.drawString(" Total amount: " + sum + "               ", 10, y);
+                    g2d.drawString("Tipo Doc: " + tipo_doc + "   ", 7, y);
                     y += yShift;
-                    g2d.drawString("-------------------------------------", 10, y);
+                    g2d.drawString("N° Doc " + numero_doc + "    ", 7, y);
                     y += yShift;
-                    g2d.drawString("          Free Home Delivery         ", 10, y);
+                    g2d.drawString("-----------------------------", 7, y);
                     y += yShift;
-                    g2d.drawString("             03111111111             ", 10, y);
+                    g2d.drawString(" Datos del Consumo:          ", 7, y);
                     y += yShift;
-                    g2d.drawString("*************************************", 10, y);
+                    g2d.drawString("Costo de consulta:" + costo_consulta + " ", 7, y);
                     y += yShift;
-                    g2d.drawString("    THANKS TO VISIT OUR RESTUARANT   ", 10, y);
+                    g2d.drawString("Igv:" + igv + "              ", 7, y);
                     y += yShift;
-                    g2d.drawString("*************************************", 10, y);
+                    g2d.drawString("Efec. Recibido:" + cantidad_pago + "", 7, y);
+                    y += yShift;
+                    g2d.drawString("Sub total:" + subtotal + "   ", 7, y);
+                    y += yShift;
+                    g2d.drawString("Total:" + total + "          ", 7, y);
+                    y += yShift;
+                    g2d.drawString("Vuelto:" + vuelto + "        ", 7, y);
+                    y += yShift;
+                    g2d.drawString("-----------------------------", 7, y);
+                    y += yShift;
+                    g2d.drawString("Fecha:" + fecha_registro + " ", 7, y);
+                    y += yShift;
+                    g2d.drawString("Hora:" + hora + "            ", 7, y);
+                    y += yShift;
+                    g2d.drawString("Operador:" + trabajador + "  ", 7, y);
+                    y += yShift;
+                    g2d.drawString("*****************************", 7, y);
+                    y += yShift;
+                    g2d.drawString("   GRACIAS POR SU VISITA     ", 7, y);
+                    y += yShift;
+                    g2d.drawString("*****************************", 7, y);
                     y += yShift;
 
 //            g2d.setFont(new Font("Monospaced",Font.BOLD,10));
@@ -1019,7 +1065,7 @@ public class frmpago extends javax.swing.JInternalFrame {
     }
 
     private void btnimpresoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnimpresoraActionPerformed
-        // TODO add your handling code here:
+        //RTTODO add your handling code here:
         PrinterJob pj = PrinterJob.getPrinterJob();
         pj.setPrintable(new BillPrintable(), getPageFormat(pj));
         try {
@@ -1029,6 +1075,82 @@ public class frmpago extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
+//        fpago f = new fpago();
+//        vpago v = new vpago();
+//
+//        DefaultTableModel modelo;
+//        modelo = f.mostrarReporte(idpago_modelviewclick);
+//        String idpago, nombre, apellidos, colegiatura, num_colegiatura,
+//                profesion, tipo_documento, num_documento, nombre_consultorio,
+//                numero_consultorio, piso_consultorio, idpaciente,
+//                historia_clinica, tipo_doc, numero_doc,
+//                nombres, apellidosp, apellidosm, costo_consulta,
+//                tipo_comprobante, num_comprobante, igv, cantidad_pago,
+//                subtotal, total, vuelto, hora, fecha_registro, trabajador;
+//
+//        idpago = (String) modelo.getValueAt(0, 0);
+//        nombre = (String) modelo.getValueAt(0, 1);
+//        apellidos = (String) modelo.getValueAt(0, 2);
+//        colegiatura = (String) modelo.getValueAt(0, 3);
+//        num_colegiatura = (String) modelo.getValueAt(0, 4);
+//        profesion = (String) modelo.getValueAt(0, 5);
+//        tipo_documento = (String) modelo.getValueAt(0, 6);
+//        num_documento = (String) modelo.getValueAt(0, 7);
+//        nombre_consultorio = (String) modelo.getValueAt(0, 8);
+//        numero_consultorio = (String) modelo.getValueAt(0, 9);
+//        piso_consultorio = (String) modelo.getValueAt(0, 10);
+//
+//        idpaciente = (String) modelo.getValueAt(0, 11);
+//        historia_clinica = (String) modelo.getValueAt(0, 12);
+//        tipo_doc = (String) modelo.getValueAt(0, 13);
+//        numero_doc = (String) modelo.getValueAt(0, 14);
+//        nombres = (String) modelo.getValueAt(0, 15);
+//        apellidosp = (String) modelo.getValueAt(0, 16);
+//
+//        apellidosm = (String) modelo.getValueAt(0, 17);
+//        costo_consulta = (String) modelo.getValueAt(0, 18);
+//        tipo_comprobante = (String) modelo.getValueAt(0, 19);
+//        num_comprobante = (String) modelo.getValueAt(0, 20);
+//        igv = (String) modelo.getValueAt(0, 21);
+//        cantidad_pago = (String) modelo.getValueAt(0, 22);
+//
+//        subtotal = (String) modelo.getValueAt(0, 23);
+//        total = (String) modelo.getValueAt(0, 24);
+//        vuelto = (String) modelo.getValueAt(0, 25);
+//
+//        fecha_registro = (String) modelo.getValueAt(0, 26);
+//        hora = (String) modelo.getValueAt(0, 27);
+//        trabajador = (String) modelo.getValueAt(0, 28);
+//
+//        System.out.println("Id pago" + idpago);
+//        System.out.println("Id pago" + nombre);
+//        System.out.println("Id pago" + apellidos);
+//        System.out.println("Id pago" + colegiatura);
+//        System.out.println("Id pago" + num_colegiatura);
+//        System.out.println("Id pago" + profesion);
+//        System.out.println("Id pago" + tipo_documento);
+//        System.out.println("Id pago" + num_documento);
+//        System.out.println("Id pago" + nombre_consultorio);
+//        System.out.println("Id pago" + numero_consultorio);
+//        System.out.println("Id pago" + piso_consultorio);
+//        System.out.println("Id pago" + idpaciente);
+//        System.out.println("Id pago" + historia_clinica);
+//        System.out.println("Id pago" + tipo_doc);
+//        System.out.println("Id pago" + numero_doc);
+//        System.out.println("Id pago" + nombres);
+//        System.out.println("Id pago" + apellidosp);
+//        System.out.println("Id pago" + apellidosm);
+//        System.out.println("Id pago" + costo_consulta);
+//        System.out.println("Id pago" + tipo_comprobante);
+//        System.out.println("Id pago" + num_comprobante);
+//        System.out.println("Id pago" + igv);
+//        System.out.println("Id pago" + cantidad_pago);
+//        System.out.println("Id pago" + subtotal);
+//        System.out.println("Id pago" + total);
+//        System.out.println("Id pago" + vuelto);
+//        System.out.println("Id pago" + fecha_registro);
+//        System.out.println("Id pago" + hora);
+//        System.out.println("Id pago" + trabajador);
 
     }//GEN-LAST:event_btnimpresoraActionPerformed
 
@@ -1063,12 +1185,6 @@ public class frmpago extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_txtefectivo_recibidoKeyPressed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-
-        actualizarStock();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1111,7 +1227,6 @@ public class frmpago extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnimpresora;
     private javax.swing.JButton btnnuevo;
     private javax.swing.JComboBox<String> cbotipocomprobante;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

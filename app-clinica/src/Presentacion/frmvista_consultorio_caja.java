@@ -82,8 +82,8 @@ public class frmvista_consultorio_caja extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(90, 173, 167));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listrado de Asistenciales"));
+        jPanel1.setBackground(new java.awt.Color(171, 219, 154));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listrado de Consultorios"));
 
         tablalistado.setBackground(new java.awt.Color(158, 179, 193));
         tablalistado.setModel(new javax.swing.table.DefaultTableModel(
