@@ -34,11 +34,11 @@ public class impHistoriaClinica {
         try {
 
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
-                    + "/src/reports/impHistoriaClinicaII.jrxml");
+                    + "/src/rpimprimir/impHistoriaClinicaII.jrxml");
             p.put("idpaciente", idpaciente);
             print = JasperFillManager.fillReport(report, p, connection);
             JasperViewer view = new JasperViewer(print, false);
-            view.setTitle(".: Historia Clinica :.");
+            view.setTitle("Centro Medico - Maria Santisima");
             view.setVisible(true);
 
         } catch (Exception e) {
@@ -47,27 +47,27 @@ public class impHistoriaClinica {
 
     }
 
-    public void ReporteHistoriaClinica(String fecha_inicial, String fecha_final) {
-        Map p = new HashedMap();
-
-        JasperReport report;
-        JasperPrint print;
-        try {
-
-            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
-                    + "/src/reports/rpHistoriaClinica.jrxml");
-            p.put("fecha_inicial", fecha_inicial);
-            p.put("fecha_final", fecha_final);
-            print = JasperFillManager.fillReport(report, p, connection);
-            JasperViewer view = new JasperViewer(print, false);
-            view.setTitle("C.M.I. Daniel Alcides Carrion");
-            view.setVisible(true);
-
-        } catch (Exception e) {
-            System.out.println("error " + e);
-        }
-
-    }
+//    public void ReporteHistoriaClinica(String fecha_inicial, String fecha_final) {
+//        Map p = new HashedMap();
+//
+//        JasperReport report;
+//        JasperPrint print;
+//        try {
+//
+//            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+//                    + "/src/reports/rpHistoriaClinica.jrxml");
+//            p.put("fecha_inicial", fecha_inicial);
+//            p.put("fecha_final", fecha_final);
+//            print = JasperFillManager.fillReport(report, p, connection);
+//            JasperViewer view = new JasperViewer(print, false);
+//            view.setTitle("C.M.I. Daniel Alcides Carrion");
+//            view.setVisible(true);
+//
+//        } catch (Exception e) {
+//            System.out.println("error " + e);
+//        }
+//
+//    }
 }
 
 

@@ -8,7 +8,10 @@ package Presentacion;
 import Datos.vcertificado_salud;
 import Logica.fcertificado_salud;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,41 +39,11 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
     public String accion = "guardar";
 
     void fecha_actual() {
-        int agosto=8;
-        int septiembre=9;
-        Calendar today = Calendar.getInstance();
-        int fhoy_dia = today.get(Calendar.DAY_OF_MONTH);
-        int fhoy_mes = today.get(Calendar.MONTH) + 1;
-        String mes = null;
-        if (fhoy_mes == 01) {
-            mes = "Enero";
-        } else if (fhoy_mes == 02) {
-            mes = "Febreso";
-        } else if (fhoy_mes == 03) {
-            mes = "Marzo";
-        } else if (fhoy_mes == 04) {
-            mes = "Abril";
-        } else if (fhoy_mes == 05) {
-            mes = "Mayo";
-        } else if (fhoy_mes == 06) {
-            mes = "Junio";
-        } else if (fhoy_mes == 07) {
-            mes = "Julio";
-        }else if(fhoy_mes==agosto){
-            mes="Agosto";
-        }else if(fhoy_mes==septiembre){
-            mes="Septiembre";
-        }
-        else if (fhoy_mes == 10) {
-            mes = "Octubre";
-        } else if (fhoy_mes == 11) {
-            mes = "Noviembre";
-        } else if (fhoy_mes == 12) {
-            mes = "Diciembre";
-        }
-        int fhoy_year = today.get(Calendar.YEAR);
 
-        lblfecha_registro.setText(fhoy_dia + " de " + mes + " del " + fhoy_year);
+        LocalDate fechaactual = LocalDate.now();
+
+        lblfecha_registro.setText(DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH).format(fechaactual));
+
     }
 
     void guardar() {
@@ -155,8 +128,10 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         txtidcertificado_salud.setVisible(false);
         txtidasistenciales.setVisible(false);
         txtidpaciente.setVisible(false);
-
-       
+//       
+//        txtserologia.setEnabled(false);
+//        txtexamenrx.setEnabled(false);
+//       
         txtserologia.setEnabled(false);
         txtexamenrx.setEnabled(false);
 
@@ -167,7 +142,7 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         btneliminar.setEnabled(false);
         btnasistencial.setEnabled(false);
         btnimpresora.setEnabled(false);
-        btnreporte.setEnabled(false);
+
         lbltotalregistros.setEnabled(false);
 
         lblnombre.setText("");
@@ -192,6 +167,10 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         txtidasistenciales.setVisible(false);
         txtidpaciente.setVisible(false);
 
+//       
+//        txtserologia.setEnabled(false);
+//        txtexamenrx.setEnabled(false);
+//
 
         txtserologia.setEnabled(true);
         txtexamenrx.setEnabled(true);
@@ -203,7 +182,7 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         btneliminar.setEnabled(true);
         btnasistencial.setEnabled(true);
         btnimpresora.setEnabled(true);
-        btnreporte.setEnabled(true);
+
 
         lbltotalregistros.setEnabled(true);
 
@@ -255,13 +234,13 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         btnnuevo = new javax.swing.JButton();
         btnguardar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        txtserologia = new javax.swing.JTextField();
-        txtexamenrx = new javax.swing.JTextField();
         lblfecha_registro = new javax.swing.JLabel();
         btnasistencial = new javax.swing.JButton();
         lblnombre_apellidos_asisten = new javax.swing.JLabel();
         lblnum_colegiatura = new javax.swing.JLabel();
         lblcolegiatura = new javax.swing.JLabel();
+        txtexamenrx = new javax.swing.JTextField();
+        txtserologia = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         btnpaciente = new javax.swing.JButton();
         lblnombre = new javax.swing.JLabel();
@@ -281,7 +260,6 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         btnbuscar = new javax.swing.JButton();
         btneliminar = new javax.swing.JButton();
         btnimpresora = new javax.swing.JButton();
-        btnreporte = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -312,24 +290,6 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(78, 150, 203));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Asistencial:"));
 
-        txtserologia.setEditable(false);
-        txtserologia.setBackground(new java.awt.Color(78, 150, 203));
-        txtserologia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Serologia:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-        txtserologia.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtserologiaKeyTyped(evt);
-            }
-        });
-
-        txtexamenrx.setEditable(false);
-        txtexamenrx.setBackground(new java.awt.Color(78, 150, 203));
-        txtexamenrx.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Examen RX:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-        txtexamenrx.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtexamenrxKeyTyped(evt);
-            }
-        });
-
         lblfecha_registro.setBackground(new java.awt.Color(158, 179, 193));
         lblfecha_registro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de Registro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
@@ -349,26 +309,32 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         lblcolegiatura.setBackground(new java.awt.Color(158, 179, 193));
         lblcolegiatura.setBorder(javax.swing.BorderFactory.createTitledBorder("Colegiatura"));
 
+        txtexamenrx.setBackground(new java.awt.Color(78, 150, 203));
+        txtexamenrx.setBorder(javax.swing.BorderFactory.createTitledBorder("Examen RX:"));
+
+        txtserologia.setBackground(new java.awt.Color(78, 150, 203));
+        txtserologia.setBorder(javax.swing.BorderFactory.createTitledBorder("Serologia:"));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblnombre_apellidos_asisten, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblfecha_registro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblcolegiatura, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblnombre_apellidos_asisten, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblfecha_registro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblcolegiatura, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtexamenrx, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblnum_colegiatura, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnasistencial))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtexamenrx, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtserologia, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lblnum_colegiatura, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnasistencial))
+                            .addComponent(txtserologia))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -381,9 +347,9 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
                     .addComponent(btnasistencial, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblcolegiatura, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtexamenrx, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtserologia, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtexamenrx, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                    .addComponent(txtserologia))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblfecha_registro, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
         );
@@ -567,13 +533,6 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
             }
         });
 
-        btnreporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/reporte_2.png"))); // NOI18N
-        btnreporte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnreporteActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -586,7 +545,6 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnimpresora, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnreporte, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -602,9 +560,7 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
                         .addComponent(btneliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnimpresora)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnreporte)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -633,8 +589,6 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(registro, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -720,39 +674,6 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnimpresoraActionPerformed
 
-    private void btnreporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreporteActionPerformed
-        // TODO add your handling code here:
-
-        fecha_inicial = JOptionPane.showInputDialog("Ingresa la fecha inicial dia/mes/año");
-        fecha_final = JOptionPane.showInputDialog("Ingresa la fecha final dia/mes/año");
-        reporte_certificado_salud g = new reporte_certificado_salud();
-        g.reportePacientes(fecha_inicial, fecha_final);
-    }//GEN-LAST:event_btnreporteActionPerformed
-
-    private void txtserologiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtserologiaKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        int limite = 30;
-        if (Character.isDigit(c)) {
-            evt.consume();
-        }
-        if (txtserologia.getText().length() == limite) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtserologiaKeyTyped
-
-    private void txtexamenrxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtexamenrxKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        int limite = 50;
-        if (Character.isDigit(c)) {
-            evt.consume();
-        }
-        if (txtexamenrx.getText().length() == limite) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtexamenrxKeyTyped
-
     private void btnpacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpacienteActionPerformed
         // TODO add your handling code here:
         
@@ -815,7 +736,6 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnimpresora;
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton btnpaciente;
-    private javax.swing.JButton btnreporte;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -836,10 +756,10 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbltotalregistros;
     private javax.swing.JTabbedPane registro;
     private javax.swing.JTable tablalistado;
-    public static javax.swing.JTextField txtexamenrx;
+    private javax.swing.JTextField txtexamenrx;
     public static javax.swing.JTextField txtidasistenciales;
     private javax.swing.JTextField txtidcertificado_salud;
     public static javax.swing.JTextField txtidpaciente;
-    public static javax.swing.JTextField txtserologia;
+    private javax.swing.JTextField txtserologia;
     // End of variables declaration//GEN-END:variables
 }

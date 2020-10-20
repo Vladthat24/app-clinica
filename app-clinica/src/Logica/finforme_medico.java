@@ -72,8 +72,8 @@ public class finforme_medico {
     }
 
     public boolean insertar(vinforme_medico dts) {
-        sql = "insert into tap_informemedico (idasistenciales,idpaciente,diagnostico,fecha_registro)"
-                + "values (?,?,?,?)";
+        sql = "insert into tap_informemedico (idasistenciales,idpaciente,diagnostico,fecha_registro,fecha_system)"
+                + "values (?,?,?,?,?)";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
 
@@ -81,6 +81,7 @@ public class finforme_medico {
             pst.setInt(2, dts.getIdpaciente());
             pst.setString(3, dts.getDiagnostico());
             pst.setString(4, dts.getFecha_registro());
+            pst.setString(5, dts.getFecha_system());
 
             int n = pst.executeUpdate();
             if (n != 0) {

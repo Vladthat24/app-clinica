@@ -20,11 +20,14 @@ import static Presentacion.frmcertificado_salud.lblnombre_apellidos_asisten;
 import static Presentacion.frmcertificado_salud.lblnum_colegiatura;
 import static Presentacion.frmcertificado_salud.lblnum_documento;
 import static Presentacion.frmcertificado_salud.lbltipodoc;
-import static Presentacion.frmcertificado_salud.txtexamenrx;
+//import static Presentacion.frmcertificado_salud.txtexamenrx;
 import static Presentacion.frmcertificado_salud.txtidasistenciales;
 import static Presentacion.frmcertificado_salud.txtidpaciente;
-import static Presentacion.frmcertificado_salud.txtserologia;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+//import static Presentacion.frmcertificado_salud.txtserologia;
 import java.util.Calendar;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import rpimprimir.imprimir_informe_medico;
@@ -51,6 +54,13 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
         txtAreaDiagnostico.setWrapStyleWord(true);
     }
     public String accion = "guardar";
+
+    void fecha_system() {
+        LocalDate fechaactual = LocalDate.now();
+
+        lblfecha_system.setText(DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH).format(fechaactual));
+
+    }
 
     void fecha_actual() {
         int agosto = 8;
@@ -105,6 +115,7 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
         dts.setIdpaciente(Integer.parseInt(txtidpaciente.getText()));
         dts.setDiagnostico(txtAreaDiagnostico.getText());
         dts.setFecha_registro(lblfecha_registro.getText());
+        dts.setFecha_system(lblfecha_system.getText() );
 
         if (accion.equals("guardar")) {
             if (func.insertar(dts)) {
@@ -172,7 +183,7 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
         txtidinforme_medico.setVisible(false);
         txtidasistenciales.setVisible(false);
         txtidpaciente.setVisible(false);
-
+        lblfecha_system.setVisible(false);
         txtAreaDiagnostico.setEnabled(false);
 
         btnpaciente.setEnabled(false);
@@ -181,7 +192,7 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
         btneliminar.setEnabled(false);
         btnasistencial.setEnabled(false);
         btnimpresora.setEnabled(false);
-        btnreporte.setEnabled(false);
+
         lbltotalregistros.setEnabled(false);
 
         lblnombre.setText("");
@@ -204,6 +215,7 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
         txtidinforme_medico.setVisible(false);
         txtidasistenciales.setVisible(false);
         txtidpaciente.setVisible(false);
+        lblfecha_system.setVisible(false);
 
         txtAreaDiagnostico.setEnabled(true);
 
@@ -212,7 +224,7 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
         btneliminar.setEnabled(true);
         btnasistencial.setEnabled(true);
         btnimpresora.setEnabled(true);
-        btnreporte.setEnabled(true);
+
         lbltotalregistros.setEnabled(true);
         btnpaciente.setEnabled(true);
 
@@ -281,6 +293,7 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
         txtidpaciente = new javax.swing.JTextField();
         txtidinforme_medico = new javax.swing.JTextField();
         txtidasistenciales = new javax.swing.JTextField();
+        lblfecha_system = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablalistado = new javax.swing.JTable();
@@ -288,7 +301,6 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
         btnbuscar = new javax.swing.JButton();
         btneliminar = new javax.swing.JButton();
         btnimpresora = new javax.swing.JButton();
-        btnreporte = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -472,6 +484,8 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
             }
         });
 
+        lblfecha_system.setBorder(new javax.swing.border.MatteBorder(null));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -491,7 +505,10 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
                             .addComponent(txtidpaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(txtidasistenciales, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtidasistenciales, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(427, 427, 427)
+                        .addComponent(lblfecha_system, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -501,7 +518,9 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 12, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -513,8 +532,9 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtidpaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtidasistenciales, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 12, Short.MAX_VALUE))
+                                .addComponent(txtidasistenciales, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblfecha_system, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         registro.addTab("Registro de Certificados", jPanel1);
@@ -564,13 +584,6 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
             }
         });
 
-        btnreporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/reporte_2.png"))); // NOI18N
-        btnreporte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnreporteActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -583,7 +596,6 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnimpresora, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnreporte, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(8, Short.MAX_VALUE))
@@ -597,9 +609,7 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
                 .addComponent(btneliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnimpresora)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnreporte)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -642,6 +652,7 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
         btnguardar.setText("Guardar");
         accion = "guardar";
         fecha_actual();
+        fecha_system();
     }//GEN-LAST:event_btnnuevoActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
@@ -727,15 +738,6 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnimpresoraActionPerformed
 
-    private void btnreporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreporteActionPerformed
-        // TODO add your handling code here:
-
-        fecha_inicial = JOptionPane.showInputDialog("Ingresa la fecha inicial dia/mes/año");
-        fecha_final = JOptionPane.showInputDialog("Ingresa la fecha final dia/mes/año");
-        reporte_informe_medico g = new reporte_informe_medico();
-        g.reportePacientes(fecha_inicial, fecha_final);
-    }//GEN-LAST:event_btnreporteActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -780,7 +782,6 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnimpresora;
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton btnpaciente;
-    private javax.swing.JButton btnreporte;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -792,6 +793,7 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
     public static javax.swing.JLabel lbldireccion;
     public static javax.swing.JLabel lbledad;
     public static javax.swing.JLabel lblfecha_registro;
+    private javax.swing.JLabel lblfecha_system;
     public static javax.swing.JLabel lblhistoriaclinica;
     public static javax.swing.JLabel lblnombre;
     public static javax.swing.JLabel lblnombre_apellidos_asisten;

@@ -24,11 +24,12 @@ public class vasistenciales {
     private String celular;
     private String email;
     private String fecha_registro;
+    private String fecha_system;
 
     public vasistenciales() {
     }
 
-    public vasistenciales(int idasistenciales, String nombre, String apellidos, String cargo_institucion, String modalidad_contrato, String colegiatura, String num_colegiatura, String profesion, String tipo_documento, String num_documento, String celular, String email, String fecha_registro) {
+    public vasistenciales(int idasistenciales, String nombre, String apellidos, String cargo_institucion, String modalidad_contrato, String colegiatura, String num_colegiatura, String profesion, String tipo_documento, String num_documento, String celular, String email, String fecha_registro, String fecha_system) {
         this.idasistenciales = idasistenciales;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -42,6 +43,7 @@ public class vasistenciales {
         this.celular = celular;
         this.email = email;
         this.fecha_registro = fecha_registro;
+        this.fecha_system = fecha_system;
     }
 
     public int getIdasistenciales() {
@@ -148,7 +150,14 @@ public class vasistenciales {
         this.fecha_registro = fecha_registro;
     }
 
+    public String getFecha_system() {
+        return fecha_system;
+    }
 
-    
+    public void setFecha_system(String fecha_system) {
+        this.fecha_system = fecha_system;
+    }
+
+   
     
 }

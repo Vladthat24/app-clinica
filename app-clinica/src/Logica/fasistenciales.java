@@ -82,8 +82,8 @@ public class fasistenciales {
         sql = "insert into tap_asistenciales (nombre,apellidos,"
                 + "cargo_institucion,modalidad_contrato,colegiatura,"
                 + "num_colegiatura,profesion,tipo_documento,"
-                + "num_documento,celular,email,fecha_registro)"
-                + "values (?,?,?,?,?,?,?,?,?,?,?,?)";
+                + "num_documento,celular,email,fecha_registro,fecha_system)"
+                + "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
 
@@ -99,6 +99,7 @@ public class fasistenciales {
             pst.setString(10, dts.getCelular());
             pst.setString(11, dts.getEmail());
             pst.setString(12, dts.getFecha_registro());
+            pst.setString(13, dts.getFecha_system());
 
             int n = pst.executeUpdate();
             if (n != 0) {

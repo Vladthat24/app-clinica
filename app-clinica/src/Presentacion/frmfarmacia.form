@@ -32,7 +32,6 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -82,7 +81,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <EmptySpace pref="21" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtcategoria" alignment="3" min="-2" pref="62" max="-2" attributes="0"/>
                       <Component id="txtnombre" alignment="3" min="-2" pref="62" max="-2" attributes="0"/>
@@ -262,9 +261,7 @@
                           <Component id="btneliminar" min="-2" pref="91" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnreportes" min="-2" pref="129" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnreportefechas" min="-2" pref="129" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
                           <Component id="btnnuevo" min="-2" pref="109" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnguardar" min="-2" max="-2" attributes="0"/>
@@ -289,7 +286,6 @@
                           <Component id="btnreportes" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnnuevo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnguardar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnreportefechas" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="lblfecharegistro" alignment="1" max="32767" attributes="0"/>
                       <Component id="lbltotalregistros" alignment="1" max="32767" attributes="0"/>
@@ -439,22 +435,6 @@
           </Properties>
           <Events>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtbuscarnombreKeyReleased"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnreportefechas">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Files/reporte_2.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Por Fechas"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder/>
-              </Border>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnreportefechasActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

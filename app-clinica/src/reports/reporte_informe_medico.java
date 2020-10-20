@@ -25,7 +25,7 @@ public class reporte_informe_medico {
 
     public Connection connection = new conexion().conectar();
 
-    public void reportePacientes(String fecha_incial, String fecha_final) {
+    public void reporteInfoMedicoPorFechas(String fecha_incial, String fecha_final) {
         Map p = new HashedMap();
 
         JasperReport report;
@@ -38,7 +38,7 @@ public class reporte_informe_medico {
             p.put("fecha_final", fecha_final);
             print = JasperFillManager.fillReport(report, p, connection);
             JasperViewer view = new JasperViewer(print, false);
-            view.setTitle("C.M.I. Daniel Alcides Carrion");
+             view.setTitle("Centro Medico - Maria Santisima");
             view.setVisible(true);
 
         } catch (Exception e) {

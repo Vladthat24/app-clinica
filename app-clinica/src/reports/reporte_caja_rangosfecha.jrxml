@@ -159,6 +159,13 @@ where STR_TO_DATE( c.fecha_registro , "%d-%m-%Y" )between $P{fecha_inicial} and 
 				</textElement>
 				<text><![CDATA[MARIA SANTISIMA]]></text>
 			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="1" y="62" width="196" height="22" forecolor="#000000" uuid="51d639e0-4d9a-40d8-8671-a3befb9f93d8"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[REPORTE- CAJA]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>

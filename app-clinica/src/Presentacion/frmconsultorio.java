@@ -123,8 +123,8 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
         btnbuscar.setEnabled(false);
         btneliminar.setEnabled(false);
         btnasistencial.setEnabled(false);
-        btnimpresora.setEnabled(false);
-        btnreporte.setEnabled(false);
+
+
         lbltotalregistros.setEnabled(false);
 
         txtnombreconsultorio.setText("");
@@ -153,8 +153,8 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
         btnbuscar.setEnabled(true);
         btneliminar.setEnabled(true);
         btnasistencial.setEnabled(true);
-        btnimpresora.setEnabled(true);
-        btnreporte.setEnabled(true);
+ 
+
         lbltotalregistros.setEnabled(true);
 
         txtnombreconsultorio.setText("");
@@ -212,8 +212,6 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
         lbltotalregistros = new javax.swing.JLabel();
         btnbuscar = new javax.swing.JButton();
         btneliminar = new javax.swing.JButton();
-        btnimpresora = new javax.swing.JButton();
-        btnreporte = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -430,20 +428,6 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
             }
         });
 
-        btnimpresora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/impresora.png"))); // NOI18N
-        btnimpresora.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnimpresoraActionPerformed(evt);
-            }
-        });
-
-        btnreporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/reporte_2.png"))); // NOI18N
-        btnreporte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnreporteActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -455,8 +439,6 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 825, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnimpresora, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnreporte, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -470,10 +452,7 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
                         .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btneliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnimpresora)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnreporte))
+                        .addGap(100, 100, 100))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbltotalregistros, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -501,8 +480,8 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(registro, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(registro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2))
         );
 
         pack();
@@ -575,22 +554,6 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
         from.toFront();
         from.setVisible(true);
     }//GEN-LAST:event_btnasistencialActionPerformed
-
-    private void btnimpresoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnimpresoraActionPerformed
-        // TODO add your handling code here:
-        imprimir_certificado_salud gw = new imprimir_certificado_salud();
-        gw.reportePacientes(num_doc);
-
-    }//GEN-LAST:event_btnimpresoraActionPerformed
-
-    private void btnreporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreporteActionPerformed
-        // TODO add your handling code here:
-
-        fecha_inicial = JOptionPane.showInputDialog("Ingresa la fecha inicial dia/mes/año");
-        fecha_final = JOptionPane.showInputDialog("Ingresa la fecha final dia/mes/año");
-        reporte_certificado_salud g = new reporte_certificado_salud();
-        g.reportePacientes(fecha_inicial, fecha_final);
-    }//GEN-LAST:event_btnreporteActionPerformed
 
     private void txtnumeroconsultorioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnumeroconsultorioKeyTyped
         // TODO add your handling code here:
@@ -675,9 +638,7 @@ public class frmconsultorio extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnguardar;
-    private javax.swing.JButton btnimpresora;
     private javax.swing.JButton btnnuevo;
-    private javax.swing.JButton btnreporte;
     private javax.swing.JComboBox<String> cbopiso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

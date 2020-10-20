@@ -11,10 +11,13 @@ import Logica.ftrabajador;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import reports.reporte_regadministrativo;
+
 
 /**
  *
@@ -35,12 +38,19 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
     }
     private String accion = "guardar";
 
+//    void fecha_actual() {
+//        Calendar today = Calendar.getInstance();
+//        int fhoy_dia = today.get(Calendar.DAY_OF_MONTH);
+//        int fhoy_mes = today.get(Calendar.MONTH) + 1;
+//        int fhoy_year = today.get(Calendar.YEAR);
+//        lblfecha_registro.setText(fhoy_dia + "-" + fhoy_mes + "-" + fhoy_year);
+//    }
     void fecha_actual() {
-        Calendar today = Calendar.getInstance();
-        int fhoy_dia = today.get(Calendar.DAY_OF_MONTH);
-        int fhoy_mes = today.get(Calendar.MONTH) + 1;
-        int fhoy_year = today.get(Calendar.YEAR);
-        lblfecha_registro.setText(fhoy_dia + "/" + fhoy_mes + "/" + fhoy_year);
+
+        LocalDate fechaactual = LocalDate.now();
+
+        lblfecha_registro.setText(DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH).format(fechaactual));
+
     }
 
     void ocultar_columnas() {
@@ -92,7 +102,6 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         btneliminar.setEnabled(false);
         btnbuscar.setEnabled(false);
 
-
         txtidtrabajador.setText("");
         txtnombre.setText("");
         txtapaterno.setText("");
@@ -124,7 +133,6 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         btnguardar.setEnabled(true);
         btneliminar.setEnabled(true);
         btnbuscar.setEnabled(true);
-
 
         txtidtrabajador.setText("");
         txtnombre.setText("");
@@ -226,7 +234,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         });
 
         txtmodalidad_contrato.setBackground(new java.awt.Color(78, 150, 203));
-        txtmodalidad_contrato.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de Registro:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtmodalidad_contrato.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modalidad de Contrato:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         txtmodalidad_contrato.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtmodalidad_contratoKeyTyped(evt);
@@ -234,7 +242,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         });
 
         txtnombre.setBackground(new java.awt.Color(78, 150, 203));
-        txtnombre.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de Registro:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtnombre.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnombreActionPerformed(evt);
@@ -256,7 +264,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         });
 
         txtnum_documento.setBackground(new java.awt.Color(78, 150, 203));
-        txtnum_documento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de Registro:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtnum_documento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "N° Doc:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         txtnum_documento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnum_documentoActionPerformed(evt);
@@ -269,7 +277,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         });
 
         txtapaterno.setBackground(new java.awt.Color(78, 150, 203));
-        txtapaterno.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de Registro:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtapaterno.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ap. Paterno:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         txtapaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtapaternoActionPerformed(evt);
@@ -282,7 +290,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         });
 
         txtamaterno.setBackground(new java.awt.Color(78, 150, 203));
-        txtamaterno.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de Registro:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtamaterno.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ap. Materno:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         txtamaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtamaternoActionPerformed(evt);
@@ -295,7 +303,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         });
 
         txtcelular.setBackground(new java.awt.Color(78, 150, 203));
-        txtcelular.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de Registro:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtcelular.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Celular:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         txtcelular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcelularActionPerformed(evt);
@@ -308,7 +316,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         });
 
         txtemail.setBackground(new java.awt.Color(78, 150, 203));
-        txtemail.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de Registro:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtemail.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Correo:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtemailActionPerformed(evt);
@@ -321,7 +329,7 @@ public class frmtrabajador extends javax.swing.JInternalFrame {
         });
 
         txtprofesion.setBackground(new java.awt.Color(78, 150, 203));
-        txtprofesion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de Registro:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtprofesion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Profesion:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         txtprofesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtprofesionActionPerformed(evt);

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="63fc5089-2c45-49b1-916c-e8f93d7df173">
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     tap_paciente.`idpaciente` AS tap_paciente_idpaciente,
+     tap_paciente.`historia_clinica` AS tap_paciente_historia_clinica,
+     tap_paciente.`tipo_documento` AS tap_paciente_tipo_documento,
+     tap_paciente.`numero_documento` AS tap_paciente_numero_documento,
+     tap_paciente.`nombres` AS tap_paciente_nombres,
+     tap_paciente.`apellido_paterno` AS tap_paciente_apellido_paterno,
+     tap_paciente.`apellido_materno` AS tap_paciente_apellido_materno,
+     tap_paciente.`direccion` AS tap_paciente_direccion,
+     tap_paciente.`celular` AS tap_paciente_celular,
+     tap_paciente.`fecha_nacimiento` AS tap_paciente_fecha_nacimiento,
+     tap_paciente.`lugar_proc` AS tap_paciente_lugar_proc,
+     tap_paciente.`sexo` AS tap_paciente_sexo,
+     tap_paciente.`edad` AS tap_paciente_edad,
+     tap_paciente.`estado_civil` AS tap_paciente_estado_civil,
+     tap_paciente.`ocupacion` AS tap_paciente_ocupacion,
+     tap_paciente.`antecedente_enfermedad` AS tap_paciente_antecedente_enfermedad,
+     tap_paciente.`antec_operacion` AS tap_paciente_antec_operacion,
+     tap_paciente.`reacc_medicamento` AS tap_paciente_reacc_medicamento,
+     tap_paciente.`digitador` AS tap_paciente_digitador,
+     tap_paciente.`fecha_registro` AS tap_paciente_fecha_registro
+FROM
+     `tap_paciente` tap_paciente]]>
+	</queryString>
+	<field name="tap_paciente_idpaciente" class="java.lang.Integer"/>
+	<field name="tap_paciente_historia_clinica" class="java.lang.String"/>
+	<field name="tap_paciente_tipo_documento" class="java.lang.String"/>
+	<field name="tap_paciente_numero_documento" class="java.lang.String"/>
+	<field name="tap_paciente_nombres" class="java.lang.String"/>
+	<field name="tap_paciente_apellido_paterno" class="java.lang.String"/>
+	<field name="tap_paciente_apellido_materno" class="java.lang.String"/>
+	<field name="tap_paciente_direccion" class="java.lang.String"/>
+	<field name="tap_paciente_celular" class="java.lang.String"/>
+	<field name="tap_paciente_fecha_nacimiento" class="java.lang.String"/>
+	<field name="tap_paciente_lugar_proc" class="java.lang.String"/>
+	<field name="tap_paciente_sexo" class="java.lang.String"/>
+	<field name="tap_paciente_edad" class="java.lang.String"/>
+	<field name="tap_paciente_estado_civil" class="java.lang.String"/>
+	<field name="tap_paciente_ocupacion" class="java.lang.String"/>
+	<field name="tap_paciente_antecedente_enfermedad" class="java.lang.String"/>
+	<field name="tap_paciente_antec_operacion" class="java.lang.String"/>
+	<field name="tap_paciente_reacc_medicamento" class="java.lang.String"/>
+	<field name="tap_paciente_digitador" class="java.lang.String"/>
+	<field name="tap_paciente_fecha_registro" class="java.lang.String"/>
+	<group name="tap_paciente_idpaciente">
+		<groupExpression><![CDATA[$F{tap_paciente_idpaciente}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#006600" uuid="24b9ca5b-fe59-4e32-bdd3-7c01cae3f7cb"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tap_paciente_idpaciente}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="503f9aed-4b7c-474b-888e-bd3d18d1e883"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="66da420f-a965-4f7b-8002-d036031a83ba"/>
+				<imageExpression><![CDATA["leaf_banner_green.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="9221c10d-0508-4885-91c1-e7796637a13f"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Leaf Green Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="100" y="46" width="174" height="22" uuid="16f70f57-5148-454d-95ef-6823220ae731"/>
+				<text><![CDATA[Leaf Green SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="7feb6cbf-2767-42e5-b974-f93299dcf99f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="29" height="15" uuid="34cd0b70-af1a-47ba-84e6-d050fce25d64"/>
+				<text><![CDATA[tap_paciente_historia_clinica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="29" y="19" width="29" height="15" uuid="8151bdf3-756e-4c8f-a57e-e335cc31d91b"/>
+				<text><![CDATA[tap_paciente_tipo_documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="58" y="19" width="29" height="15" uuid="acfb1281-1612-4225-988a-d03b14e7a13f"/>
+				<text><![CDATA[tap_paciente_numero_documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="87" y="19" width="29" height="15" uuid="7a416110-8029-4fcc-b23e-f275f8d2a8e5"/>
+				<text><![CDATA[tap_paciente_nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="116" y="19" width="29" height="15" uuid="c25b3125-1fee-4792-aa8e-3c546dc70318"/>
+				<text><![CDATA[tap_paciente_apellido_paterno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="145" y="19" width="29" height="15" uuid="fe844cc8-76e1-492d-97c5-6406ce46208d"/>
+				<text><![CDATA[tap_paciente_apellido_materno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="174" y="19" width="29" height="15" uuid="35c809cd-7228-4840-97e7-c49dfd2ab01a"/>
+				<text><![CDATA[tap_paciente_direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="203" y="19" width="29" height="15" uuid="2dba070b-3553-4d65-9b9b-d3a30c5b9087"/>
+				<text><![CDATA[tap_paciente_celular]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="232" y="19" width="29" height="15" uuid="6e50518a-70ab-4773-9388-ab7151aa2547"/>
+				<text><![CDATA[tap_paciente_fecha_nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="261" y="19" width="29" height="15" uuid="d8adc4ab-442b-4dd8-b167-240b16d07912"/>
+				<text><![CDATA[tap_paciente_lugar_proc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="290" y="19" width="29" height="15" uuid="cfdce532-6a7a-4e43-869e-9b4f7751e6be"/>
+				<text><![CDATA[tap_paciente_sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="319" y="19" width="29" height="15" uuid="8fa4b8e0-7170-4bdb-95fa-a495b209a736"/>
+				<text><![CDATA[tap_paciente_edad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="348" y="19" width="29" height="15" uuid="33a2cd93-edd8-44a3-9e6a-ecc36227113e"/>
+				<text><![CDATA[tap_paciente_estado_civil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="377" y="19" width="29" height="15" uuid="3266084c-d537-44e4-8f84-2ecbd779e428"/>
+				<text><![CDATA[tap_paciente_ocupacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="406" y="19" width="29" height="15" uuid="09505c37-9442-4158-b71f-4659a7adb40f"/>
+				<text><![CDATA[tap_paciente_antecedente_enfermedad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="435" y="19" width="29" height="15" uuid="0306aa0b-2900-4245-bfb6-12f68c16ee0a"/>
+				<text><![CDATA[tap_paciente_antec_operacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="464" y="19" width="29" height="15" uuid="8aa52aba-5bcd-4258-8f24-6c4a2ee47b64"/>
+				<text><![CDATA[tap_paciente_reacc_medicamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="493" y="19" width="29" height="15" uuid="46d30395-99e5-46a9-a752-cb2cb4d366dd"/>
+				<text><![CDATA[tap_paciente_digitador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="522" y="19" width="29" height="15" uuid="a238ed93-3a57-4e72-b617-3cfec39ef352"/>
+				<text><![CDATA[tap_paciente_fecha_registro]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="f64d1a82-a5c9-4563-9314-934a1eefe48a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="29" height="15" uuid="061c3f55-514e-4660-b137-85605ae34304"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_historia_clinica}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="29" y="0" width="29" height="15" uuid="4bdde794-2143-40e0-adee-6697538a2dec"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_tipo_documento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="58" y="0" width="29" height="15" uuid="292e17ad-aef2-4c33-8001-f6a2cce4515d"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_numero_documento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="87" y="0" width="29" height="15" uuid="75dbf206-4f41-422e-a2ee-edfcc2d05613"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="116" y="0" width="29" height="15" uuid="b6c3b851-a970-40b0-9259-6f9f70c1dc9c"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_apellido_paterno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="145" y="0" width="29" height="15" uuid="e1e26d5b-46b8-4e30-95be-ac4e2c25a233"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_apellido_materno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="174" y="0" width="29" height="15" uuid="d5cf847a-344e-4d97-bb8b-37c76a1fe364"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="203" y="0" width="29" height="15" uuid="6313c1d6-b77c-429e-a90a-760394277bbb"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_celular}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="232" y="0" width="29" height="15" uuid="f2bb9dce-a998-486a-aff5-9af8f7e1575d"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_fecha_nacimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="261" y="0" width="29" height="15" uuid="88e7ced2-9bb0-45e9-bae2-1800f9ade24a"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_lugar_proc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="290" y="0" width="29" height="15" uuid="45172044-2b4e-4c7d-8427-b370ad32feb3"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_sexo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="319" y="0" width="29" height="15" uuid="eb6d0c13-9777-4e37-94f7-2145b6446e62"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_edad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="348" y="0" width="29" height="15" uuid="2ebd5c6f-897a-4878-8319-6bf8a62cce96"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_estado_civil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="377" y="0" width="29" height="15" uuid="fb0a9411-8eed-4a99-9abf-00ed6d984d16"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_ocupacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="406" y="0" width="29" height="15" uuid="fc44b21e-2e9f-47ef-94a3-8e941abc40e6"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_antecedente_enfermedad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="435" y="0" width="29" height="15" uuid="66cf90fb-9aab-411e-b585-cf49670dbefc"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_antec_operacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="464" y="0" width="29" height="15" uuid="689678b2-9eac-4a0f-bd23-183d811259dd"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_reacc_medicamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="493" y="0" width="29" height="15" uuid="4d268ec2-a192-40f1-9df0-123365bbde76"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_digitador}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="522" y="0" width="29" height="15" uuid="5ce5bfa4-acf8-4afc-a942-eda33700f4fb"/>
+				<textFieldExpression><![CDATA[$F{tap_paciente_fecha_registro}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="112a961d-54a0-4773-a049-c09715de4a44"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="225bf568-341c-4f39-b98a-552620e0d514"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="44ee5b09-2ba2-4d87-abaa-8605860f8ee6"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="d1cf8b00-87b8-435d-9f26-d2a267ca2ff4"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

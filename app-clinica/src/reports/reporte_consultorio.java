@@ -21,11 +21,12 @@ import org.apache.commons.collections.map.HashedMap;
  *
  * @author Desarrollo
  */
-public class reporte_regadministrativo {
+public class reporte_consultorio {
 
     public Connection connection = new conexion().conectar();
 
-    public void reportePacientes(String fecha_incial, String fecha_final) {
+   
+        public void reporteConsulPorFechas(String fecha_incial, String fecha_final) {
         Map p = new HashedMap();
 
         JasperReport report;
@@ -33,12 +34,12 @@ public class reporte_regadministrativo {
         try {
 
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
-                    + "/src/reports/reporte_regadministrativo.jrxml");
+                    + "/src/reports/reporte_consultorio.jrxml");
             p.put("fecha_inicial", fecha_incial);
             p.put("fecha_final", fecha_final);
             print = JasperFillManager.fillReport(report, p, connection);
             JasperViewer view = new JasperViewer(print, false);
-            view.setTitle("C.M.I. Daniel Alcides Carrion");
+            view.setTitle("Centro Medico - Maria Santisima");
             view.setVisible(true);
 
         } catch (Exception e) {

@@ -21,11 +21,11 @@ import org.apache.commons.collections.map.HashedMap;
  *
  * @author Desarrollo
  */
-public class reporte_certificado_salud {
+public class reporte_asistencial {
 
     public Connection connection = new conexion().conectar();
 
-    public void reporteCertifSaludPorFechas(String fecha_incial, String fecha_final) {
+    public void reporteAsistPorFechas(String fecha_incial, String fecha_final) {
         Map p = new HashedMap();
 
         JasperReport report;
@@ -33,7 +33,7 @@ public class reporte_certificado_salud {
         try {
 
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
-                    + "/src/reports/reporte_certificadosalud.jrxml");
+                    + "/src/reports/reporte_asistenciales.jrxml");
             p.put("fecha_inicial", fecha_incial);
             p.put("fecha_final", fecha_final);
             print = JasperFillManager.fillReport(report, p, connection);

@@ -34,6 +34,14 @@ FORMATO FECHA DE LA TABLA FARMACIA
 select idfarmacia,categoria,nombre,precio_venta,stock,laboratorio,presentacion,fecha_registro,DATE_FORMAT(STR_TO_DATE(REPLACE(fecha_registro,'-','.'),
 GET_FORMAT(date,'EUR')),"%d-%m-%Y"),DATE_FORMAT(fecha_vencimiento, "%d-%m-%Y"),fecha_vencimiento
 from dbclinica.tap_farmacia;
+use dbclinica;
+SELECT idfarmacia,categoria,
+                nombre,precio_venta,stock,
+                laboratorio,presentacion,
+                DATE_FORMAT(STR_TO_DATE(REPLACE(fecha_registro,'-','.'),GET_FORMAT(date,'EUR')),"%d-%m-%Y") as fecha_registroo,
+                fecha_registro,str_to_date(fecha_registro,"%d-%m-%Y"),
+                DATE_FORMAT(fecha_vencimiento, "%d-%m-%Y") as fecha_vencimiento FROM tap_farmacia
+                where str_to_date(fecha_registro,"%d-%m-%Y") between '2020-08-23' and '2020-09-27';
 
 SELECT * FROM dbclinica.tap_farmacia;
 select sum(stock) from dbclinica.tap_farmacia;
@@ -100,11 +108,40 @@ select idpago,idcaja,sum(total) from tap_pago;
 select * from tap_paciente where STR_TO_DATE(fecha_registro , "%d-%m-%Y" ) between '2020-08-30' and '2020-08-30';
 
 
-select c.idcertificado_salud,c.idasistenciales,a.nombre,a.apellidos,a.colegiatura,a.num_colegiatura,c.idpaciente,p.historia_clinica,p.tipo_documento,
-p.numero_documento,p.nombres,p.apellido_paterno,p.apellido_materno,p.edad,p.direccion,c.serelogia,examen_rx,c.fecha_registro 
+select c.idcertificado_salud,c.idasistenciales,CONCAT(a.nombre," ",a.apellidos) as datosAsistencial,a.colegiatura,a.num_colegiatura,c.idpaciente,p.historia_clinica,p.tipo_documento,
+p.numero_documento,CONCAT(p.nombres," ",p.apellido_paterno," ",p.apellido_materno) as datosPaciente,p.edad,p.direccion,c.serelogia,examen_rx,
+c.fecha_registro 
 from tap_certificadosalud c 
 inner join tap_asistenciales a 
 on c.idasistenciales=a.idasistenciales 
 inner join tap_paciente p 
-on c.idpaciente=p.idpaciente
+on c.idpaciente=p.idpaciente where STR_TO_DATE(c.fecha_registro, "%d-%m-%Y" ) between '2020-09-16' and '2020-10-17';
 
+
+
+select c.idinforme_medico,c.idasistenciales,a.nombre,a.apellidos,a.colegiatura,a.num_colegiatura,c.idpaciente,p.historia_clinica,p.tipo_documento,
+		p.numero_documento,p.nombres,p.apellido_paterno,p.apellido_materno,p.edad,p.direccion,c.diagnostico,c.fecha_registro,c.fecha_system
+from tap_informemedico c 
+     inner join tap_asistenciales a on c.idasistenciales=a.idasistenciales 
+     inner join tap_paciente p on c.idpaciente=p.idpaciente 
+ where str_to_date(c.fecha_system, "%d-%m-%Y") between '2020-09-16' and '2020-10-17';
+ 
+ select * from tap_informemedico;
+ 
+ select idasistenciales,nombre,apellidos,
+                cargo_institucion,modalidad_contrato,
+                colegiatura,num_colegiatura,
+                profesion,tipo_documento,
+                num_documento,celular,email,
+fecha_registro,fecha_system from tap_asistenciales 
+where str_to_date(c.fecha_system,"%d-%m-%Y") between '2020-09-16' and '2020-10-17';
+ 
+SELECT * FROM dbclinica.tap_trabajador
+where str_to_date(fecha_registro,"%d-%m-%Y") between '2020-08-15' and '2020-08-24';
+
+
+select c.idconsultorio,c.idasistencial,a.nombre,a.apellidos,a.colegiatura,a.num_colegiatura,
+c.nombre_consultorio,c.numero_consultorio,c.piso_consultorio,c.fecha_registro 
+from tap_consultorio c 
+inner join tap_asistenciales a on c.idasistencial=a.idasistenciales
+where str_to_date(c.fecha_registro, "%d-%m-%Y") between '2020-08-23' and '2020-08-23';

@@ -86,10 +86,6 @@ public class frmvista_paciente_inf_medico extends javax.swing.JFrame {
         tablalistado.getColumnModel().getColumn(19).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(19).setPreferredWidth(0);
 
-        tablalistado.getColumnModel().getColumn(20).setMaxWidth(0);
-        tablalistado.getColumnModel().getColumn(20).setMinWidth(0);
-        tablalistado.getColumnModel().getColumn(20).setPreferredWidth(0);
-
     }
 
     void mostrar(String buscar) {

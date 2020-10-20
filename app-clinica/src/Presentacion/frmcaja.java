@@ -164,7 +164,7 @@ public class frmcaja extends javax.swing.JInternalFrame {
         btnguardar.setEnabled(false);
         btneliminar.setEnabled(false);
         btnasistencial.setEnabled(false);
-        btnimpresora.setEnabled(false);
+
         btnreporte.setEnabled(false);
         btnConsumo.setEnabled(false);
         btnPago.setEnabled(false);
@@ -209,7 +209,6 @@ public class frmcaja extends javax.swing.JInternalFrame {
         btnguardar.setEnabled(true);
         btneliminar.setEnabled(true);
         btnasistencial.setEnabled(true);
-        btnimpresora.setEnabled(true);
         btnreporte.setEnabled(true);
         btnConsumo.setEnabled(true);
         btnPago.setEnabled(true);
@@ -287,7 +286,6 @@ public class frmcaja extends javax.swing.JInternalFrame {
         tablalistado = new javax.swing.JTable();
         lbltotalregistros = new javax.swing.JLabel();
         btneliminar = new javax.swing.JButton();
-        btnimpresora = new javax.swing.JButton();
         btnreporte = new javax.swing.JButton();
         txtbuscarnombre = new javax.swing.JTextField();
         lblfecha_registro = new javax.swing.JLabel();
@@ -616,14 +614,6 @@ public class frmcaja extends javax.swing.JInternalFrame {
             }
         });
 
-        btnimpresora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/impresora.png"))); // NOI18N
-        btnimpresora.setText("Reporte por Rango de Fechas");
-        btnimpresora.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnimpresoraActionPerformed(evt);
-            }
-        });
-
         btnreporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/reporte_2.png"))); // NOI18N
         btnreporte.setText("Reporte del Dia");
         btnreporte.addActionListener(new java.awt.event.ActionListener() {
@@ -651,8 +641,6 @@ public class frmcaja extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnimpresora)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnreporte, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblfecha_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -668,7 +656,6 @@ public class frmcaja extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btneliminar)
-                        .addComponent(btnimpresora)
                         .addComponent(btnreporte))
                     .addComponent(txtbuscarnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -764,21 +751,6 @@ public class frmcaja extends javax.swing.JInternalFrame {
         from.toFront();
         from.setVisible(true);
     }//GEN-LAST:event_btnasistencialActionPerformed
-
-    private void btnimpresoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnimpresoraActionPerformed
-        // TODO add your handling code here:
-        fecha_inicial = JOptionPane.showInputDialog("INGRESE FECHA INICIAL CON FORMATO 00-00-0000");
-        fecha_final = JOptionPane.showInputDialog("INGRESE FECHA FINAL CON FORMATO 00-00-0000");
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String fi=formatter.format(fecha_inicial);
-        String ff=formatter.format(fecha_final);
-        System.out.println("" + fi);
-        System.out.println("" + ff);
-
-//        imprimir_certificado_salud gw = new imprimir_certificado_salud();
-//        gw.reportePacientes(num_doc);
-
-    }//GEN-LAST:event_btnimpresoraActionPerformed
 
     private void btnreporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreporteActionPerformed
         LocalDate fechaactual = LocalDate.now();
@@ -923,7 +895,6 @@ public class frmcaja extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnasistencial;
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnguardar;
-    private javax.swing.JButton btnimpresora;
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton btnreporte;
     private javax.swing.JPanel jPanel1;

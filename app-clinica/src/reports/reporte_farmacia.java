@@ -7,6 +7,7 @@ package reports;
 
 import Logica.conexion;
 import java.io.File;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.Date;
 import java.util.Map;
@@ -21,11 +22,11 @@ import org.apache.commons.collections.map.HashedMap;
  *
  * @author Desarrollo
  */
-public class reporte_regasistencial {
+public class reporte_farmacia {
 
     public Connection connection = new conexion().conectar();
 
-    public void reportePacientes(String fecha_incial, String fecha_final) {
+    public void reportePacientes(String fecha_actual) {
         Map p = new HashedMap();
 
         JasperReport report;
@@ -33,12 +34,33 @@ public class reporte_regasistencial {
         try {
 
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
-                    + "/src/reports/reporte_regasistencial.jrxml");
+                    + "/src/reports/reporte_farmacia.jrxml");
+            p.put("fecha_actual", fecha_actual);
+
+            print = JasperFillManager.fillReport(report, p, connection);
+            JasperViewer view = new JasperViewer(print, false);
+            view.setTitle("Centro Medico - Maria Santisima");
+            view.setVisible(true);
+
+        } catch (Exception e) {
+            System.out.println("error " + e);
+        }
+
+    }
+    
+        public void reporteFarmaciaPorFechas(String fecha_incial, String fecha_final) {
+        Map p = new HashedMap();
+
+        JasperReport report;
+        JasperPrint print;
+        try {
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+                    + "/src/reports/reporte_farmacia_rangosfecha.jrxml");
             p.put("fecha_inicial", fecha_incial);
             p.put("fecha_final", fecha_final);
             print = JasperFillManager.fillReport(report, p, connection);
             JasperViewer view = new JasperViewer(print, false);
-            view.setTitle("C.M.I. Daniel Alcides Carrion");
+            view.setTitle("Centro Medico - Maria Santisima");
             view.setVisible(true);
 
         } catch (Exception e) {

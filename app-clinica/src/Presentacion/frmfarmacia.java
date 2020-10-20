@@ -15,11 +15,15 @@ import java.util.Calendar;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import reports.reporte_regadministrativo;
+import reports.reporte_farmacia;
+
 
 /**
  *
@@ -32,37 +36,37 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
      */
     String fecha_inicial;
     String fecha_final;
-    
+
     public frmfarmacia() {
         initComponents();
         mostrar("");
         inhabilitar();
-        
+
     }
     private String accion = "guardar";
-    
+
     void fecha_actual() {
-        
+
         Calendar today = Calendar.getInstance();
         int fhoy_dia = today.get(Calendar.DAY_OF_MONTH);
         int fhoy_mes = today.get(Calendar.MONTH) + 1;
-        
+
         int fhoy_year = today.get(Calendar.YEAR);
-        
+
         lblfecharegistro.setText(fhoy_dia + "-" + fhoy_mes + "-" + fhoy_year);
-        
+
     }
-    
+
     void ocultar_columnas() {
-        
+
         tablalistado.getColumnModel().getColumn(0).setMaxWidth(35);
         tablalistado.getColumnModel().getColumn(0).setMinWidth(35);
 //        tablalistado.getColumnModel().getColumn(0).setPreferredWidth(35);
     }
-    
+
     void inhabilitar() {
         txtidfarmacia.setVisible(false);
-        
+
         txtcategoria.setEnabled(false);
         txtnombre.setEnabled(false);
         txtprecioventa.setEnabled(false);
@@ -71,12 +75,12 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
         txtpresentacion.setEnabled(false);
         lblfecharegistro.setEnabled(false);
         txtbuscarnombre.setEnabled(false);
-        
+
         btnguardar.setEnabled(false);
         btneliminar.setEnabled(false);
-        
+
         btnreportes.setEnabled(false);
-        
+
         txtidfarmacia.setText("");
         txtcategoria.setText("");
         txtnombre.setText("");
@@ -85,12 +89,12 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
         txtlaboratorio.setText("");
         txtpresentacion.setText("");
         lblfecharegistro.setText("");
-        
+
     }
-    
+
     void habilitar() {
         txtidfarmacia.setVisible(false);
-        
+
         txtcategoria.setEnabled(true);
         txtnombre.setEnabled(true);
         txtprecioventa.setEnabled(true);
@@ -99,12 +103,12 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
         txtpresentacion.setEnabled(true);
         lblfecharegistro.setEnabled(true);
         txtbuscarnombre.setEnabled(true);
-        
+
         btnguardar.setEnabled(true);
         btneliminar.setEnabled(true);
-        
+
         btnreportes.setEnabled(true);
-        
+
         txtidfarmacia.setText("");
         txtcategoria.setText("");
         txtnombre.setText("");
@@ -113,24 +117,24 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
         txtlaboratorio.setText("");
         txtpresentacion.setText("");
         lblfecharegistro.setText("");
-        
+
     }
-    
+
     void mostrar(String buscar) {
         try {
             DefaultTableModel modelo;
             ffarmacia func = new ffarmacia();
             modelo = func.mostrar(buscar);
-            
+
             tablalistado.setModel(modelo);
             ocultar_columnas();
             lbltotalregistros.setText("Total Registros " + Integer.toString(func.totalregistros));
-            
+
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(rootPane, e);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -154,7 +158,6 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
         btnnuevo = new javax.swing.JButton();
         btnguardar = new javax.swing.JButton();
         txtbuscarnombre = new javax.swing.JTextField();
-        btnreportefechas = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -257,7 +260,7 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -354,15 +357,6 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
             }
         });
 
-        btnreportefechas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/reporte_2.png"))); // NOI18N
-        btnreportefechas.setText("Por Fechas");
-        btnreportefechas.setBorder(new javax.swing.border.MatteBorder(null));
-        btnreportefechas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnreportefechasActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -380,9 +374,7 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
                         .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnreportes, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnreportefechas, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(141, 141, 141)
                         .addComponent(btnnuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnguardar)
@@ -402,8 +394,7 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
                         .addComponent(btneliminar)
                         .addComponent(btnreportes)
                         .addComponent(btnnuevo)
-                        .addComponent(btnguardar)
-                        .addComponent(btnreportefechas))
+                        .addComponent(btnguardar))
                     .addComponent(lblfecharegistro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbltotalregistros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -421,7 +412,6 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -460,16 +450,16 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
             txtpresentacion.requestFocus();
             return;
         }
-        
+
         if (txtprecioventa.getText().length() == 0) {
             JOptionPane.showConfirmDialog(rootPane, "Debes ingresar el precio");
             txtprecioventa.requestFocus();
             return;
         }
-        
+
         vfarmacia dts = new vfarmacia();
         ffarmacia func = new ffarmacia();
-        
+
         dts.setCategoria(txtcategoria.getText());
         dts.setNombre(txtnombre.getText());
         dts.setPrecio_venta(Double.parseDouble(txtprecioventa.getText()));
@@ -477,23 +467,23 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
         dts.setLaboratorio(txtlaboratorio.getText());
         dts.setPresentacion(txtpresentacion.getText());
         dts.setFecha_registro(lblfecharegistro.getText());
-        
+
         SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
         String fecha = dformat.format(dcfechavencimiento.getDate());
-        
+
         dts.setFecha_vencimiento(fecha);
-        
+
         if (accion.equals("guardar")) {
             if (func.insertar(dts)) {
                 JOptionPane.showMessageDialog(rootPane, "El medicamento fue agregado exitosamente");
                 mostrar("");
                 inhabilitar();
-                
+
             }
-            
+
         } else if (accion.equals("editar")) {
             dts.setIdfarmacia(Integer.parseInt(txtidfarmacia.getText()));
-            
+
             if (func.editar(dts)) {
                 JOptionPane.showMessageDialog(rootPane, "El medicamento fue agregado exitosamente");
                 mostrar("");
@@ -508,9 +498,9 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
         habilitar();
         btneliminar.setEnabled(true);
         accion = "editar";
-        
+
         int fila = tablalistado.rowAtPoint(evt.getPoint());
-        
+
         txtidfarmacia.setText(tablalistado.getValueAt(fila, 0).toString());
         txtcategoria.setText(tablalistado.getValueAt(fila, 1).toString());
         txtnombre.setText(tablalistado.getValueAt(fila, 2).toString());
@@ -519,10 +509,10 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
         txtlaboratorio.setText(tablalistado.getValueAt(fila, 5).toString());
         txtpresentacion.setText(tablalistado.getValueAt(fila, 6).toString());
         lblfecharegistro.setText(tablalistado.getValueAt(fila, 7).toString());
-        
+
         SimpleDateFormat sdformato = new SimpleDateFormat("dd-MM-yyyy");
         String fecha = tablalistado.getValueAt(fila, 8).toString();
-        
+
         try {
             dcfechavencimiento.setDate(sdformato.parse(fecha));
 
@@ -539,27 +529,28 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (!txtidfarmacia.getText().equals("")) {
             int confirmacion = JOptionPane.showConfirmDialog(rootPane, "Estás seguro de eliminar al trabajador?", "Confirmar", 2);
-            
+
             if (confirmacion == 0) {
                 ffarmacia func = new ffarmacia();
                 vfarmacia dts = new vfarmacia();
-                
+
                 dts.setIdfarmacia(Integer.parseInt(txtidfarmacia.getText()));
                 func.eliminar(dts);
                 mostrar("");
                 inhabilitar();
-                
+
             }
-            
+
         }
     }//GEN-LAST:event_btneliminarActionPerformed
 
     private void btnreportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreportesActionPerformed
         // TODO add your handling code here:
-        fecha_inicial = JOptionPane.showInputDialog("Ingresa la fecha inicial dia/mes/año");
-        fecha_final = JOptionPane.showInputDialog("Ingresa la fecha final dia/mes/año");
-        reporte_regadministrativo g = new reporte_regadministrativo();
-        g.reportePacientes(fecha_inicial, fecha_final);
+        LocalDate fechaactual = LocalDate.now();
+        String fecha_hoy = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH).format(fechaactual);        // TODO add your handling code here:
+        System.out.println("" + fecha_hoy);
+        reporte_farmacia reporte = new reporte_farmacia();
+        reporte.reportePacientes(fecha_hoy);
 
     }//GEN-LAST:event_btnreportesActionPerformed
 
@@ -642,10 +633,6 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
         mostrar(buscar);
     }//GEN-LAST:event_txtbuscarnombreKeyReleased
 
-    private void btnreportefechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreportefechasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnreportefechasActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -664,7 +651,6 @@ public class frmfarmacia extends javax.swing.JInternalFrame {
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnnuevo;
-    private javax.swing.JButton btnreportefechas;
     private javax.swing.JButton btnreportes;
     private com.toedter.calendar.JDateChooser dcfechavencimiento;
     private javax.swing.JPanel jPanel1;

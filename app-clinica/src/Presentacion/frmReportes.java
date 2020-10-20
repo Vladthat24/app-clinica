@@ -14,7 +14,13 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.Formatter;
 import javax.swing.JOptionPane;
+import reports.reporte_administrativos;
+import reports.reporte_asistencial;
 import reports.reporte_caja;
+import reports.reporte_certificado_salud;
+import reports.reporte_consultorio;
+import reports.reporte_farmacia;
+import reports.reporte_informe_medico;
 import reports.reporte_paciente;
 
 /**
@@ -31,8 +37,8 @@ public class frmReportes extends javax.swing.JInternalFrame {
      */
     public frmReportes() {
         initComponents();
-        lblfecha_inicial.setEnabled(false);
-        lblfecha_final.setEnabled(false);
+        lblfecha_inicial.setVisible(false);
+        lblfecha_final.setVisible(false);
     }
 
     /**
@@ -60,6 +66,9 @@ public class frmReportes extends javax.swing.JInternalFrame {
         rbtCertificadoSalud = new javax.swing.JRadioButton();
         rbtCaja = new javax.swing.JRadioButton();
         rbtPaciente = new javax.swing.JRadioButton();
+        rbtAsistenciales = new javax.swing.JRadioButton();
+        rbtAdministrativos = new javax.swing.JRadioButton();
+        rbtConsultorios = new javax.swing.JRadioButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -121,6 +130,20 @@ public class frmReportes extends javax.swing.JInternalFrame {
         rbtReportes.add(rbtPaciente);
         rbtPaciente.setText("Paciente");
 
+        rbtReportes.add(rbtAsistenciales);
+        rbtAsistenciales.setText("Asistenciales");
+        rbtAsistenciales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtAsistencialesActionPerformed(evt);
+            }
+        });
+
+        rbtReportes.add(rbtAdministrativos);
+        rbtAdministrativos.setText("Administrativos");
+
+        rbtReportes.add(rbtConsultorios);
+        rbtConsultorios.setText("Consultorios");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -132,7 +155,10 @@ public class frmReportes extends javax.swing.JInternalFrame {
                     .addComponent(rbtFarmacia)
                     .addComponent(rbtCaja)
                     .addComponent(rbtCertificadoSalud)
-                    .addComponent(rbtPaciente))
+                    .addComponent(rbtPaciente)
+                    .addComponent(rbtAsistenciales)
+                    .addComponent(rbtAdministrativos)
+                    .addComponent(rbtConsultorios))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -148,7 +174,13 @@ public class frmReportes extends javax.swing.JInternalFrame {
                 .addComponent(rbtFarmacia)
                 .addGap(18, 18, 18)
                 .addComponent(rbtInformeMedico)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(rbtAsistenciales)
+                .addGap(12, 12, 12)
+                .addComponent(rbtAdministrativos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbtConsultorios)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -156,34 +188,34 @@ public class frmReportes extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(131, 131, 131)
+                .addComponent(jLabel3)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblfecha_final, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(49, 49, 49)
+                                    .addComponent(jButton1))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(31, 31, 31)
+                                    .addComponent(lblfecha_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(dcofecha_inicial, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                                        .addComponent(dcofecha_final, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel2))
-                                .addGap(73, 73, 73))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblfecha_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblfecha_final, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addComponent(jLabel3)
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jLabel2)
+                            .addComponent(dcofecha_final, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dcofecha_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addContainerGap(16, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,24 +224,25 @@ public class frmReportes extends javax.swing.JInternalFrame {
                 .addComponent(jLabel3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(19, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dcofecha_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dcofecha_final, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(lblfecha_final, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblfecha_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton1)
+                        .addGap(33, 33, 33))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,7 +250,7 @@ public class frmReportes extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -249,14 +282,32 @@ public class frmReportes extends javax.swing.JInternalFrame {
             reporte.reporteCajaPorFechas(fecha_inicial, fecha_final);
             
         } else if (rbtCertificadoSalud.isSelected()) {
+            reporte_certificado_salud reporte = new reporte_certificado_salud();
+            reporte.reporteCertifSaludPorFechas(fecha_inicial, fecha_final);
             
         } else if (rbtFarmacia.isSelected()) {
+            reporte_farmacia reporte = new reporte_farmacia();
+            reporte.reporteFarmaciaPorFechas(fecha_inicial, fecha_final);
             
         } else if (rbtInformeMedico.isSelected()) {
+            reporte_informe_medico reporte = new reporte_informe_medico();
+            reporte.reporteInfoMedicoPorFechas(fecha_inicial, fecha_final);
             
         } else if (rbtPaciente.isSelected()) {
             reporte_paciente reporte = new reporte_paciente();
             reporte.reportePacientesPorFechas(fecha_inicial, fecha_final);
+            
+        } else if (rbtAsistenciales.isSelected()) {
+            reporte_asistencial reporte = new reporte_asistencial();
+            reporte.reporteAsistPorFechas(fecha_inicial, fecha_final);
+            
+        } else if (rbtAdministrativos.isSelected()) {
+            reporte_administrativos reporte= new reporte_administrativos();
+            reporte.reporteAdminPorFechas(fecha_inicial, fecha_final);
+            
+        } else if (rbtConsultorios.isSelected()) {
+            reporte_consultorio reporte= new reporte_consultorio();
+            reporte.reporteConsulPorFechas(fecha_inicial, fecha_final);
             
         }
         
@@ -353,6 +404,10 @@ public class frmReportes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtFarmaciaActionPerformed
 
+    private void rbtAsistencialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtAsistencialesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtAsistencialesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -400,8 +455,11 @@ public class frmReportes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblfecha_final;
     private javax.swing.JLabel lblfecha_inicial;
+    private javax.swing.JRadioButton rbtAdministrativos;
+    private javax.swing.JRadioButton rbtAsistenciales;
     private javax.swing.JRadioButton rbtCaja;
     private javax.swing.JRadioButton rbtCertificadoSalud;
+    private javax.swing.JRadioButton rbtConsultorios;
     private javax.swing.JRadioButton rbtFarmacia;
     private javax.swing.JRadioButton rbtInformeMedico;
     private javax.swing.JRadioButton rbtPaciente;

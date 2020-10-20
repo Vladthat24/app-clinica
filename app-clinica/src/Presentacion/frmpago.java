@@ -907,7 +907,7 @@ public class frmpago extends javax.swing.JInternalFrame {
                 g2d.translate((int) pageFormat.getImageableX(), (int) pageFormat.getImageableY());
 
                 ////////// code by alqama//////////////
-                FontMetrics metrics = g2d.getFontMetrics(new Font("Arial", Font.BOLD, 7));
+                FontMetrics metrics = g2d.getFontMetrics(new Font("Arial", Font.BOLD,4));
                 //    int idLength=metrics.stringWidth("000000");
                 //int idLength=metrics.stringWidth("00");
                 int idLength = metrics.stringWidth("000");
@@ -929,8 +929,8 @@ public class frmpago extends javax.swing.JInternalFrame {
 
                 try {
                     /*Draw Header*/
-                    int y = 17;//20
-                    int yShift = 10;//10
+                    int y = 10;//20
+                    int yShift = 5;//10
                     int headerRectHeight = 7;//15
                     int headerRectHeighta = 20;//40
 
@@ -993,63 +993,62 @@ public class frmpago extends javax.swing.JInternalFrame {
 //                    int pp4a = Integer.valueOf(pp4.getText());
 //                    int sum = pp1a + pp2a + pp3a + pp4a;
                     ///////////////// Product price Get ///////////
-                    g2d.setFont(new Font("Monospaced", Font.PLAIN, 9));
-                    g2d.drawString("---------------------------- ", 10, y);
+                    g2d.setFont(new Font("Monospaced", Font.PLAIN, 5));
+                    g2d.drawString("------------------------", 5, y);
                     y += yShift;
-                    g2d.drawString("       CENTRO MEDICO         ", 10, y);
+                    g2d.drawString("   CENTRO MEDICO      ", 5, y);
                     y += yShift;
-                    g2d.drawString("      SANTA SANTISIMA        ", 10, y);
+                    g2d.drawString("   SANTA SANTISIMA    ", 5, y);
                     y += yShift;
-                    g2d.drawString("-----------------------------", 10, y);
-                    y += headerRectHeight;
-//                    g2d.drawString("-------------------------------------", 10, y);           
-                    g2d.drawString("Tipo Comprobante: " + tipo_comprobante + "", 7, y);
+                    g2d.drawString("------------------------", 5, y);
+                    y += headerRectHeight;                     
+                    g2d.drawString("Tipo Comprb.: " + tipo_comprobante + "", 5, y);
                     y += yShift;
-                    g2d.drawString("N° Comprobante: " + num_comprobante + "", 7, y);
+                    g2d.drawString("N° Comprb.: " + num_comprobante + "", 5, y);
                     y += yShift;
-                    g2d.drawString("------------------------------", 7, y);
+                    g2d.drawString("------------------------", 5, y);
                     y += yShift;
-                    g2d.drawString("Datos del Paciente:                  ", 7, y);
+                    g2d.drawString("Datos del Paciente:                  ", 5, y);
                     y += yShift;
-                    g2d.drawString("Historia Clinica" + historia_clinica + " ", 7, y);
+                    g2d.drawString("H.C.: N° "+ historia_clinica + " ", 5, y);
                     y += yShift;
-                    g2d.drawString("Nombre: " + nombres + "              ", 7, y);
+                    g2d.drawString("Nombre: " + nombres + "              ", 5, y);
                     y += yShift;
-                    g2d.drawString("Apellidos:" + apellidosp + " " + apellidosm + "", 7, y);
+                    g2d.drawString("Apell.:" + apellidosp + " " + apellidosm + "", 5, y);
                     y += yShift;
-                    g2d.drawString("Tipo Doc: " + tipo_doc + "   ", 7, y);
+                    g2d.drawString("Tipo Doc: " + tipo_doc + "   ", 5, y);
                     y += yShift;
-                    g2d.drawString("N° Doc " + numero_doc + "    ", 7, y);
+                    g2d.drawString("N° Doc: " + numero_doc + "    ", 5, y);
                     y += yShift;
-                    g2d.drawString("-----------------------------", 7, y);
+                    g2d.drawString("------------------------", 5, y);
                     y += yShift;
-                    g2d.drawString(" Datos del Consumo:          ", 7, y);
+                    g2d.drawString("Datos del Consumo: ", 5, y);
                     y += yShift;
-                    g2d.drawString("Costo de consulta:" + costo_consulta + " ", 7, y);
+                    g2d.drawString("Consulta:" + costo_consulta + " ", 5, y);
                     y += yShift;
-                    g2d.drawString("Igv:" + igv + "              ", 7, y);
+                    g2d.drawString("Igv:" + igv + "     ", 5, y);
                     y += yShift;
-                    g2d.drawString("Efec. Recibido:" + cantidad_pago + "", 7, y);
+                    g2d.drawString("Efec.Recib.:" + cantidad_pago + "", 5, y);
                     y += yShift;
-                    g2d.drawString("Sub total:" + subtotal + "   ", 7, y);
+                    g2d.drawString("Subtotal:" + subtotal + "   ", 5, y);
                     y += yShift;
-                    g2d.drawString("Total:" + total + "          ", 7, y);
+                    g2d.drawString("Total:" + total + "          ", 5, y);
                     y += yShift;
-                    g2d.drawString("Vuelto:" + vuelto + "        ", 7, y);
+                    g2d.drawString("Vuelto:" + vuelto + "        ", 5, y);
                     y += yShift;
-                    g2d.drawString("-----------------------------", 7, y);
+                    g2d.drawString("------------------------", 5, y);
                     y += yShift;
-                    g2d.drawString("Fecha:" + fecha_registro + " ", 7, y);
+                    g2d.drawString("Fecha:" + fecha_registro + " ", 5, y);
                     y += yShift;
-                    g2d.drawString("Hora:" + hora + "            ", 7, y);
+                    g2d.drawString("Hora:" + hora + "            ", 5, y);
                     y += yShift;
-                    g2d.drawString("Operador:" + trabajador + "  ", 7, y);
+                    g2d.drawString("Operador:" + trabajador + "  ", 5, y);
                     y += yShift;
-                    g2d.drawString("*****************************", 7, y);
+                    g2d.drawString("*********************", 5, y);
                     y += yShift;
-                    g2d.drawString("   GRACIAS POR SU VISITA     ", 7, y);
+                    g2d.drawString("GRACIAS POR SU VISITA", 5, y);
                     y += yShift;
-                    g2d.drawString("*****************************", 7, y);
+                    g2d.drawString("*********************", 5, y);
                     y += yShift;
 
 //            g2d.setFont(new Font("Monospaced",Font.BOLD,10));

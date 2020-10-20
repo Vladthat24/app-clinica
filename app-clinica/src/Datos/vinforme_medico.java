@@ -16,16 +16,18 @@ public class vinforme_medico {
     private int idpaciente;
     private String diagnostico;
     private String fecha_registro;
+    private String fecha_system;
 
     public vinforme_medico() {
     }
 
-    public vinforme_medico(int idinforme_medico, int idasistenciales, int idpaciente, String diagnostico, String fecha_registro) {
+    public vinforme_medico(int idinforme_medico, int idasistenciales, int idpaciente, String diagnostico, String fecha_registro, String fecha_system) {
         this.idinforme_medico = idinforme_medico;
         this.idasistenciales = idasistenciales;
         this.idpaciente = idpaciente;
         this.diagnostico = diagnostico;
         this.fecha_registro = fecha_registro;
+        this.fecha_system = fecha_system;
     }
 
     public int getIdinforme_medico() {
@@ -68,5 +70,15 @@ public class vinforme_medico {
         this.fecha_registro = fecha_registro;
     }
 
+    public String getFecha_system() {
+        return fecha_system;
+    }
 
+    public void setFecha_system(String fecha_system) {
+        this.fecha_system = fecha_system;
+    }
+
+  
+    
+    
 }
