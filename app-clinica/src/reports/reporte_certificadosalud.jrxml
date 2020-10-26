@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e5cdd48d-8188-4a82-a6c6-c4b1559c4827">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="771"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
@@ -22,7 +22,7 @@
 	</parameter>
 	<queryString>
 		<![CDATA[select c.idcertificado_salud,c.idasistenciales,CONCAT(a.nombre," ",a.apellidos) as datosAsistencial,a.colegiatura,a.num_colegiatura,c.idpaciente,p.historia_clinica,p.tipo_documento,
-p.numero_documento,CONCAT(p.nombres," ",p.apellido_paterno," ",p.apellido_materno) as datosPaciente,p.edad,p.direccion,c.serelogia,examen_rx,
+p.numero_documento,CONCAT(p.nombres," ",p.apellido_paterno," ",p.apellido_materno) as datosPaciente,p.edad,p.direccion,c.serelogia,c.examen_rx,c.hemoglobina,
 c.fecha_registro 
 from tap_certificadosalud c 
 inner join tap_asistenciales a 
@@ -68,6 +68,9 @@ on c.idpaciente=p.idpaciente where STR_TO_DATE(c.fecha_registro, "%d-%m-%Y" ) be
 	<field name="examen_rx" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="hemoglobina" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="fecha_registro" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -80,7 +83,7 @@ on c.idpaciente=p.idpaciente where STR_TO_DATE(c.fecha_registro, "%d-%m-%Y" ) be
 					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 						<reportElement style="SubTitle" isPrintRepeatedValues="false" x="2" y="1" width="131" height="13" forecolor="#FFFFFF" uuid="63bab097-bfd7-462f-b064-7444049cb6c4"/>
 						<textElement verticalAlignment="Middle">
-							<font fontName="Arial" size="11" isBold="false" pdfFontName="Helvetica"/>
+							<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$F{idcertificado_salud}]]></textFieldExpression>
 					</textField>
@@ -123,98 +126,105 @@ on c.idpaciente=p.idpaciente where STR_TO_DATE(c.fecha_registro, "%d-%m-%Y" ) be
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="14" splitType="Stretch">
+		<band height="15" splitType="Stretch">
 			<frame>
 				<reportElement x="2" y="0" width="798" height="14" uuid="d6e6d06e-19b1-4a35-a124-ad33ecdafc42"/>
 				<staticText>
 					<reportElement style="Column header" positionType="Float" x="0" y="0" width="98" height="14" forecolor="#000000" uuid="b6189331-7bc6-4927-9761-4a8631a22835"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
 					<text><![CDATA[Datos Asisten.]]></text>
 				</staticText>
 				<staticText>
 					<reportElement style="Column header" positionType="Float" x="98" y="0" width="37" height="14" forecolor="#000000" uuid="a1c0a300-68d9-4571-b90e-320f597b154d"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
 					<text><![CDATA[Coleg.]]></text>
 				</staticText>
 				<staticText>
 					<reportElement style="Column header" positionType="Float" x="135" y="0" width="64" height="14" forecolor="#000000" uuid="b7153749-7886-4163-857a-cf28dabb9273"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
 					<text><![CDATA[N° Coleg.]]></text>
 				</staticText>
 				<staticText>
 					<reportElement style="Column header" positionType="Float" x="199" y="0" width="44" height="14" forecolor="#000000" uuid="e25297c1-34de-493f-8cba-0cb18e2ab46f"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
 					<text><![CDATA[N° HC]]></text>
 				</staticText>
 				<staticText>
 					<reportElement style="Column header" positionType="Float" x="242" y="0" width="62" height="14" forecolor="#000000" uuid="58a938f1-3ff8-45c3-95bd-82bcf500fc14"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
 					<text><![CDATA[Tipo Doc]]></text>
 				</staticText>
 				<staticText>
 					<reportElement style="Column header" positionType="Float" x="304" y="0" width="44" height="14" forecolor="#000000" uuid="8a64c015-135f-4b87-abea-d4c96e22ab87"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
 					<text><![CDATA[N° Doc.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" positionType="Float" x="348" y="0" width="112" height="14" forecolor="#000000" uuid="7df8ef5a-5206-4a25-808e-c7223b19fff1"/>
+					<reportElement style="Column header" positionType="Float" x="348" y="0" width="72" height="14" forecolor="#000000" uuid="7df8ef5a-5206-4a25-808e-c7223b19fff1"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
 					<text><![CDATA[Datos Pac.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" positionType="Float" x="460" y="0" width="55" height="14" forecolor="#000000" uuid="5b2c986d-6488-4ac9-bcf9-988f07eb7f28"/>
+					<reportElement style="Column header" positionType="Float" x="420" y="0" width="55" height="14" forecolor="#000000" uuid="5b2c986d-6488-4ac9-bcf9-988f07eb7f28"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
 					<text><![CDATA[Edad]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" positionType="Float" x="515" y="0" width="102" height="14" forecolor="#000000" uuid="feddedfb-c435-4f6c-beee-d18308556594"/>
+					<reportElement style="Column header" positionType="Float" x="475" y="0" width="102" height="14" forecolor="#000000" uuid="feddedfb-c435-4f6c-beee-d18308556594"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
 					<text><![CDATA[Direccion]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" positionType="Float" x="617" y="0" width="69" height="14" forecolor="#000000" uuid="0a73dfc8-3502-4f9b-b08e-de4ee07bc5ad"/>
+					<reportElement style="Column header" positionType="Float" x="577" y="0" width="51" height="14" forecolor="#000000" uuid="0a73dfc8-3502-4f9b-b08e-de4ee07bc5ad"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
 					<text><![CDATA[Serologia]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" positionType="Float" x="686" y="0" width="56" height="14" forecolor="#000000" uuid="9452d0e1-b59e-402b-945a-9b95689a9d2e"/>
+					<reportElement style="Column header" positionType="Float" x="628" y="0" width="56" height="14" forecolor="#000000" uuid="9452d0e1-b59e-402b-945a-9b95689a9d2e"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
 					<text><![CDATA[Examen RX]]></text>
 				</staticText>
 				<staticText>
 					<reportElement style="Column header" positionType="Float" x="742" y="0" width="55" height="14" forecolor="#000000" uuid="f2086a63-3605-4de5-9e17-ffcc33ba5c82"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="true" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
 					<text><![CDATA[Fecha Reg.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="684" y="0" width="58" height="14" uuid="489a4dba-1a1c-4f8b-8637-eddc8f17bab1"/>
+					<textElement>
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Hemoglobina]]></text>
 				</staticText>
 			</frame>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="15" splitType="Stretch">
+		<band height="16" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="2" y="14" width="800" height="1" uuid="4e7039b6-bb1e-4714-b7ca-76e3d17a8d59"/>
 			</line>
@@ -223,86 +233,93 @@ on c.idpaciente=p.idpaciente where STR_TO_DATE(c.fecha_registro, "%d-%m-%Y" ) be
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement style="Detail" positionType="Float" x="0" y="0" width="98" height="14" uuid="3f1371b6-06dd-4dd1-b7bb-4636f914a8dc"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="false" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{datosAsistencial}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement style="Detail" positionType="Float" x="98" y="0" width="35" height="14" uuid="4606ebf5-82b9-4787-9454-74b143a3f2db"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="false" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{colegiatura}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement style="Detail" positionType="Float" x="133" y="0" width="66" height="14" uuid="f3af3768-d8b4-4edc-9fff-e08cb256bd39"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="false" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{num_colegiatura}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement style="Detail" positionType="Float" x="199" y="0" width="44" height="14" uuid="b262b764-2377-4f56-8b12-6f80439ce01d"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="false" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{historia_clinica}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement style="Detail" positionType="Float" x="243" y="0" width="61" height="14" uuid="36a3ebff-0c7b-4401-a74f-d4c81c73e91e"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="false" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{tipo_documento}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement style="Detail" positionType="Float" x="304" y="0" width="44" height="14" uuid="d98ff60e-2a4e-487e-a440-a54e4f746059"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="false" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{numero_documento}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="348" y="0" width="112" height="14" uuid="ab45a0d6-20e1-41e7-b78f-d96844a58656"/>
+					<reportElement style="Detail" positionType="Float" x="348" y="0" width="72" height="14" uuid="ab45a0d6-20e1-41e7-b78f-d96844a58656"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="false" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{datosPaciente}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="460" y="0" width="55" height="14" uuid="ef2a4e25-8406-4d7c-8030-49e38dba9a5e"/>
+					<reportElement style="Detail" positionType="Float" x="420" y="0" width="55" height="14" uuid="ef2a4e25-8406-4d7c-8030-49e38dba9a5e"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="false" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="515" y="0" width="102" height="14" uuid="f0487820-5a27-4794-b2c1-8c93ba882ace"/>
+					<reportElement style="Detail" positionType="Float" x="475" y="0" width="102" height="14" uuid="f0487820-5a27-4794-b2c1-8c93ba882ace"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="false" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="617" y="0" width="69" height="14" uuid="c2ba31ba-0de7-4d57-a2a8-df3f4952e3d0"/>
+					<reportElement style="Detail" positionType="Float" x="577" y="0" width="51" height="14" uuid="c2ba31ba-0de7-4d57-a2a8-df3f4952e3d0"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="false" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{serelogia}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="686" y="0" width="56" height="14" uuid="7e7f516b-6525-4f49-a856-ee3962e0b157"/>
+					<reportElement style="Detail" positionType="Float" x="628" y="0" width="56" height="14" uuid="7e7f516b-6525-4f49-a856-ee3962e0b157"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="false" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{examen_rx}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement style="Detail" positionType="Float" x="742" y="0" width="55" height="14" uuid="d2240d51-9cb6-49e3-8fa0-c1f655bc0a6f"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="9" isBold="false" pdfFontName="Helvetica"/>
+						<font fontName="Arial" size="8" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{fecha_registro}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="684" y="0" width="58" height="14" uuid="473de40b-d77b-4c5b-b7dd-f25af307ed5f"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{hemoglobina}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

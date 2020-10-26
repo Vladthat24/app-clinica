@@ -28,13 +28,13 @@ public class finforme_medico {
     public DefaultTableModel mostrar(String buscar) {
         DefaultTableModel modelo;
 
-        String[] titulos = {"ID", "IdAsistencial", "Asistencial", "Colegiatura", "N° Colegiatura", "IdPaciente", "Historia Clinica", "Tipo Doc", "N° Doc", "Nombre", "Apellidos", "Edad", "Direccion", "Diagnostico", "Fecha Registro"};
-        String[] registro = new String[15];
+        String[] titulos = {"ID", "IdAsistencial", "Asistencial", "Colegiatura", "N° Colegiatura", "IdPaciente", "Historia Clinica", "Tipo Doc", "N° Doc", "Nombre", "Apellidos", "Edad", "Direccion", "Diagnostico","Dias Descanso", "Fecha Registro"};
+        String[] registro = new String[16];
 
         totalregistros = 0;
         modelo = new DefaultTableModel(null, titulos);
         sql = "select c.idinforme_medico,c.idasistenciales,a.nombre,a.apellidos,a.colegiatura,a.num_colegiatura,c.idpaciente,p.historia_clinica,p.tipo_documento,"
-                + "p.numero_documento,p.nombres,p.apellido_paterno,p.apellido_materno,p.edad,p.direccion,c.diagnostico,c.fecha_registro "
+                + "p.numero_documento,p.nombres,p.apellido_paterno,p.apellido_materno,p.edad,p.direccion,c.diagnostico,c.dias_descanso,c.fecha_registro "
                 + "from tap_informemedico c inner join tap_asistenciales a on c.idasistenciales=a.idasistenciales inner join tap_paciente p on c.idpaciente=p.idpaciente where p.numero_documento like '%" + buscar + "%' order by c.idinforme_medico desc";
 
         try {
@@ -55,9 +55,10 @@ public class finforme_medico {
                 registro[9] = rs.getString("p.nombres");
                 registro[10] = rs.getString("p.apellido_paterno") + " " + rs.getString("p.apellido_materno");
                 registro[11] = rs.getString("p.edad");
-                registro[12] = rs.getString("p.direccion");
+                registro[12] = rs.getString("p.direccion");                
                 registro[13] = rs.getString("c.diagnostico");
-                registro[14] = rs.getString("c.fecha_registro");
+                registro[14]= rs.getString("c.dias_descanso");
+                registro[15] = rs.getString("c.fecha_registro");
 
                 totalregistros = totalregistros + 1;
                 modelo.addRow(registro);
@@ -72,16 +73,17 @@ public class finforme_medico {
     }
 
     public boolean insertar(vinforme_medico dts) {
-        sql = "insert into tap_informemedico (idasistenciales,idpaciente,diagnostico,fecha_registro,fecha_system)"
-                + "values (?,?,?,?,?)";
+        sql = "insert into tap_informemedico (idasistenciales,idpaciente,diagnostico,dias_descanso,fecha_registro,fecha_system)"
+                + "values (?,?,?,?,?,?)";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
 
             pst.setInt(1, dts.getIdasistenciales());
             pst.setInt(2, dts.getIdpaciente());
             pst.setString(3, dts.getDiagnostico());
-            pst.setString(4, dts.getFecha_registro());
-            pst.setString(5, dts.getFecha_system());
+            pst.setString(4, dts.getDias_descanso());
+            pst.setString(5, dts.getFecha_registro());
+            pst.setString(6, dts.getFecha_system());
 
             int n = pst.executeUpdate();
             if (n != 0) {
@@ -98,7 +100,7 @@ public class finforme_medico {
 
     public boolean editar(vinforme_medico dts) {
 
-        sql = "update tap_informemedico set idasistenciales=?,idpaciente=?,diagnostico=?,fecha_registro=? where idinforme_medico=?";
+        sql = "update tap_informemedico set idasistenciales=?,idpaciente=?,diagnostico=?,dias_descanso=?,fecha_registro=? where idinforme_medico=?";
 
         try {
 
@@ -107,9 +109,10 @@ public class finforme_medico {
             pst.setInt(1, dts.getIdasistenciales());
             pst.setInt(2, dts.getIdpaciente());
             pst.setString(3, dts.getDiagnostico());
-            pst.setString(4, dts.getFecha_registro());
+            pst.setString(4, dts.getDias_descanso());
+            pst.setString(5, dts.getFecha_registro());
 
-            pst.setInt(5, dts.getIdinforme_medico());
+            pst.setInt(6, dts.getIdinforme_medico());
 
             int n = pst.executeUpdate();
 

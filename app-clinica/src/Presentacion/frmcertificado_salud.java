@@ -30,25 +30,28 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
     String fecha_inicial;
     String fecha_final;
     int num_doc;
-
+    
     public frmcertificado_salud() {
         initComponents();
         mostrar("");
         inhabilitar();
+        
+        txtImpDiagnostica.setLineWrap(true);
+        txtImpDiagnostica.setWrapStyleWord(true);
+        
     }
     public String accion = "guardar";
-
+    
     void fecha_actual() {
-
+        
         LocalDate fechaactual = LocalDate.now();
-
+        
         lblfecha_registro.setText(DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH).format(fechaactual));
-
+        
     }
-
+    
     void guardar() {
-
-
+        
         if (txtserologia.getText().length() == 0) {
             JOptionPane.showConfirmDialog(rootPane, "Debes ingresar la serologia");
             txtserologia.requestFocus();
@@ -58,23 +61,28 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
             JOptionPane.showConfirmDialog(rootPane, "Debes ingresar el examen rx");
             txtexamenrx.requestFocus();
         }
-
-
+        if (txthemoglobina.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar la hemoglobina");
+            txtexamenrx.requestFocus();
+        }
+        
         vcertificado_salud dts = new vcertificado_salud();
         fcertificado_salud func = new fcertificado_salud();
-
+        
         dts.setIdasistenciales(Integer.parseInt(txtidasistenciales.getText()));
         dts.setIdpaciente(Integer.parseInt(txtidpaciente.getText()));
         dts.setSerelogia(txtserologia.getText());
         dts.setExamen_rx(txtexamenrx.getText());
+        dts.setHemoglobina(txthemoglobina.getText());
+        dts.setImp_diagnostica(txtImpDiagnostica.getText());
         dts.setFecha_registro(lblfecha_registro.getText());
-
+        
         if (accion.equals("guardar")) {
             if (func.insertar(dts)) {
                 JOptionPane.showMessageDialog(rootPane, "El Registro fue ingresado exitosamente");
                 mostrar("");
                 inhabilitar();
-
+                
             }
         } else if (accion.equals("editar")) {
             dts.setIdcertificado_salud(Integer.parseInt(txtidcertificado_salud.getText()));
@@ -82,18 +90,18 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "El Registro fue editado exitosamente");
                 mostrar("");
                 inhabilitar();
-
+                
             }
         }
-
+        
     }
-
+    
     void ocultar_columnas() {
         
         tablalistado.getColumnModel().getColumn(0).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(0).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(0).setPreferredWidth(0);
-
+        
         tablalistado.getColumnModel().getColumn(1).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(1).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(1).setPreferredWidth(0);
@@ -105,25 +113,25 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         tablalistado.getColumnModel().getColumn(3).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(3).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(3).setPreferredWidth(0);
-
+        
         tablalistado.getColumnModel().getColumn(4).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(4).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(4).setPreferredWidth(0);
-
+        
         tablalistado.getColumnModel().getColumn(5).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(5).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(5).setPreferredWidth(0);
-
+        
         tablalistado.getColumnModel().getColumn(11).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(11).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(11).setPreferredWidth(0);
-
+        
         tablalistado.getColumnModel().getColumn(12).setMaxWidth(0);
         tablalistado.getColumnModel().getColumn(12).setMinWidth(0);
         tablalistado.getColumnModel().getColumn(12).setPreferredWidth(0);
-
+        
     }
-
+    
     void inhabilitar() {
         txtidcertificado_salud.setVisible(false);
         txtidasistenciales.setVisible(false);
@@ -134,17 +142,17 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
 //       
         txtserologia.setEnabled(false);
         txtexamenrx.setEnabled(false);
-
-        
+        txthemoglobina.setEnabled(false);
+        txtImpDiagnostica.setEnabled(false);
         btnpaciente.setEnabled(false);
         btnguardar.setEnabled(false);
         btnbuscar.setEnabled(false);
         btneliminar.setEnabled(false);
         btnasistencial.setEnabled(false);
         btnimpresora.setEnabled(false);
-
+        
         lbltotalregistros.setEnabled(false);
-
+        
         lblnombre.setText("");
         lblhistoriaclinica.setText("");
         lblapellidos.setText("");
@@ -158,10 +166,11 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         lblnum_colegiatura.setText("");
         txtserologia.setText("");
         txtexamenrx.setText("");
+        txtImpDiagnostica.setText("");
         lblfecha_registro.setText("");
-
+        
     }
-
+    
     void habilitar() {
         txtidcertificado_salud.setVisible(false);
         txtidasistenciales.setVisible(false);
@@ -171,21 +180,18 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
 //        txtserologia.setEnabled(false);
 //        txtexamenrx.setEnabled(false);
 //
-
         txtserologia.setEnabled(true);
         txtexamenrx.setEnabled(true);
-
-
+        txthemoglobina.setEnabled(true);
+        txtImpDiagnostica.setEnabled(true);
         btnpaciente.setEnabled(true);
         btnguardar.setEnabled(true);
         btnbuscar.setEnabled(true);
         btneliminar.setEnabled(true);
         btnasistencial.setEnabled(true);
         btnimpresora.setEnabled(true);
-
-
+        
         lbltotalregistros.setEnabled(true);
-
         
         lblnombre.setText("");
         lblhistoriaclinica.setText("");
@@ -200,20 +206,21 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         lblnum_colegiatura.setText("");
         txtserologia.setText("");
         txtexamenrx.setText("");
+        txtImpDiagnostica.setText("");
         lblfecha_registro.setText("");
-
+        
     }
-
+    
     void mostrar(String buscar) {
         try {
             DefaultTableModel modelo;
             fcertificado_salud func = new fcertificado_salud();
             modelo = func.mostrar(buscar);
-
+            
             tablalistado.setModel(modelo);
             ocultar_columnas();
             lbltotalregistros.setText("Total Registros " + Integer.toString(func.totalregistros));
-
+            
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(null, e + "ERROR MOSTRAR");
         }
@@ -234,13 +241,14 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         btnnuevo = new javax.swing.JButton();
         btnguardar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        lblfecha_registro = new javax.swing.JLabel();
         btnasistencial = new javax.swing.JButton();
         lblnombre_apellidos_asisten = new javax.swing.JLabel();
         lblnum_colegiatura = new javax.swing.JLabel();
         lblcolegiatura = new javax.swing.JLabel();
         txtexamenrx = new javax.swing.JTextField();
         txtserologia = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtImpDiagnostica = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
         btnpaciente = new javax.swing.JButton();
         lblnombre = new javax.swing.JLabel();
@@ -250,6 +258,8 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         lbldireccion = new javax.swing.JLabel();
         lbltipodoc = new javax.swing.JLabel();
         lblnum_documento = new javax.swing.JLabel();
+        lblfecha_registro = new javax.swing.JLabel();
+        txthemoglobina = new javax.swing.JTextField();
         txtidpaciente = new javax.swing.JTextField();
         txtidcertificado_salud = new javax.swing.JTextField();
         txtidasistenciales = new javax.swing.JTextField();
@@ -290,9 +300,6 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(78, 150, 203));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Asistencial:"));
 
-        lblfecha_registro.setBackground(new java.awt.Color(158, 179, 193));
-        lblfecha_registro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de Registro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-
         btnasistencial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/asistencial.png"))); // NOI18N
         btnasistencial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -315,6 +322,12 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         txtserologia.setBackground(new java.awt.Color(78, 150, 203));
         txtserologia.setBorder(javax.swing.BorderFactory.createTitledBorder("Serologia:"));
 
+        txtImpDiagnostica.setBackground(new java.awt.Color(78, 150, 203));
+        txtImpDiagnostica.setColumns(20);
+        txtImpDiagnostica.setRows(5);
+        txtImpDiagnostica.setBorder(javax.swing.BorderFactory.createTitledBorder("Impresión Diagnóstica:"));
+        jScrollPane2.setViewportView(txtImpDiagnostica);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -322,19 +335,18 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtexamenrx)
                     .addComponent(lblnombre_apellidos_asisten, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblfecha_registro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblcolegiatura, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtexamenrx, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(lblnum_colegiatura, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnasistencial))
-                            .addComponent(txtserologia))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblcolegiatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblnum_colegiatura, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnasistencial))
+                    .addComponent(txtserologia)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -347,11 +359,12 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
                     .addComponent(btnasistencial, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblcolegiatura, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtexamenrx, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                    .addComponent(txtserologia))
+                .addComponent(txtexamenrx, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblfecha_registro, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
+                .addComponent(txtserologia, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(78, 150, 203));
@@ -385,6 +398,12 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         lblnum_documento.setBackground(new java.awt.Color(158, 179, 193));
         lblnum_documento.setBorder(javax.swing.BorderFactory.createTitledBorder("N° Documento"));
 
+        lblfecha_registro.setBackground(new java.awt.Color(158, 179, 193));
+        lblfecha_registro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de Registro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+
+        txthemoglobina.setBackground(new java.awt.Color(78, 150, 203));
+        txthemoglobina.setBorder(javax.swing.BorderFactory.createTitledBorder("Hemoglobina"));
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -392,22 +411,27 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbldireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(lblnombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblhistoriaclinica, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblapellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(lbledad, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                        .addComponent(btnpaciente))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(lbltipodoc, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblnum_documento, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(lblfecha_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txthemoglobina, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbldireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(lblnombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblhistoriaclinica, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblapellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(lbledad, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnpaciente))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(lbltipodoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblnum_documento, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -426,8 +450,13 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lbltipodoc, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblnum_documento, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(lbldireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbldireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblfecha_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txthemoglobina, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         txtidcertificado_salud.addActionListener(new java.awt.event.ActionListener() {
@@ -441,23 +470,27 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(txtidasistenciales, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnnuevo)
+                        .addGap(31, 31, 31)
+                        .addComponent(btnguardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtidpaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtidcertificado_salud, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(btnnuevo)
-                                .addGap(108, 108, 108)
-                                .addComponent(btnguardar))
-                            .addComponent(txtidasistenciales, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(90, Short.MAX_VALUE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtidpaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtidcertificado_salud, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -465,25 +498,25 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(txtidpaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtidcertificado_salud, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnnuevo)
+                                        .addComponent(btnguardar))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtidpaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtidcertificado_salud, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnnuevo)
-                                    .addComponent(btnguardar))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(txtidasistenciales, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(txtidasistenciales, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         registro.addTab("Registro de Certificados", jPanel1);
@@ -560,7 +593,7 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
                         .addComponent(btneliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnimpresora)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 341, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -575,19 +608,20 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(registro)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbltitulo)
                 .addGap(345, 345, 345))
+            .addComponent(registro)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbltitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(registro, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(registro, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -615,26 +649,32 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
         registro.setSelectedIndex(0);
         accion = "editar";
         int fila = tablalistado.rowAtPoint(evt.getPoint());
-
+        
         txtidcertificado_salud.setText(tablalistado.getValueAt(fila, 0).toString());
         txtidasistenciales.setText(tablalistado.getValueAt(fila, 1).toString());
-        lblnombre_apellidos_asisten.setText(tablalistado.getValueAt(fila,2).toString());
+        lblnombre_apellidos_asisten.setText(tablalistado.getValueAt(fila, 2).toString());
         lblcolegiatura.setText(tablalistado.getValueAt(fila, 3).toString());
         lblnum_colegiatura.setText(tablalistado.getValueAt(fila, 4).toString());
         txtidpaciente.setText(tablalistado.getValueAt(fila, 5).toString());
-        lblhistoriaclinica.setText(tablalistado.getValueAt(fila,6).toString());
+        lblhistoriaclinica.setText(tablalistado.getValueAt(fila, 6).toString());
         lbltipodoc.setText(tablalistado.getValueAt(fila, 7).toString());
         lblnum_documento.setText(tablalistado.getValueAt(fila, 8).toString());
-        lblnombre.setText(tablalistado.getValueAt(fila,9).toString());
+        lblnombre.setText(tablalistado.getValueAt(fila, 9).toString());
         lblapellidos.setText(tablalistado.getValueAt(fila, 10).toString());
         lbledad.setText(tablalistado.getValueAt(fila, 11).toString());
         lbldireccion.setText(tablalistado.getValueAt(fila, 12).toString());
         txtserologia.setText(tablalistado.getValueAt(fila, 13).toString());
         txtexamenrx.setText(tablalistado.getValueAt(fila, 14).toString());
-        lblfecha_registro.setText(tablalistado.getValueAt(fila, 15).toString());
+        txthemoglobina.setText(tablalistado.getValueAt(fila, 15).toString());
+        txtImpDiagnostica.setText(tablalistado.getValueAt(fila, 16).toString());
+        lblfecha_registro.setText(tablalistado.getValueAt(fila, 17).toString());
         fecha_inicial = lblfecha_registro.getText();
         fecha_final = lblfecha_registro.getText();
+        
         num_doc = Integer.parseInt(lblnum_documento.getText());
+        System.out.print(""+num_doc);
+        
+
     }//GEN-LAST:event_tablalistadoMouseClicked
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
@@ -651,7 +691,7 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
             if (confirmacion == 0) {
                 fcertificado_salud func = new fcertificado_salud();
                 vcertificado_salud dts = new vcertificado_salud();
-
+                
                 dts.setIdcertificado_salud(Integer.parseInt(txtidcertificado_salud.getText()));
                 func.eliminar(dts);
                 mostrar("");
@@ -669,14 +709,14 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
 
     private void btnimpresoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnimpresoraActionPerformed
         // TODO add your handling code here:
-        imprimir_certificado_salud gw = new imprimir_certificado_salud();
-        gw.reportePacientes(num_doc);
+//        imprimir_certificado_salud gw = new imprimir_certificado_salud();
+//        gw.reportePacientes(num_doc);
 
     }//GEN-LAST:event_btnimpresoraActionPerformed
 
     private void btnpacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpacienteActionPerformed
         // TODO add your handling code here:
-        
+
         frmvista_paciente_certi_salud from = new frmvista_paciente_certi_salud();
         from.toFront();
         from.setVisible(true);
@@ -741,6 +781,7 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JLabel lblapellidos;
     public static javax.swing.JLabel lblcolegiatura;
     public static javax.swing.JLabel lbldireccion;
@@ -756,7 +797,9 @@ public class frmcertificado_salud extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbltotalregistros;
     private javax.swing.JTabbedPane registro;
     private javax.swing.JTable tablalistado;
+    private javax.swing.JTextArea txtImpDiagnostica;
     private javax.swing.JTextField txtexamenrx;
+    private javax.swing.JTextField txthemoglobina;
     public static javax.swing.JTextField txtidasistenciales;
     private javax.swing.JTextField txtidcertificado_salud;
     public static javax.swing.JTextField txtidpaciente;

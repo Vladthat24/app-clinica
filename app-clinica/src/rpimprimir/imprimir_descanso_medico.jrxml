@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="458eac72-38ca-469d-b382-f2eb64e746cc">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="172"/>
+	<property name="ireport.y" value="595"/>
+	<parameter name="fecha_inicial" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_final" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idinforme_medico" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select c.idinforme_medico,c.idasistenciales,CONCAT(a.nombre," ",a.apellidos)as doctor,a.colegiatura,a.num_colegiatura,c.idpaciente,p.historia_clinica,p.tipo_documento,
+		p.numero_documento,CONCAT(p.nombres," ",p.apellido_paterno," ",p.apellido_materno) as paciente,p.edad,p.direccion,c.diagnostico,c.dias_descanso,c.fecha_registro,c.fecha_system
+from tap_informemedico c 
+     inner join tap_asistenciales a on c.idasistenciales=a.idasistenciales 
+     inner join tap_paciente p on c.idpaciente=p.idpaciente
+where c.idinforme_medico=$P{idinforme_medico}]]>
+	</queryString>
+	<field name="idinforme_medico" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idasistenciales" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="doctor" class="java.lang.String"/>
+	<field name="colegiatura" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="num_colegiatura" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idpaciente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="historia_clinica" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo_documento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numero_documento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="paciente" class="java.lang.String"/>
+	<field name="edad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diagnostico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dias_descanso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_registro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_system" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="idinforme_medico">
+		<groupExpression><![CDATA[$F{idinforme_medico}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="138" splitType="Stretch">
+			<staticText>
+				<reportElement x="42" y="34" width="486" height="59" forecolor="#6D7445" uuid="d4ecc9d3-af10-4860-804a-1560dfda4add"/>
+				<textElement textAlignment="Center">
+					<font fontName="Lato Black" size="39" isBold="true"/>
+				</textElement>
+				<text><![CDATA["MARIA SANTISIMA"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="2" width="344" height="32" forecolor="#6D7445" uuid="26f2f55c-baed-47f5-b3d9-1b91d0ebe402"/>
+				<textElement textAlignment="Center">
+					<font fontName="Dialog" size="25" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO MEDICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="93" width="344" height="23" forecolor="#6D7445" uuid="594e0d3c-74b7-4635-a478-93426dfcfdbe"/>
+				<textElement textAlignment="Center">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TU SALUD EN MANOS DE PROFESIOANELS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="116" width="547" height="18" forecolor="#6D7445" uuid="c5f25248-59f2-494a-aff7-436b392899b6"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ CIRUGIA AMBULATORIA, TERAPIA FISICA Y REHABILITACION,TERAPIA DE LENGUAJE, ECONOGRAFIA, OPTICA, BOTICA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="387" splitType="Stretch">
+			<staticText>
+				<reportElement x="94" y="12" width="388" height="36" uuid="9e77f7f7-1240-4b80-9436-a6850e9bd589"/>
+				<textElement textAlignment="Center">
+					<font size="25" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCANSO MÉDICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="71" width="408" height="23" uuid="d0b38f36-2133-44b7-aaf8-bef38f17e299"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[El Médico que suscribe certifica que la Paciente identificado con]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="94" width="5" height="23" uuid="2c383d7b-5218-4cbe-8f69-af3c48bf03de"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="94" width="29" height="23" uuid="6b6d4faf-4403-4f9a-b6f9-6b657f0072ca"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="71" width="88" height="23" uuid="22f69c0d-98ba-45ad-bc4d-4b7860180c25"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo_documento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="53" y="94" width="100" height="23" uuid="ab4df0b6-757a-421a-be40-7eef000661bd"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero_documento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="482" y="94" width="46" height="23" uuid="54cc89f8-f5ac-43d3-9212-095fd17f5cc7"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[, fue ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="117" width="150" height="23" uuid="d8415d75-c905-4f5d-aeeb-7762b51c03da"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[evaluada hoy con fecha ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="174" y="117" width="95" height="23" uuid="d0630a45-e1af-4dd1-9875-bfac18397d2c"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_system}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="269" y="117" width="259" height="23" uuid="6a420c3b-d916-43d7-a05b-a8f33e266b43"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[en este Establecimiento de Salud con el ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="140" width="212" height="23" uuid="562a62b8-4bbd-4873-b7dd-2efcf761102a"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[siguiente diagnóstico:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="94" y="183" width="434" height="64" uuid="57e44e2b-a832-4bbc-b47c-826799a19e57"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnostico}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="290" y="330" width="248" height="14" uuid="52bfcc7d-c4f1-45d7-bd0c-431d48657d54"/>
+				<text><![CDATA[-----------------------------------------------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="403" y="364" width="5" height="23" uuid="4a4262bb-dcfe-487d-b9e6-f9db4ab97b2e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="161" y="94" width="321" height="23" uuid="41c0eae7-1d61-4eac-b190-11dbf01ec3bd"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{paciente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="317" y="364" width="86" height="20" uuid="863fc959-a76c-42ec-92f9-57a80af9097f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{colegiatura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="364" width="108" height="20" uuid="4cc2f034-5bb8-4763-861e-67dd06741849"/>
+				<textFieldExpression><![CDATA[$F{num_colegiatura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="344" width="248" height="20" uuid="f879223d-bdcd-45a9-af6e-addfdfca29ef"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{doctor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="18" width="555" height="18" forecolor="#6D7445" uuid="1f862a93-4b19-4984-9f54-bb971bb5af5f"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[924 330 347 E-MAIL mariasantisima@outlook.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="35" width="555" height="18" forecolor="#6D7445" uuid="3da91c10-f1db-430f-86b7-e99b1095d7da"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Villa Alejandro / Etapa Mz. H Lt 10 - Lurin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="18" forecolor="#6D7445" uuid="1680bde3-f367-4e23-a99e-723eb9a1c83a"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORARIO DE ATENCION : LUINES A VIERNES 8:30 a.m. A 7:00 pm, SABADOS DE 8:30 A 1 PM]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

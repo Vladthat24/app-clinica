@@ -30,14 +30,14 @@ public class fcertificado_salud {
     public DefaultTableModel mostrar(String buscar) {
         DefaultTableModel modelo;
 
-        String[] titulos = {"ID", "IdAsistencial", "Nombre y Apellidos", "Colegiatura", "N° Colegiatura", "IdPaciente", "Historia Clinica", "Tipo Doc", "N° Doc", "Nombre", "Apellidos", "Edad", "Direccion", "Serelogia", "Examen Rx", "Fecha Registro"};
+        String[] titulos = {"ID", "IdAsistencial", "Nombre y Apellidos", "Colegiatura", "N° Colegiatura", "IdPaciente", "Historia Clinica", "Tipo Doc", "N° Doc", "Nombre", "Apellidos", "Edad", "Direccion", "Serelogia", "Examen Rx","Hemoblogina","Imp. Diagnostica","Fecha Registro"};
 
-        String[] registro = new String[16];
+        String[] registro = new String[18];
 
         totalregistros = 0;
         modelo = new DefaultTableModel(null, titulos);
         sql = "select c.idcertificado_salud,c.idasistenciales,a.nombre,a.apellidos,a.colegiatura,a.num_colegiatura,c.idpaciente,p.historia_clinica,p.tipo_documento,"
-                + "p.numero_documento,p.nombres,p.apellido_paterno,p.apellido_materno,p.edad,p.direccion,c.serelogia,examen_rx,c.fecha_registro "
+                + "p.numero_documento,p.nombres,p.apellido_paterno,p.apellido_materno,p.edad,p.direccion,c.serelogia,examen_rx,c.hemoglobina,imp_diagnostica,c.fecha_registro "
                 + "from tap_certificadosalud c inner join tap_asistenciales a on c.idasistenciales=a.idasistenciales inner join tap_paciente p on c.idpaciente=p.idpaciente where p.numero_documento like '%" + buscar + "%' order by c.idcertificado_salud desc";
         
         try {
@@ -60,7 +60,9 @@ public class fcertificado_salud {
                 registro[12] = rs.getString("p.direccion");
                 registro[13] = rs.getString("c.serelogia");
                 registro[14] = rs.getString("c.examen_rx");
-                registro[15] = rs.getString("c.fecha_registro");
+                registro[15] = rs.getString("c.hemoglobina");
+                registro[16] = rs.getString("c.imp_diagnostica");
+                registro[17] = rs.getString("c.fecha_registro");
 
                 totalregistros = totalregistros + 1;
                 modelo.addRow(registro);
@@ -76,8 +78,8 @@ public class fcertificado_salud {
 
     public boolean insertar(vcertificado_salud dts) {
         sql = "insert into tap_certificadosalud (idasistenciales,idpaciente,"
-                + "serelogia,examen_rx,fecha_registro)"
-                + "values (?,?,?,?,?)";
+                + "serelogia,examen_rx,hemoglobina,imp_diagnostica,fecha_registro)"
+                + "values (?,?,?,?,?,?,?)";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
 
@@ -85,7 +87,9 @@ public class fcertificado_salud {
             pst.setInt(2, dts.getIdpaciente());
             pst.setString(3, dts.getSerelogia());
             pst.setString(4, dts.getExamen_rx());
-            pst.setString(5, dts.getFecha_registro());
+            pst.setString(5, dts.getHemoglobina());
+            pst.setString(6, dts.getImp_diagnostica());
+            pst.setString(7, dts.getFecha_registro());
 
             int n = pst.executeUpdate();
             if (n != 0) {
@@ -101,7 +105,7 @@ public class fcertificado_salud {
     }
 
     public boolean editar(vcertificado_salud dts) {
-        sql = "update tap_certificadosalud set idasistenciales=?,idpaciente=?,serelogia=?,examen_rx=?,fecha_registro=? "
+        sql = "update tap_certificadosalud set idasistenciales=?,idpaciente=?,serelogia=?,examen_rx=?,hemoglobina=?,imp_diagnostica=?,fecha_registro=? "
                 + "where idcertificado_salud=?";
 
         try {
@@ -111,9 +115,11 @@ public class fcertificado_salud {
             pst.setInt(2, dts.getIdpaciente());
             pst.setString(3, dts.getSerelogia());
             pst.setString(4, dts.getExamen_rx());
-            pst.setString(5, dts.getFecha_registro());
+            pst.setString(5, dts.getHemoglobina());
+            pst.setString(6, dts.getImp_diagnostica());
+            pst.setString(7, dts.getFecha_registro());
 
-            pst.setInt(6, dts.getIdcertificado_salud());
+            pst.setInt(8, dts.getIdcertificado_salud());
 
             int n = pst.executeUpdate();
             if (n != 0) {

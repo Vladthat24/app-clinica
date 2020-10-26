@@ -78,27 +78,34 @@ where idpaciente=$P{idpaciente}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="133" splitType="Stretch">
+		<band height="119" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="554" height="131" forecolor="#008000" backcolor="#008000" uuid="4856ab44-751c-4ebd-9e83-195e03a9d5e9"/>
+				<reportElement mode="Opaque" x="0" y="0" width="554" height="119" forecolor="#008000" backcolor="#00C61C" uuid="4856ab44-751c-4ebd-9e83-195e03a9d5e9"/>
 				<staticText>
-					<reportElement style="Title" x="116" y="23" width="386" height="48" uuid="56cbb3b6-1bb6-4f3f-8649-3562364865c6"/>
+					<reportElement style="Title" x="210" y="10" width="225" height="32" uuid="56cbb3b6-1bb6-4f3f-8649-3562364865c6"/>
 					<textElement textAlignment="Center">
-						<font size="40" isBold="true"/>
+						<font size="25" isBold="true"/>
 					</textElement>
 					<text><![CDATA[CENTRO MEDICO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Title" x="164" y="71" width="309" height="36" uuid="627c373b-a477-4bf5-b03d-ce95408fe80f"/>
+					<reportElement style="Title" x="133" y="42" width="379" height="49" uuid="627c373b-a477-4bf5-b03d-ce95408fe80f"/>
 					<textElement textAlignment="Center">
-						<font size="30" isBold="false"/>
+						<font size="35" isBold="true"/>
 					</textElement>
-					<text><![CDATA[MARIA SANTISIMA]]></text>
+					<text><![CDATA["MARIA SANTISIMA"]]></text>
 				</staticText>
 				<image>
-					<reportElement x="20" y="11" width="82" height="109" uuid="f5481df2-dd79-49af-8f14-6f36d79405a2"/>
+					<reportElement x="20" y="10" width="69" height="96" uuid="f5481df2-dd79-49af-8f14-6f36d79405a2"/>
 					<imageExpression><![CDATA["C:\\Users\\Desarrollo\\Documents\\GitHub\\app-clinica\\app-clinica\\src\\rpimprimir\\icono-soloII.png"]]></imageExpression>
 				</image>
+				<staticText>
+					<reportElement x="164" y="91" width="323" height="27" forecolor="#FFFFFF" uuid="5e3f40af-3b69-4cd0-93bf-e832e9253296"/>
+					<textElement>
+						<font size="15" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[TU SALUD EN MANOS DE PROFESIONALES]]></text>
+				</staticText>
 			</frame>
 		</band>
 	</title>
@@ -307,14 +314,14 @@ where idpaciente=$P{idpaciente}]]>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[CELULAR/TELF.	]]></text>
+				<text><![CDATA[ANTEC. OPERACION:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="72" y="376" width="116" height="20" uuid="84feb6bd-0d96-4bf9-ba96-bde0775ec7bf"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[FEC. NACIMIENTO:]]></text>
+				<text><![CDATA[REACC. MEDIC.]]></text>
 			</staticText>
 			<line>
 				<reportElement x="188" y="376" width="299" height="1" uuid="36116290-0ab7-4d16-ab63-be9b8471431a"/>
@@ -324,7 +331,7 @@ where idpaciente=$P{idpaciente}]]>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[AP. PATERNO:]]></text>
+				<text><![CDATA[OCUPACION:]]></text>
 			</staticText>
 			<line>
 				<reportElement x="188" y="335" width="299" height="1" uuid="c7158f03-40d9-42a2-8fa2-154851e3d95c"/>
@@ -334,7 +341,7 @@ where idpaciente=$P{idpaciente}]]>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[AP. MATERNO:]]></text>
+				<text><![CDATA[ANTEC. ENFERMEDAD:]]></text>
 			</staticText>
 			<line>
 				<reportElement x="188" y="397" width="299" height="1" uuid="5b6d6cf5-b8f9-4367-b588-d01168ac44df"/>
@@ -350,7 +357,7 @@ where idpaciente=$P{idpaciente}]]>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[NOMBRE:]]></text>
+				<text><![CDATA[ESTADO CIVIL:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="188" y="293" width="299" height="20" uuid="e8f43f2f-6413-4173-8474-44dc3bb6cff0"/>

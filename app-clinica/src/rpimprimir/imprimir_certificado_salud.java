@@ -40,7 +40,7 @@ public class imprimir_certificado_salud {
            
             print= JasperFillManager.fillReport(report, p,connection);
             JasperViewer view= new JasperViewer(print,false);
-            view.setTitle("C.M.I. Daniel Alcides Carrion");
+            view.setTitle("Centro Medico - Maria Santisima");
             view.setVisible(true);
             
         } catch (Exception e) {

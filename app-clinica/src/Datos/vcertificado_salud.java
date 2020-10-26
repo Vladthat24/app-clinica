@@ -15,17 +15,21 @@ public class vcertificado_salud {
     private int idpaciente;
     private String serelogia;
     private String examen_rx;
+    private String hemoglobina;
+    private String imp_diagnostica;
     private String fecha_registro;
 
     public vcertificado_salud() {
     }
 
-    public vcertificado_salud(int idcertificado_salud, int idasistenciales, int idpaciente, String serelogia, String examen_rx, String fecha_registro) {
+    public vcertificado_salud(int idcertificado_salud, int idasistenciales, int idpaciente, String serelogia, String examen_rx, String hemoglobina, String imp_diagnostica, String fecha_registro) {
         this.idcertificado_salud = idcertificado_salud;
         this.idasistenciales = idasistenciales;
         this.idpaciente = idpaciente;
         this.serelogia = serelogia;
         this.examen_rx = examen_rx;
+        this.hemoglobina = hemoglobina;
+        this.imp_diagnostica = imp_diagnostica;
         this.fecha_registro = fecha_registro;
     }
 
@@ -69,6 +73,22 @@ public class vcertificado_salud {
         this.examen_rx = examen_rx;
     }
 
+    public String getHemoglobina() {
+        return hemoglobina;
+    }
+
+    public void setHemoglobina(String hemoglobina) {
+        this.hemoglobina = hemoglobina;
+    }
+
+    public String getImp_diagnostica() {
+        return imp_diagnostica;
+    }
+
+    public void setImp_diagnostica(String imp_diagnostica) {
+        this.imp_diagnostica = imp_diagnostica;
+    }
+
     public String getFecha_registro() {
         return fecha_registro;
     }
@@ -77,8 +97,5 @@ public class vcertificado_salud {
         this.fecha_registro = fecha_registro;
     }
 
-    
-
-   
-    
+      
 }

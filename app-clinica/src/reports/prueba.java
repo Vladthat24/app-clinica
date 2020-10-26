@@ -7,7 +7,7 @@ package reports;
 
 import Logica.conexion;
 import java.sql.Connection;
-import rpimprimir.imprimir_informe_medico;
+import rpimprimir.imprimir_descanso_medico;
 
 /**
  *
@@ -22,8 +22,8 @@ public class prueba {
             Connection Connection = new conexion().conectar();
             System.out.println("Conectado");
 
-            imprimir_informe_medico g = new imprimir_informe_medico();
-            g.reportePacientes(1);
+            imprimir_descanso_medico g = new imprimir_descanso_medico();
+            g.reporteImprimirDescMedico(1);
 
         } catch (Exception e) {
             System.out.println("error de prueba" + e);

@@ -26,21 +26,21 @@ import org.apache.commons.collections.map.HashedMap;
  */
 
 
-public class imprimir_informe_medico {
+public class imprimir_descanso_medico {
     public Connection connection= new conexion().conectar();
-    public void reportePacientes(int num_doc){
+    public void reporteImprimirDescMedico(int idinforme_medico){
         Map p = new HashMap();
         JasperReport report;
         JasperPrint print;
         try {
 
             report=JasperCompileManager.compileReport(new File("").getAbsolutePath()+
-                    "/src/rpimprimir/imprimir_informe_medico.jrxml");
-            p.put("num_doc", num_doc);
+                    "/src/rpimprimir/imprimir_descanso_medico.jrxml");
+            p.put("idinforme_medico", idinforme_medico);
            
             print= JasperFillManager.fillReport(report, p,connection);
             JasperViewer view= new JasperViewer(print,false);
-            view.setTitle("C.M.I. Daniel Alcides Carrion");
+            view.setTitle("Centro Medico - Maria Santisima");
             view.setVisible(true);
             
         } catch (Exception e) {
