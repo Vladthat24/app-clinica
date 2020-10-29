@@ -5,6 +5,7 @@
  */
 package Presentacion;
 
+import javax.swing.ImageIcon;
 import Datos.vcaja;
 import Datos.vcertificado_salud;
 import Datos.vconsultorio;
@@ -897,6 +898,8 @@ public class frmpago extends javax.swing.JInternalFrame {
         public int print(Graphics graphics, PageFormat pageFormat, int pageIndex)
                 throws PrinterException {
 
+            ImageIcon icon = new ImageIcon("C:\\Users\\Desarrollo\\Documents\\GitHub\\app-clinica\\app-clinica\\src\\Files\\icono-soloII.png");
+
             int result = NO_SUCH_PAGE;
             if (pageIndex == 0) {
 
@@ -907,7 +910,7 @@ public class frmpago extends javax.swing.JInternalFrame {
                 g2d.translate((int) pageFormat.getImageableX(), (int) pageFormat.getImageableY());
 
                 ////////// code by alqama//////////////
-                FontMetrics metrics = g2d.getFontMetrics(new Font("Arial", Font.BOLD,4));
+                FontMetrics metrics = g2d.getFontMetrics(new Font("Arial", Font.BOLD, 4));
                 //    int idLength=metrics.stringWidth("000000");
                 //int idLength=metrics.stringWidth("00");
                 int idLength = metrics.stringWidth("000");
@@ -994,6 +997,8 @@ public class frmpago extends javax.swing.JInternalFrame {
 //                    int sum = pp1a + pp2a + pp3a + pp4a;
                     ///////////////// Product price Get ///////////
                     g2d.setFont(new Font("Monospaced", Font.PLAIN, 5));
+                    g2d.drawImage(icon.getImage(), 20, 1, 20, 20, rootPane);
+                    y += yShift;
                     g2d.drawString("------------------------", 5, y);
                     y += yShift;
                     g2d.drawString("   CENTRO MEDICO      ", 5, y);
@@ -1001,7 +1006,7 @@ public class frmpago extends javax.swing.JInternalFrame {
                     g2d.drawString("   SANTA SANTISIMA    ", 5, y);
                     y += yShift;
                     g2d.drawString("------------------------", 5, y);
-                    y += headerRectHeight;                     
+                    y += headerRectHeight;
                     g2d.drawString("Tipo Comprb.: " + tipo_comprobante + "", 5, y);
                     y += yShift;
                     g2d.drawString("N° Comprb.: " + num_comprobante + "", 5, y);
@@ -1010,7 +1015,7 @@ public class frmpago extends javax.swing.JInternalFrame {
                     y += yShift;
                     g2d.drawString("Datos del Paciente:                  ", 5, y);
                     y += yShift;
-                    g2d.drawString("H.C.: N° "+ historia_clinica + " ", 5, y);
+                    g2d.drawString("H.C.: N° " + historia_clinica + " ", 5, y);
                     y += yShift;
                     g2d.drawString("Nombre: " + nombres + "              ", 5, y);
                     y += yShift;

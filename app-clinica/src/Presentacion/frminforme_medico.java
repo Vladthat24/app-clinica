@@ -311,7 +311,7 @@ public class frminforme_medico extends javax.swing.JInternalFrame {
         setIconifiable(true);
 
         lbltitulo.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        lbltitulo.setText("INFORME MEDICO");
+        lbltitulo.setText("DESCANSO MEDICO");
 
         jPanel1.setBackground(new java.awt.Color(78, 150, 203));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));

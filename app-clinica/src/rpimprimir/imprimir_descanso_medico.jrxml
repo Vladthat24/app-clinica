@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="458eac72-38ca-469d-b382-f2eb64e746cc">
-	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="172"/>
-	<property name="ireport.y" value="595"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="366"/>
 	<parameter name="fecha_inicial" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -219,6 +219,34 @@ where c.idinforme_medico=$P{idinforme_medico}]]>
 				<reportElement x="290" y="344" width="248" height="20" uuid="f879223d-bdcd-45a9-af6e-addfdfca29ef"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{doctor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="24" y="262" width="200" height="23" uuid="ada01a07-8d66-4c00-bf33-e76f758d4acb"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Se indica Descanso Médico por ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="262" width="159" height="23" uuid="84d65900-d93e-49b4-9926-148d22ed01e1"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[días a partir de la fecha.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="285" width="397" height="23" uuid="e81d3355-0929-411b-a685-ced057d07625"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Se expide el presente certificado a solicitud del interresado.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="224" y="262" width="38" height="23" uuid="74750081-b841-4d7c-9263-bb1453eed49d"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dias_descanso}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

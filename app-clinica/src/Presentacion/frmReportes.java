@@ -111,7 +111,7 @@ public class frmReportes extends javax.swing.JInternalFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Modulos:"));
 
         rbtReportes.add(rbtInformeMedico);
-        rbtInformeMedico.setText("Informe medico");
+        rbtInformeMedico.setText("Descanso Medico ");
 
         rbtReportes.add(rbtFarmacia);
         rbtFarmacia.setText("Farmacia");
