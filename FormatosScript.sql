@@ -109,7 +109,7 @@ select * from tap_paciente where STR_TO_DATE(fecha_registro , "%d-%m-%Y" ) betwe
 
 
 select c.idcertificado_salud,c.idasistenciales,CONCAT(a.nombre," ",a.apellidos) as datosAsistencial,a.colegiatura,a.num_colegiatura,c.idpaciente,p.historia_clinica,p.tipo_documento,
-p.numero_documento,CONCAT(p.nombres," ",p.apellido_paterno," ",p.apellido_materno) as datosPaciente,p.edad,p.direccion,c.serelogia,examen_rx,
+p.numero_documento,CONCAT(p.nombres," ",p.apellido_paterno," ",p.apellido_materno) as datosPaciente,p.edad,p.direccion,c.serelogia,c.examen_rx,c.hemoglobina,
 c.fecha_registro 
 from tap_certificadosalud c 
 inner join tap_asistenciales a 
@@ -120,7 +120,7 @@ on c.idpaciente=p.idpaciente where STR_TO_DATE(c.fecha_registro, "%d-%m-%Y" ) be
 
 
 select c.idinforme_medico,c.idasistenciales,a.nombre,a.apellidos,a.colegiatura,a.num_colegiatura,c.idpaciente,p.historia_clinica,p.tipo_documento,
-		p.numero_documento,p.nombres,p.apellido_paterno,p.apellido_materno,p.edad,p.direccion,c.diagnostico,c.fecha_registro,c.fecha_system
+		p.numero_documento,p.nombres,p.apellido_paterno,p.apellido_materno,p.edad,p.direccion,c.diagnostico,c.dias_descanso,c.fecha_registro,c.fecha_system
 from tap_informemedico c 
      inner join tap_asistenciales a on c.idasistenciales=a.idasistenciales 
      inner join tap_paciente p on c.idpaciente=p.idpaciente 
